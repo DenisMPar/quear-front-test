@@ -15,6 +15,7 @@ import { QuearBigLogoSVGIcon } from "./svg/quear-big-logo";
 import { QuearSmallLogoSVGIcon } from "./svg/quear-small-logo";
 import { HamburguerSVGIcon } from "./svg/hamburger-icon";
 import { PhoneSVGIcon } from "./svg/phone-icon";
+import { CarMobileSVGIcon } from "./svg/car-logo-mobile";
 
 interface Props {
   color: "primary" | "secondary" | "bg" | "dark-ligth";
@@ -138,4 +139,7 @@ const Hamburguer = styled(HamburguerSVGIcon)`
 `;
 export const StyledHamburguer = () => {
   return <Hamburguer></Hamburguer>;
+};
+export const StyledCarMobile = () => {
+  return <CarMobileSVGIcon></CarMobileSVGIcon>;
 };
