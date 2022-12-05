@@ -11,10 +11,15 @@ import { CheckRoundedSVGIcon } from "./svg/check-rounded-icon";
 import { CloseSVGIcon } from "./svg/close-icon";
 import { UncheckedBoxSVGIcon } from "./svg/unchecked-box-icon";
 import { CheckedBoxSVGIcon } from "./svg/checked-box-icon";
+import { QuearBigLogoSVGIcon } from "./svg/quear-big-logo";
+import { QuearSmallLogoSVGIcon } from "./svg/quear-small-logo";
+import { HamburguerSVGIcon } from "./svg/hamburger-icon";
+import { PhoneSVGIcon } from "./svg/phone-icon";
 
 interface Props {
-  color: "primary" | "secondary";
-  small?: boolean;
+  color: "primary" | "secondary" | "bg" | "dark-ligth";
+  width?: string;
+  height?: string;
 }
 const Info = styled(InfoSVGIcon)`
   width: 24px;
@@ -111,4 +116,26 @@ const CheckedBox = styled(CheckedBoxSVGIcon)`
 `;
 export const StyledCheckedBox = ({ color }: Props) => {
   return <CheckedBox color={color}></CheckedBox>;
+};
+const Phone = styled(PhoneSVGIcon)`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  fill: ${(props) => `var(--${props.color})`};
+`;
+export const StyledPhone = ({ color, width, height }: Props) => {
+  return <Phone color={color} width={width} height={height}></Phone>;
+};
+export const StyledQuearBigLogo = () => {
+  return <QuearBigLogoSVGIcon></QuearBigLogoSVGIcon>;
+};
+export const StyledQuearSmallLogo = () => {
+  return <QuearSmallLogoSVGIcon></QuearSmallLogoSVGIcon>;
+};
+
+const Hamburguer = styled(HamburguerSVGIcon)`
+  width: 20px;
+  height: 14px;
+`;
+export const StyledHamburguer = () => {
+  return <Hamburguer></Hamburguer>;
 };

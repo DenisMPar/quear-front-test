@@ -52,6 +52,9 @@ export const CardContainerMain = styled.div`
 export const CardContainerTitle = styled.div`
   position: relative;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   background-color: var(--bg-secondary);
   color: var(--primary);
   width: 100%;

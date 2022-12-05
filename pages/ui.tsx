@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import { CardComponent } from "../components/card";
+import { HeaderComponent } from "../components/header";
 import { OutlinedButton, PrimaryButton } from "../ui/buttons/styled";
 import {
   StyledCalendar,
@@ -12,13 +13,26 @@ import {
   StyledInfo,
   StyledLock,
   StyledOpenCamera,
+  StyledQuearBigLogo,
+  StyledQuearSmallLogo,
   StyledUncheckedBox,
   StyledUser,
 } from "../ui/icons";
 const Ui: NextPage = () => {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        margin: "0 auto",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "10px",
+      }}
+    >
+      <HeaderComponent type="big" />
       <h1>UI page</h1>
+      <HeaderComponent type="small" />
       <div>
         <StyledInfo color="primary" />
         <StyledCameraSwitch color="primary" />
@@ -39,6 +53,7 @@ const Ui: NextPage = () => {
           flexDirection: "column",
           gap: "10px",
           maxWidth: "400px",
+          width: "100%",
           padding: "16px",
           backgroundColor: "#F7F7F7",
         }}
@@ -49,8 +64,12 @@ const Ui: NextPage = () => {
       </div>
       <div
         style={{
+          width: "100%",
+          maxWidth: "400px",
           display: "flex",
           flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
           gap: "10px",
           padding: "16px",
         }}
