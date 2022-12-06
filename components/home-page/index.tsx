@@ -1,6 +1,4 @@
-import { PrimaryButton } from "../../ui/buttons/styled";
 import { StyledCarMobile } from "../../ui/icons";
-import { PrimaryTitle, SecondarySubtitle } from "../../ui/text";
 import { HeaderComponent } from "../header";
 import {
   HomeButton,

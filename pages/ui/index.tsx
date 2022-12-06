@@ -1,7 +1,8 @@
+import styled from "@emotion/styled";
 import { NextPage } from "next";
-import { CardComponent } from "../components/card";
-import { HeaderComponent } from "../components/header";
-import { OutlinedButton, PrimaryButton } from "../ui/buttons/styled";
+import { CardComponent } from "../../components/card";
+import { HeaderComponent } from "../../components/header";
+import { OutlinedButton, PrimaryButton } from "../../ui/buttons/styled";
 import {
   StyledCalendar,
   StyledCamera,
@@ -17,7 +18,16 @@ import {
   StyledQuearSmallLogo,
   StyledUncheckedBox,
   StyledUser,
-} from "../ui/icons";
+} from "../../ui/icons";
+import { SubtitleSecondary } from "../../ui/text";
+import { TextBox } from "../../ui/text-box/styled";
+
+const StyledTextBox = styled(TextBox)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const Ui: NextPage = () => {
   return (
     <div
@@ -75,6 +85,27 @@ const Ui: NextPage = () => {
         }}
       >
         <CardComponent></CardComponent>
+      </div>
+      <div
+        style={{
+          backgroundColor: "var(--bg-secondary)",
+          width: "100%",
+          height: "200px",
+          maxWidth: "400px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "10px",
+          padding: "16px",
+        }}
+      >
+        <StyledTextBox>
+          <SubtitleSecondary>Textbox</SubtitleSecondary>
+        </StyledTextBox>
+        <StyledTextBox shadow>
+          <SubtitleSecondary>Textbox shadow</SubtitleSecondary>
+        </StyledTextBox>
       </div>
     </div>
   );
