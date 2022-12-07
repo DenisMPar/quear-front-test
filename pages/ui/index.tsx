@@ -2,24 +2,47 @@ import styled from "@emotion/styled";
 import { NextPage } from "next";
 import { CardComponent } from "../../components/card";
 import { HeaderComponent } from "../../components/header";
-import { OutlinedButton, PrimaryButton } from "../../ui/buttons/styled";
 import {
+  ButtonBig,
+  ButtonOutlined,
+  ButtonPrimary,
+} from "../../ui/buttons/styled";
+import {
+  StyledAlert,
   StyledCalendar,
   StyledCamera,
   StyledCameraSwitch,
+  StyledCarFiveDoors,
+  StyledCarFourDoors,
+  StyledCarThreeDoors,
+  StyledCheckedBig,
   StyledCheckedBox,
   StyledCheckRounded,
   StyledClose,
+  StyledCloseRounded,
   StyledCreditCard,
+  StyledEdit,
+  StyledEyeColored,
+  StyledEyeUnColored,
+  StyledHomeColored,
+  StyledHomeUnColored,
   StyledInfo,
+  StyledInstagram,
+  StyledLinkedin,
   StyledLock,
+  StyledMoneyColored,
+  StyledMoneyUnColored,
   StyledOpenCamera,
   StyledQuearBigLogo,
+  StyledQuearBigLogoBlue,
   StyledQuearSmallLogo,
+  StyledSearchBig,
+  StyledTwitter,
   StyledUncheckedBox,
   StyledUser,
+  StyledWhatsApp,
 } from "../../ui/icons";
-import { SubtitleSecondary } from "../../ui/text";
+import { BodySecondary, SubtitleSecondary } from "../../ui/text";
 import { TextBox } from "../../ui/text-box/styled";
 
 const StyledTextBox = styled(TextBox)`
@@ -40,23 +63,67 @@ const Ui: NextPage = () => {
         gap: "10px",
       }}
     >
-      <HeaderComponent type="big" />
       <h1>UI page</h1>
+      <h2>Headers</h2>
+      <HeaderComponent type="big" />
       <HeaderComponent type="small" />
+      <h2>Icons</h2>
       <div>
         <StyledInfo color="primary" />
         <StyledCameraSwitch color="primary" />
         <StyledOpenCamera color="primary" />
         <StyledCamera color="primary" />
-        <StyledCreditCard color="primary" />
+        <StyledCreditCard color="dark-ligth" width="24px" height="24px" />
         <StyledUser color="primary" />
         <StyledCalendar color="primary" />
         <StyledLock color="primary" />
         <StyledCheckRounded color="primary" />
-        <StyledClose color="primary" />
+        <StyledCloseRounded color="primary" />
         <StyledUncheckedBox color="primary" />
         <StyledCheckedBox color="primary" />
+        <StyledWhatsApp color="primary" width="24px" height="24px" />
+        <StyledAlert color="primary" />
+        <StyledTwitter color="primary" />
+        <StyledLinkedin color="primary" />
+        <StyledInstagram color="primary" />
+        <StyledEdit color="primary" />
       </div>
+      <div
+        style={{
+          display: "flex",
+          gap: "10px",
+          maxWidth: "400px",
+          width: "100%",
+          padding: "16px",
+          backgroundColor: "var(--primary)",
+        }}
+      >
+        <StyledCheckedBig />
+        <StyledSearchBig />
+        <StyledHomeColored color="bg" />
+        <StyledHomeUnColored />
+        <StyledMoneyUnColored />
+        <StyledMoneyColored color="bg" />
+        <StyledEyeUnColored />
+        <StyledEyeColored color="bg" />
+        <StyledClose color="bg" />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          gap: "10px",
+          maxWidth: "400px",
+          width: "100%",
+          padding: "16px",
+          backgroundColor: "var(--bg-secondary)",
+        }}
+      >
+        <StyledHomeColored />
+        <StyledMoneyColored />
+        <StyledEyeColored />
+        <StyledQuearBigLogoBlue />
+      </div>
+      <h2>Buttons</h2>
       <div
         style={{
           display: "flex",
@@ -68,10 +135,31 @@ const Ui: NextPage = () => {
           backgroundColor: "#F7F7F7",
         }}
       >
-        <PrimaryButton variant="dark">Continuar</PrimaryButton>
-        <PrimaryButton variant="light">COTIZAR</PrimaryButton>
-        <OutlinedButton>Cotizar sin patente</OutlinedButton>
+        <ButtonPrimary variant="dark">Continuar</ButtonPrimary>
+        <ButtonPrimary variant="light">COTIZAR</ButtonPrimary>
+        <ButtonOutlined>Cotizar sin patente</ButtonOutlined>
       </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+          maxWidth: "400px",
+          width: "100%",
+          padding: "16px",
+        }}
+      >
+        <ButtonBig>
+          <StyledCarThreeDoors />3 puertas
+        </ButtonBig>
+        <ButtonBig>
+          <StyledCarFourDoors />4 puertas
+        </ButtonBig>
+        <ButtonBig>
+          <StyledCarFiveDoors />5 puertas
+        </ButtonBig>
+      </div>
+      <h2>Card</h2>
       <div
         style={{
           width: "100%",
@@ -86,6 +174,7 @@ const Ui: NextPage = () => {
       >
         <CardComponent></CardComponent>
       </div>
+      <h2>Textbox</h2>
       <div
         style={{
           backgroundColor: "var(--bg-secondary)",

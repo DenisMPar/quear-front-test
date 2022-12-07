@@ -1,5 +1,5 @@
 import { fontSize } from "@mui/system";
-import { OutlinedButton, PrimaryButton } from "../../ui/buttons/styled";
+import { ButtonOutlined, ButtonPrimary } from "../../ui/buttons/styled";
 import {
   CardTop,
   CardRoot,
@@ -44,8 +44,8 @@ export function CardComponent() {
           </CardContainerSubtitle>
         </CardContainerMain>
         <CardContainerButtons>
-          <PrimaryButton variant="dark">Contratar Online</PrimaryButton>
-          <OutlinedButton>Ver detalle</OutlinedButton>
+          <ButtonPrimary variant="dark">Contratar Online</ButtonPrimary>
+          <ButtonOutlined>Ver detalle</ButtonOutlined>
         </CardContainerButtons>
       </CardBody>
     </CardRoot>

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { PrimaryButton } from "../../ui/buttons/styled";
+import { ButtonPrimary } from "../../ui/buttons/styled";
 import { TitlePrimary, SubtitleSecondary } from "../../ui/text";
 
 export const HomeRoot = styled.div`
@@ -22,7 +22,7 @@ export const HomeTitle = styled(TitlePrimary)`
 export const HomeSubTitle = styled(SubtitleSecondary)`
   margin-top: 10px;
 `;
-export const HomeButton = styled(PrimaryButton)`
+export const HomeButton = styled(ButtonPrimary)`
   margin-top: 45px;
   max-width: 214px;
 `;

@@ -15,7 +15,7 @@ const BaseButton = styled.button`
   border-radius: 12px;
   cursor: pointer;
 `;
-export const PrimaryButton = styled(BaseButton)<Props>`
+export const ButtonPrimary = styled(BaseButton)<Props>`
   font-weight: ${(props) => (props.variant == "dark" ? `700` : `900`)};
   font-size: ${(props) => (props.variant == "dark" ? `16px` : `20px`)};
   letter-spacing: ${(props) => (props.variant == "dark" ? `` : `0.2em`)};
@@ -24,11 +24,27 @@ export const PrimaryButton = styled(BaseButton)<Props>`
   background-color: ${(props) =>
     props.variant == "dark" ? `var(--primary)` : `var(--bg)`};
 `;
-export const OutlinedButton = styled(BaseButton)`
+export const ButtonOutlined = styled(BaseButton)`
   color: var(--primary);
   font-size: 16px;
   font-weight: 700;
   background: none;
   border: solid 1px;
   border-color: var(--primary);
+`;
+export const ButtonBig = styled(BaseButton)`
+  height: 100%;
+  max-height: 125px;
+  flex-direction: column;
+  padding: 13px 0;
+  gap: 7px;
+  color: var(--primary);
+  font-size: 18px;
+  font-weight: 600;
+  background-color: var(--bg-secondary);
+  box-shadow: 2px 4px 4px var(--shadow);
+  border-radius: 12px;
+  @media screen and (min-width: 744px) {
+    padding: 22px;
+  }
 `;
