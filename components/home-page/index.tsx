@@ -1,5 +1,5 @@
 import { StyledCarMobile } from "../../ui/icons";
-import { HeaderComponent } from "../header";
+import { HeaderComponent } from "../header/headerMobile";
 import {
   HomeButton,
   HomeMain,

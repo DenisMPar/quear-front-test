@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Head from "next/head";
 
 const HeaderRoot = styled.header`
   display: flex;
@@ -7,12 +8,15 @@ const HeaderRoot = styled.header`
   padding: 11px 16px;
   width: 100%;
   background-color: var(--primary);
+  @media screen and (min-width: 744px) {
+    display: none;
+  }
 `;
-export const SmallHeader = styled(HeaderRoot)`
+export const SmallHeaderMobile = styled(HeaderRoot)`
   align-items: center;
   height: 49px;
 `;
-export const BigHeader = styled(HeaderRoot)`
+export const BigHeaderMobile = styled(HeaderRoot)`
   padding-top: 21px;
   height: 66px;
 `;
