@@ -62,7 +62,6 @@ export const CardContainerTitle = styled.div`
   padding: 12px 0;
   &::after {
     content: "";
-    color: red;
     position: absolute;
     bottom: 0;
     left: 0;

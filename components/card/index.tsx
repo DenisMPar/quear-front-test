@@ -1,5 +1,6 @@
 import { fontSize } from "@mui/system";
 import { ButtonOutlined, ButtonPrimary } from "../../ui/buttons/styled";
+import { BodyPrimary, SubtitleTerciary } from "../../ui/text";
 import {
   CardTop,
   CardRoot,
@@ -19,28 +20,21 @@ export function CardComponent() {
       <CardBody>
         <CardCompany>
           <CardCompanyLogo />
-          <p
-            style={{
-              margin: 0,
-              fontWeight: "700",
-              fontSize: "12px",
-              color: `var(--dark-ligth)`,
-            }}
-          >
+          <BodyPrimary>
             Provincia <br /> Seguros
-          </p>
+          </BodyPrimary>
         </CardCompany>
         <CardContainerMain>
           <CardContainerTitle>
-            <p style={{ margin: 0, fontSize: "16px" }}>Pagas por mes:</p>
+            <SubtitleTerciary as={"p"}>Pagas por mes:</SubtitleTerciary>
             <h2 style={{ margin: 0, fontSize: "40px", fontWeight: "700" }}>
               $2300
             </h2>
           </CardContainerTitle>
           <CardContainerSubtitle>
-            <p style={{ margin: 0, fontSize: "14px" }}>
+            <BodyPrimary>
               Te lo aseguramos a <b>$1.186.000</b>
-            </p>
+            </BodyPrimary>
           </CardContainerSubtitle>
         </CardContainerMain>
         <CardContainerButtons>

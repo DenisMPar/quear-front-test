@@ -1,5 +1,5 @@
 import { StyledCarMobile } from "../../ui/icons";
-import { HeaderComponent } from "../header/headerMobile";
+import { HeaderMobile } from "../header/headerMobile";
 import {
   HomeButton,
   HomeMain,
@@ -11,7 +11,7 @@ import {
 export function HomePage() {
   return (
     <HomeRoot>
-      <HeaderComponent type="big" />
+      <HeaderMobile type="big" />
       <HomeMain>
         <StyledCarMobile />
         <HomeTitle>¡Hacé todo online!</HomeTitle>

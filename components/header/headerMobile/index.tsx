@@ -17,7 +17,7 @@ interface Props {
   type: "small" | "big";
 }
 
-export function HeaderComponent(props: Props) {
+export function HeaderMobile(props: Props) {
   return props.type == "small" ? (
     <>
       <SmallHeaderMobile>

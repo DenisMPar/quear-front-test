@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { NextPage } from "next";
 import { CardComponent } from "../../components/card";
-import { HeaderComponent } from "../../components/header/headerMobile";
+import { HeaderMobile } from "../../components/header/headerMobile";
 import { HeaderDestkop } from "../../components/header/header-desktop";
 import {
   ButtonBig,
@@ -66,8 +66,8 @@ const Ui: NextPage = () => {
     >
       <h1>UI page</h1>
       <h2>Headers</h2>
-      <HeaderComponent type="big" />
-      <HeaderComponent type="small" />
+      <HeaderMobile type="big" />
+      <HeaderMobile type="small" />
       <HeaderDestkop />
       <h2>Icons</h2>
       <div>

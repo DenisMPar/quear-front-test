@@ -31,6 +31,11 @@ export const SubtitleSecondary = styled(BaseSubtitle)`
   font-size: 18px;
   line-height: 22px;
 `;
+export const SubtitleTerciary = styled(BaseSubtitle)`
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+`;
 
 export const BodyPrimary = styled(BaseBody)`
   font-size: 14px;
