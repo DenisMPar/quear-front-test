@@ -52,6 +52,7 @@ import {
 } from "../../ui/input/styled";
 import { InputWithIcon } from "../../ui/input";
 import { DropDownComp } from "../../components/dropdown";
+import { CarouselComponent } from "../../components/carousel";
 
 const StyledTextBox = styled(TextBox)`
   display: flex;
@@ -228,6 +229,32 @@ const Ui: NextPage = () => {
         />
         <TextAreaShadowed placeholder="Text Area" />
       </div>
+
+      <CarouselComponent
+        cellAlign="center"
+        autoplay={true}
+        wrapAround={true}
+        slidesToShow={3}
+      >
+        <StyledCreditCard></StyledCreditCard>
+        <StyledCreditCard></StyledCreditCard>
+        <StyledCreditCard></StyledCreditCard>
+        <StyledCreditCard></StyledCreditCard>
+      </CarouselComponent>
+      <CarouselComponent
+        cellAlign="center"
+        autoplay={true}
+        wrapAround={true}
+        slidesToShow={1}
+      >
+        <CardComponent />
+        <CardComponent />
+        <CardComponent />
+        <CardComponent />
+        <CardComponent />
+        <CardComponent />
+        <CardComponent />
+      </CarouselComponent>
     </div>
   );
 };

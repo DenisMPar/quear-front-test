@@ -28,6 +28,9 @@ export const HomeButton = styled(ButtonPrimary)`
   max-width: 214px;
 `;
 export const HomeAbout = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
   width: 100%;
   color: var(--dark-ligth);
   line-height: 24px;

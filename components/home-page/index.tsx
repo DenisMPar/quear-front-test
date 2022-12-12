@@ -1,6 +1,10 @@
 import { StyledCarMobile } from "../../ui/icons";
+import { RusSVGIcon } from "../../ui/icons/svg/rio-uruguay-icon";
+import { SanCristobalSVGIcon } from "../../ui/icons/svg/san-cristobal-icon";
+import { SancorSVGIcon } from "../../ui/icons/svg/sancor-icon";
 import { BodyPrimary } from "../../ui/text";
 import { TextBox } from "../../ui/text-box/styled";
+import { CarouselComponent } from "../carousel";
 import { FaqComponent } from "../faq";
 import { HeaderMobile } from "../header/headerMobile";
 import {
@@ -33,8 +37,30 @@ export function HomePage() {
             <b>+ de 20 años de experiencia </b>en el mercado asegurador.
           </BodyPrimary>
         </HomeAboutTextBox>
+        <CarouselComponent
+          cellAlign="center"
+          autoplay={true}
+          wrapAround={true}
+          slidesToShow={3}
+        >
+          <SancorSVGIcon />
+          <SanCristobalSVGIcon />
+          <RusSVGIcon />
+          <SancorSVGIcon />
+          <SanCristobalSVGIcon />
+          <RusSVGIcon />
+        </CarouselComponent>
         <FaqComponent />
       </HomeAbout>
+      <div
+        style={{
+          height: "467px",
+          backgroundColor: "var(--bg-secondary)",
+          border: "none",
+        }}
+      >
+        Footer
+      </div>
     </HomeRoot>
   );
 }
