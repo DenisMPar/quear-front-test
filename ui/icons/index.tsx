@@ -35,6 +35,7 @@ import { EyeColoredSVGIcon } from "./svg/eye-icon-colored";
 import { CloseSVGIcon } from "./svg/close-icon";
 import { EditSVGIcon } from "./svg/edit-icon";
 import { QuearBigLogoBlueSVGIcon } from "./svg/quear-big-logo-blue";
+import { ArrowSVGIcon } from "./svg/arrow-icon";
 
 export interface IconsProps {
   color?: "primary" | "secondary" | "terciary" | "bg" | "dark-ligth";
@@ -210,6 +211,15 @@ const Instagram = styled(InstagramSVGIcon)`
 `;
 export const StyledInstagram = ({ color, width, height }: IconsProps) => {
   return <Instagram color={color} width={width} height={height}></Instagram>;
+};
+const Arrow = styled(ArrowSVGIcon)`
+  width: ${(props) => (props.width ? props.width : "24px")};
+  height: ${(props) => (props.height ? props.height : "24px")};
+  fill: ${(props) =>
+    props.color ? `var(--${props.color})` : `var(--primary)`};
+`;
+export const StyledArrow = ({ color, width, height }: IconsProps) => {
+  return <Arrow color={color} width={width} height={height}></Arrow>;
 };
 
 //two colors icons (can change one color)

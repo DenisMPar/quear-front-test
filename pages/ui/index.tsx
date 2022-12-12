@@ -51,6 +51,7 @@ import {
   TextAreaShadowed,
 } from "../../ui/input/styled";
 import { InputWithIcon } from "../../ui/input";
+import { DropDownComp } from "../../components/dropdown";
 
 const StyledTextBox = styled(TextBox)`
   display: flex;
