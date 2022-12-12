@@ -45,6 +45,12 @@ import {
 } from "../../ui/icons";
 import { BodySecondary, SubtitleSecondary } from "../../ui/text";
 import { TextBox } from "../../ui/text-box/styled";
+import {
+  InputOutlined,
+  InputShadowed,
+  TextAreaShadowed,
+} from "../../ui/input/styled";
+import { InputWithIcon } from "../../ui/input";
 
 const StyledTextBox = styled(TextBox)`
   display: flex;
@@ -197,6 +203,29 @@ const Ui: NextPage = () => {
         <StyledTextBox shadow>
           <SubtitleSecondary>Textbox shadow</SubtitleSecondary>
         </StyledTextBox>
+      </div>
+      <h2>Inputs</h2>
+      <div
+        style={{
+          backgroundColor: "var(--bg-secondary)",
+          width: "100%",
+          maxWidth: "400px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "10px",
+          padding: "16px",
+        }}
+      >
+        <InputShadowed placeholder="Input con shadow" />
+        <InputOutlined placeholder="Input sin shadow" />
+        <InputWithIcon
+          placeholder="Input con icono"
+          name="input"
+          Icon={StyledCreditCard}
+        />
+        <TextAreaShadowed placeholder="Text Area" />
       </div>
     </div>
   );
