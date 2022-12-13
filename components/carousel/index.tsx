@@ -7,36 +7,35 @@ interface Props {
   autoplayInterval?: number;
   wrapAround: boolean;
   cellAlign: CellAlign;
+  style?: any;
 }
+
 export function CarouselComponent(props: Props) {
   return (
-    <>
-      <div style={{ width: "100%" }}>
-        <Carousel
-          withoutControls={true}
-          autoplay={props.autoplay}
-          autoplayInterval={props.autoplayInterval}
-          wrapAround={props.wrapAround}
-          slidesToShow={props.slidesToShow}
-          cellSpacing={16}
-          cellAlign={props.cellAlign}
-        >
-          {props.children.map((el, index) => {
-            return (
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-                key={index.toString()}
-              >
-                {el}
-              </div>
-            );
-          })}
-        </Carousel>
-      </div>
-    </>
+    <Carousel
+      withoutControls={true}
+      autoplay={props.autoplay}
+      autoplayInterval={props.autoplayInterval}
+      wrapAround={props.wrapAround}
+      slidesToShow={props.slidesToShow}
+      cellSpacing={16}
+      cellAlign={props.cellAlign}
+      style={props.style}
+    >
+      {props.children.map((el, index) => {
+        return (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            key={index.toString()}
+          >
+            {el}
+          </div>
+        );
+      })}
+    </Carousel>
   );
 }

@@ -235,6 +235,7 @@ const Ui: NextPage = () => {
         autoplay={true}
         wrapAround={true}
         slidesToShow={3}
+        style={{ maxWidth: "375px" }}
       >
         <StyledCreditCard></StyledCreditCard>
         <StyledCreditCard></StyledCreditCard>
@@ -243,9 +244,10 @@ const Ui: NextPage = () => {
       </CarouselComponent>
       <CarouselComponent
         cellAlign="center"
-        autoplay={true}
-        wrapAround={true}
-        slidesToShow={1}
+        autoplay={false}
+        wrapAround={false}
+        slidesToShow={1.5}
+        style={{ maxWidth: "375px" }}
       >
         <CardComponent />
         <CardComponent />

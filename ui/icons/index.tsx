@@ -36,6 +36,7 @@ import { CloseSVGIcon } from "./svg/close-icon";
 import { EditSVGIcon } from "./svg/edit-icon";
 import { QuearBigLogoBlueSVGIcon } from "./svg/quear-big-logo-blue";
 import { ArrowSVGIcon } from "./svg/arrow-icon";
+import { CarDesktopSVGIcon } from "./svg/car-logo-desktop";
 
 export interface IconsProps {
   color?: "primary" | "secondary" | "terciary" | "bg" | "dark-ligth";
@@ -336,6 +337,13 @@ const SearchBig = styled(SearchBigSVGIcon)`
 export const StyledSearchBig = ({ width, height }: IconsProps) => {
   return <SearchBig width={width} height={height}></SearchBig>;
 };
+const QuearBigLogo = styled(QuearBigLogoSVGIcon)`
+  width: ${(props) => (props.width ? props.width : "24px")};
+  height: ${(props) => (props.height ? props.height : "24px")};
+`;
+export const StyledQuearBigLogo = ({ width, height }: IconsProps) => {
+  return <QuearBigLogo width={width} height={height}></QuearBigLogo>;
+};
 
 const Hamburguer = styled(HamburguerSVGIcon)`
   width: 20px;
@@ -347,10 +355,6 @@ export const StyledHamburguer = () => {
 
 //can't modify color or size
 
-export const StyledQuearBigLogo = () => {
-  return <QuearBigLogoSVGIcon></QuearBigLogoSVGIcon>;
-};
-
 export const StyledQuearBigLogoBlue = () => {
   return <QuearBigLogoBlueSVGIcon></QuearBigLogoBlueSVGIcon>;
 };
@@ -361,6 +365,9 @@ export const StyledQuearSmallLogo = () => {
 
 export const StyledCarMobile = () => {
   return <CarMobileSVGIcon></CarMobileSVGIcon>;
+};
+export const StyledCarDesktop = () => {
+  return <CarDesktopSVGIcon></CarDesktopSVGIcon>;
 };
 
 export const StyledCarThreeDoors = () => {

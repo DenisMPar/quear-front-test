@@ -8,10 +8,16 @@ export const FaqRoot = styled(TextBox)`
   display: flex;
   flex-direction: column;
   gap: 22px;
+  @media screen and (min-width: 1024px) {
+    padding: 20px 79px 58px 46px;
+  }
 `;
 export const FaqTitle = styled(SubtitleSecondary)`
   color: var(--primary);
   font-weight: 900;
+  @media screen and (min-width: 1024px) {
+    font-size: 35px;
+  }
 `;
 export const FaqContainerQuestions = styled.div`
   display: flex;

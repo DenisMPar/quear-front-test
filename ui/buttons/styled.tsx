@@ -44,7 +44,7 @@ export const ButtonBig = styled(BaseButton)`
   background-color: var(--bg-secondary);
   box-shadow: 2px 4px 4px var(--shadow);
   border-radius: 12px;
-  @media screen and (min-width: 744px) {
+  @media screen and (min-width: 1024px) {
     padding: 22px;
   }
 `;

@@ -1,19 +1,27 @@
-import { StyledCarMobile } from "../../ui/icons";
+import {
+  StyledCarDesktop,
+  StyledCarMobile,
+  StyledQuearBigLogo,
+} from "../../ui/icons";
 import { RusSVGIcon } from "../../ui/icons/svg/rio-uruguay-icon";
 import { SanCristobalSVGIcon } from "../../ui/icons/svg/san-cristobal-icon";
 import { SancorSVGIcon } from "../../ui/icons/svg/sancor-icon";
-import { BodyPrimary } from "../../ui/text";
-import { TextBox } from "../../ui/text-box/styled";
-import { CarouselComponent } from "../carousel";
 import { FaqComponent } from "../faq";
 import { HeaderMobile } from "../header/headerMobile";
 import {
   HomeAbout,
+  HomeAboutCarousel,
+  HomeAboutText,
+  HomeAboutTextBox,
   HomeButton,
   HomeMain,
+  HomeMainCarDesktopContainer,
+  HomeMainCarMobileContainer,
+  HomeMainLogoContainer,
+  HomeMainQuearLogoContainer,
+  HomeMainTextContainer,
   HomeRoot,
   HomeSubTitle,
-  HomeAboutTextBox,
   HomeTitle,
 } from "./styled";
 
@@ -22,22 +30,35 @@ export function HomePage() {
     <HomeRoot>
       <HeaderMobile type="big" />
       <HomeMain>
-        <StyledCarMobile />
-        <HomeTitle>¡Hacé todo online!</HomeTitle>
-        <HomeSubTitle>
-          Cotizá y comprá el mejor <br /> seguro para tu auto
-        </HomeSubTitle>
-        <HomeButton variant="light">COTIZAR</HomeButton>
+        <HomeMainLogoContainer>
+          <HomeMainCarMobileContainer>
+            <StyledCarMobile />
+          </HomeMainCarMobileContainer>
+          <HomeMainCarDesktopContainer>
+            <StyledCarDesktop />
+          </HomeMainCarDesktopContainer>
+        </HomeMainLogoContainer>
+        <HomeMainTextContainer>
+          <HomeMainQuearLogoContainer>
+            <StyledQuearBigLogo width="220px" height="85px" />
+          </HomeMainQuearLogoContainer>
+          <HomeTitle>¡Hacé todo online!</HomeTitle>
+          <HomeSubTitle>
+            Cotizá y comprá el mejor seguro para tu auto
+          </HomeSubTitle>
+          <HomeButton variant="light">COTIZAR</HomeButton>
+        </HomeMainTextContainer>
       </HomeMain>
       <HomeAbout>
         <HomeAboutTextBox>
-          <BodyPrimary>
+          <HomeAboutText>
             <b>Quear</b> es el canal digital de Orange Asesores de Seguros S.A,
             broker conformado por un equipo de profesionales con{" "}
             <b>+ de 20 años de experiencia </b>en el mercado asegurador.
-          </BodyPrimary>
+          </HomeAboutText>
         </HomeAboutTextBox>
-        <CarouselComponent
+
+        <HomeAboutCarousel
           cellAlign="center"
           autoplay={true}
           wrapAround={true}
@@ -49,7 +70,8 @@ export function HomePage() {
           <SancorSVGIcon />
           <SanCristobalSVGIcon />
           <RusSVGIcon />
-        </CarouselComponent>
+        </HomeAboutCarousel>
+
         <FaqComponent />
       </HomeAbout>
       <div

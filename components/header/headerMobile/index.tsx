@@ -35,7 +35,7 @@ export function HeaderMobile(props: Props) {
         <HamburguerContainer>
           <StyledHamburguer />
         </HamburguerContainer>
-        <StyledQuearBigLogo></StyledQuearBigLogo>
+        <StyledQuearBigLogo width="117px" height="45px" />
         <PhoneContainerBig>
           <StyledPhone color="bg" width="25px" height="25px" />
         </PhoneContainerBig>

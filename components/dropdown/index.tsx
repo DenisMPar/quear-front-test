@@ -3,6 +3,7 @@ import { StyledArrow } from "../../ui/icons";
 import { TextBox } from "../../ui/text-box/styled";
 import {
   ArrowContainer,
+  ArrowContainerMobile,
   DropDownContentContainer,
   DropDownRoot,
   DropDownTitle,
@@ -23,8 +24,13 @@ export function DropDownComp(props: Props) {
       <DropDownTitleContainer onClick={toggle}>
         <DropDownTitle>{props.title}</DropDownTitle>
         <ArrowContainer style={{ transform: open ? "" : "rotate(180deg)" }}>
-          <StyledArrow width="20px" height="20px" />
+          <StyledArrow width="38px" height="38px" />
         </ArrowContainer>
+        <ArrowContainerMobile
+          style={{ transform: open ? "" : "rotate(180deg)" }}
+        >
+          <StyledArrow width="20px" height="20px" />
+        </ArrowContainerMobile>
       </DropDownTitleContainer>
       <DropDownContentContainer
         shadow
