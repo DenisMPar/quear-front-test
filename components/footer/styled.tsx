@@ -6,9 +6,36 @@ interface Props extends React.HTMLAttributes<HTMLElement> {
 }
 
 export const FooterRoot = styled.footer<Props>`
-  height: 467px;
+  /* height: 467px; */
   background-color: var(--bg-secondary);
-  display: ${(props) => (props.showFooterMobile ? "grid" : "none")};
+  display: ${(props) => (props.showFooterMobile ? "block" : "none")};
+  /* grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  justify-items: center;
+  align-items: center;
+  gap: 34px;
+  padding-top: 25px;
+  padding-bottom: 164px;
+  @media screen and (min-width: 1024px) {
+    max-width: 885px;
+    padding: 40px 0 81px 0;
+    margin: 0 auto;
+    height: 227px;
+    display: grid;
+    grid-template-columns: 5fr 2fr 2fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  } */
+  @media screen and (min-width: 1024px) {
+    background-color: var(--bg);
+  }
+`;
+export const FooterBackground = styled.div`
+  display: grid;
+  height: 467px;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 0px;
@@ -24,7 +51,7 @@ export const FooterRoot = styled.footer<Props>`
     margin: 0 auto;
     height: 227px;
     display: grid;
-    grid-template-columns: 3fr 1fr 1fr;
+    grid-template-columns: 5fr 2fr 2fr;
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
@@ -32,7 +59,6 @@ export const FooterRoot = styled.footer<Props>`
 `;
 export const FooterContainerMain = styled.div`
   width: 100%;
-  background-color: var(--bg-secondary);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,7 +69,7 @@ export const FooterContainerMain = styled.div`
 `;
 export const FooterContainerTextAndLink = styled.div`
   width: 100%;
-  background-color: var(--bg-secondary);
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,7 +78,7 @@ export const FooterContainerText = styled.div`
   width: 100%;
   max-width: 526px;
   margin: 0 auto;
-  background-color: var(--bg-secondary);
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -80,7 +106,6 @@ export const FooterLink = styled.a`
   text-decoration-line: underline;
 `;
 export const FooterContainerSocialMedia = styled.div`
-  background-color: var(--bg-secondary);
   display: flex;
   gap: 33px;
   margin: 0 auto;

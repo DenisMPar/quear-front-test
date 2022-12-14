@@ -8,6 +8,9 @@ const HeaderRoot = styled.header`
   padding: 11px 16px;
   width: 100%;
   background-color: var(--primary);
+  @media screen and (min-width: 480px) {
+    padding: 11px 4%;
+  }
   @media screen and (min-width: 1024px) {
     display: none;
   }

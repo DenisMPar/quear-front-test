@@ -12,6 +12,10 @@ export const HomeRoot = styled.div`
     background-color: var(--bg-secondary);
   }
 `;
+
+export const HomeMainBackground = styled.div`
+  background-color: var(--primary);
+`;
 export const HomeMain = styled.main`
   background-color: var(--primary);
   text-align: center;
@@ -23,6 +27,7 @@ export const HomeMain = styled.main`
   margin: 76px 0 60px 0;
   color: var(--bg);
   @media screen and (min-width: 1024px) {
+    max-width: 1095px;
     margin: 0 auto;
     height: 403px;
     border-radius: 0 0 25px 25px;
@@ -80,6 +85,7 @@ export const HomeButton = styled(ButtonPrimary)`
   }
 `;
 export const HomeAbout = styled.div`
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -89,10 +95,17 @@ export const HomeAbout = styled.div`
   padding: 25px 20px 14px 20px;
   border-radius: 25px 25px 0 0;
   background-color: var(--bg-secondary);
+  @media screen and (min-width: 480px) {
+    padding: 25px 10% 14px 10%;
+  }
   @media screen and (min-width: 1024px) {
-    padding: 105px 60px;
+    max-width: 1095px;
+    padding: 60px;
     gap: 50px;
   }
+`;
+export const HomeAboutBackground = styled.div`
+  background-color: var(--bg-secondary);
 `;
 export const HomeAboutTextBox = styled(TextBox)`
   text-align: center;
@@ -111,11 +124,13 @@ export const HomeAboutText = styled(BodyPrimary)`
     line-height: 39.5px;
   }
 `;
-export const HomeAboutCarousel = styled(CarouselComponent)`
+export const HomeAboutCarouselContainer = styled.div`
+  margin: 14px 0;
   @media screen and (min-width: 1024px) {
-    height: 112px !important;
+    margin: 40px 0;
   }
 `;
+
 export const HomeAboutCarouselSlide = styled.div`
   display: flex;
   flex-direction: column;
