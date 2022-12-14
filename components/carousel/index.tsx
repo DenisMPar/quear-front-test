@@ -1,5 +1,6 @@
 import Carousel, { CellAlign } from "nuka-carousel";
 import { ReactNode } from "react";
+import { CarouselRoot } from "./styled";
 interface Props {
   slidesToShow?: number;
   children: ReactNode[];
@@ -12,30 +13,19 @@ interface Props {
 
 export function CarouselComponent(props: Props) {
   return (
-    <Carousel
-      withoutControls={true}
-      autoplay={props.autoplay}
-      autoplayInterval={props.autoplayInterval}
-      wrapAround={props.wrapAround}
-      slidesToShow={props.slidesToShow}
-      cellSpacing={16}
-      cellAlign={props.cellAlign}
-      style={props.style}
-    >
-      {props.children.map((el, index) => {
-        return (
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-            key={index.toString()}
-          >
-            {el}
-          </div>
-        );
-      })}
-    </Carousel>
+    <CarouselRoot>
+      <Carousel
+        withoutControls={true}
+        autoplay={props.autoplay}
+        autoplayInterval={props.autoplayInterval}
+        wrapAround={props.wrapAround}
+        slidesToShow={props.slidesToShow}
+        cellSpacing={16}
+        cellAlign={props.cellAlign}
+        style={props.style}
+      >
+        {props.children}
+      </Carousel>
+    </CarouselRoot>
   );
 }

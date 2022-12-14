@@ -1,8 +1,10 @@
 import styled from "@emotion/styled";
 import { NextPage } from "next";
 import { CardComponent } from "../../components/card";
-import { HeaderMobile } from "../../components/header/headerMobile";
+import { CarouselComponent } from "../../components/carousel";
+import { CarouselResponsiveComponent } from "../../components/carousel/responsive";
 import { HeaderDestkop } from "../../components/header/header-desktop";
+import { HeaderMobile } from "../../components/header/headerMobile";
 import {
   ButtonBig,
   ButtonOutlined,
@@ -34,25 +36,21 @@ import {
   StyledMoneyColored,
   StyledMoneyUnColored,
   StyledOpenCamera,
-  StyledQuearBigLogo,
   StyledQuearBigLogoBlue,
-  StyledQuearSmallLogo,
   StyledSearchBig,
   StyledTwitter,
   StyledUncheckedBox,
   StyledUser,
   StyledWhatsApp,
 } from "../../ui/icons";
-import { BodySecondary, SubtitleSecondary } from "../../ui/text";
-import { TextBox } from "../../ui/text-box/styled";
+import { InputWithIcon } from "../../ui/input";
 import {
   InputOutlined,
   InputShadowed,
   TextAreaShadowed,
 } from "../../ui/input/styled";
-import { InputWithIcon } from "../../ui/input";
-import { DropDownComp } from "../../components/dropdown";
-import { CarouselComponent } from "../../components/carousel";
+import { SubtitleSecondary } from "../../ui/text";
+import { TextBox } from "../../ui/text-box/styled";
 
 const StyledTextBox = styled(TextBox)`
   display: flex;
@@ -62,192 +60,240 @@ const StyledTextBox = styled(TextBox)`
 
 const Ui: NextPage = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        margin: "0 auto",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: "10px",
-      }}
-    >
-      <h1>UI page</h1>
-      <h2>Headers</h2>
-      <HeaderMobile type="big" />
-      <HeaderMobile type="small" />
-      <HeaderDestkop />
-      <h2>Icons</h2>
-      <div>
-        <StyledInfo color="primary" />
-        <StyledCameraSwitch color="primary" />
-        <StyledOpenCamera color="primary" />
-        <StyledCamera color="primary" />
-        <StyledCreditCard color="dark-ligth" width="24px" height="24px" />
-        <StyledUser color="primary" />
-        <StyledCalendar color="primary" />
-        <StyledLock color="primary" />
-        <StyledCheckRounded color="primary" />
-        <StyledCloseRounded color="primary" />
-        <StyledUncheckedBox color="primary" />
-        <StyledCheckedBox color="primary" />
-        <StyledWhatsApp color="primary" width="24px" height="24px" />
-        <StyledAlert color="primary" />
-        <StyledTwitter color="primary" />
-        <StyledLinkedin color="primary" />
-        <StyledInstagram color="primary" />
-        <StyledEdit color="primary" />
-      </div>
+    <>
       <div
         style={{
-          display: "flex",
-          gap: "10px",
-          maxWidth: "400px",
           width: "100%",
-          padding: "16px",
-          backgroundColor: "var(--primary)",
-        }}
-      >
-        <StyledCheckedBig />
-        <StyledSearchBig />
-        <StyledHomeColored color="bg" />
-        <StyledHomeUnColored />
-        <StyledMoneyUnColored />
-        <StyledMoneyColored color="bg" />
-        <StyledEyeUnColored />
-        <StyledEyeColored color="bg" />
-        <StyledClose color="bg" />
-      </div>
-      <div
-        style={{
-          display: "flex",
-          gap: "10px",
-          maxWidth: "400px",
-          width: "100%",
-          padding: "16px",
-          backgroundColor: "var(--bg-secondary)",
-        }}
-      >
-        <StyledHomeColored />
-        <StyledMoneyColored />
-        <StyledEyeColored />
-        <StyledQuearBigLogoBlue />
-      </div>
-      <h2>Buttons</h2>
-      <div
-        style={{
           display: "flex",
           flexDirection: "column",
-          gap: "10px",
-          maxWidth: "400px",
-          width: "100%",
-          padding: "16px",
-          backgroundColor: "#F7F7F7",
-        }}
-      >
-        <ButtonPrimary variant="dark">Continuar</ButtonPrimary>
-        <ButtonPrimary variant="light">COTIZAR</ButtonPrimary>
-        <ButtonOutlined>Cotizar sin patente</ButtonOutlined>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "10px",
-          maxWidth: "400px",
-          width: "100%",
-          padding: "16px",
-        }}
-      >
-        <ButtonBig>
-          <StyledCarThreeDoors />3 puertas
-        </ButtonBig>
-        <ButtonBig>
-          <StyledCarFourDoors />4 puertas
-        </ButtonBig>
-        <ButtonBig>
-          <StyledCarFiveDoors />5 puertas
-        </ButtonBig>
-      </div>
-      <h2>Card</h2>
-      <div
-        style={{
-          width: "100%",
-          maxWidth: "400px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          margin: "0 auto",
           justifyContent: "center",
-          gap: "10px",
-          padding: "16px",
-        }}
-      >
-        <CardComponent></CardComponent>
-      </div>
-      <h2>Textbox</h2>
-      <div
-        style={{
-          backgroundColor: "var(--bg-secondary)",
-          width: "100%",
-          height: "200px",
-          maxWidth: "400px",
-          display: "flex",
-          flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center",
           gap: "10px",
-          padding: "16px",
         }}
       >
-        <StyledTextBox>
-          <SubtitleSecondary>Textbox</SubtitleSecondary>
-        </StyledTextBox>
-        <StyledTextBox shadow>
-          <SubtitleSecondary>Textbox shadow</SubtitleSecondary>
-        </StyledTextBox>
-      </div>
-      <h2>Inputs</h2>
-      <div
-        style={{
-          backgroundColor: "var(--bg-secondary)",
-          width: "100%",
-          maxWidth: "400px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "10px",
-          padding: "16px",
-        }}
-      >
-        <InputShadowed placeholder="Input con shadow" />
-        <InputOutlined placeholder="Input sin shadow" />
-        <InputWithIcon
-          placeholder="Input con icono"
-          name="input"
-          Icon={StyledCreditCard}
-        />
-        <TextAreaShadowed placeholder="Text Area" />
-      </div>
+        <h1>UI page</h1>
+        <h2>Headers</h2>
+        <HeaderMobile type="big" />
+        <HeaderMobile type="small" />
+        <HeaderDestkop />
+        <h2>Icons</h2>
+        <div>
+          <StyledInfo color="primary" />
+          <StyledCameraSwitch color="primary" />
+          <StyledOpenCamera color="primary" />
+          <StyledCamera color="primary" />
+          <StyledCreditCard color="dark-ligth" width="24px" height="24px" />
+          <StyledUser color="primary" />
+          <StyledCalendar color="primary" />
+          <StyledLock color="primary" />
+          <StyledCheckRounded color="primary" />
+          <StyledCloseRounded color="primary" />
+          <StyledUncheckedBox color="primary" />
+          <StyledCheckedBox color="primary" />
+          <StyledWhatsApp color="primary" width="24px" height="24px" />
+          <StyledAlert color="primary" />
+          <StyledTwitter color="primary" />
+          <StyledLinkedin color="primary" />
+          <StyledInstagram color="primary" />
+          <StyledEdit color="primary" />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            gap: "10px",
+            maxWidth: "400px",
+            width: "100%",
+            padding: "16px",
+            backgroundColor: "var(--primary)",
+          }}
+        >
+          <StyledCheckedBig />
+          <StyledSearchBig />
+          <StyledHomeColored color="bg" />
+          <StyledHomeUnColored />
+          <StyledMoneyUnColored />
+          <StyledMoneyColored color="bg" />
+          <StyledEyeUnColored />
+          <StyledEyeColored color="bg" />
+          <StyledClose color="bg" />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            gap: "10px",
+            maxWidth: "400px",
+            width: "100%",
+            padding: "16px",
+            backgroundColor: "var(--bg-secondary)",
+          }}
+        >
+          <StyledHomeColored />
+          <StyledMoneyColored />
+          <StyledEyeColored />
+          <StyledQuearBigLogoBlue />
+        </div>
+        <h2>Buttons</h2>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+            maxWidth: "400px",
+            width: "100%",
+            padding: "16px",
+            backgroundColor: "#F7F7F7",
+          }}
+        >
+          <ButtonPrimary variant="dark">Continuar</ButtonPrimary>
+          <ButtonPrimary variant="light">COTIZAR</ButtonPrimary>
+          <ButtonOutlined>Cotizar sin patente</ButtonOutlined>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+            maxWidth: "400px",
+            width: "100%",
+            padding: "16px",
+          }}
+        >
+          <ButtonBig>
+            <StyledCarThreeDoors />3 puertas
+          </ButtonBig>
+          <ButtonBig>
+            <StyledCarFourDoors />4 puertas
+          </ButtonBig>
+          <ButtonBig>
+            <StyledCarFiveDoors />5 puertas
+          </ButtonBig>
+        </div>
+        <h2>Card</h2>
+        <div
+          style={{
+            width: "100%",
+            maxWidth: "400px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "10px",
+            padding: "16px",
+          }}
+        >
+          <CardComponent></CardComponent>
+        </div>
+        <h2>Textbox</h2>
+        <div
+          style={{
+            backgroundColor: "var(--bg-secondary)",
+            width: "100%",
+            height: "200px",
+            maxWidth: "400px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "10px",
+            padding: "16px",
+          }}
+        >
+          <StyledTextBox>
+            <SubtitleSecondary>Textbox</SubtitleSecondary>
+          </StyledTextBox>
+          <StyledTextBox shadow>
+            <SubtitleSecondary>Textbox shadow</SubtitleSecondary>
+          </StyledTextBox>
+        </div>
 
-      <CarouselComponent
-        cellAlign="center"
-        autoplay={true}
-        wrapAround={true}
-        slidesToShow={3}
-        style={{ maxWidth: "375px" }}
+        <h2>Inputs</h2>
+        <div
+          style={{
+            backgroundColor: "var(--bg-secondary)",
+            width: "100%",
+            maxWidth: "400px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "10px",
+            padding: "16px",
+          }}
+        >
+          <InputShadowed placeholder="Input con shadow" />
+          <InputOutlined placeholder="Input sin shadow" />
+          <InputWithIcon
+            placeholder="Input con icono"
+            name="input"
+            Icon={StyledCreditCard}
+          />
+          <TextAreaShadowed placeholder="Text Area" />
+        </div>
+
+        <CarouselResponsiveComponent
+          cellAlign="center"
+          autoplay={true}
+          wrapAround={true}
+          style={{ maxWidth: "375px" }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <StyledCreditCard></StyledCreditCard>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <StyledCreditCard></StyledCreditCard>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <StyledCreditCard></StyledCreditCard>
+          </div>
+        </CarouselResponsiveComponent>
+      </div>
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "1366px",
+          overflowX: "scroll",
+        }}
       >
-        <StyledCreditCard></StyledCreditCard>
-        <StyledCreditCard></StyledCreditCard>
-        <StyledCreditCard></StyledCreditCard>
-        <StyledCreditCard></StyledCreditCard>
-      </CarouselComponent>
-      <CarouselComponent
-        cellAlign="center"
+        <div
+          style={{
+            width: "fit-content",
+            display: "flex",
+            gap: "15px",
+          }}
+        >
+          <CardComponent />
+          <CardComponent />
+          <CardComponent />
+          <CardComponent />
+          <CardComponent />
+          <CardComponent />
+          <CardComponent />
+        </div>
+      </div>
+      <CarouselResponsiveComponent
+        cellAlign="left"
         autoplay={false}
         wrapAround={false}
-        slidesToShow={1.5}
-        style={{ maxWidth: "375px" }}
+        style={{ marginTop: "40px" }}
       >
         <CardComponent />
         <CardComponent />
@@ -256,8 +302,17 @@ const Ui: NextPage = () => {
         <CardComponent />
         <CardComponent />
         <CardComponent />
-      </CarouselComponent>
-    </div>
+        <CardComponent />
+        <CardComponent />
+        <CardComponent />
+        <CardComponent />
+        <CardComponent />
+        <CardComponent />
+        <CardComponent />
+      </CarouselResponsiveComponent>
+
+      <div style={{ height: "150px" }}></div>
+    </>
   );
 };
 export default Ui;

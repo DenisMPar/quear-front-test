@@ -7,10 +7,12 @@ import { RusSVGIcon } from "../../ui/icons/svg/rio-uruguay-icon";
 import { SanCristobalSVGIcon } from "../../ui/icons/svg/san-cristobal-icon";
 import { SancorSVGIcon } from "../../ui/icons/svg/sancor-icon";
 import { FaqComponent } from "../faq";
+import { Footer } from "../footer";
 import { HeaderMobile } from "../header/headerMobile";
 import {
   HomeAbout,
   HomeAboutCarousel,
+  HomeAboutCarouselSlide,
   HomeAboutText,
   HomeAboutTextBox,
   HomeButton,
@@ -50,39 +52,46 @@ export function HomePage() {
         </HomeMainTextContainer>
       </HomeMain>
       <HomeAbout>
-        <HomeAboutTextBox>
-          <HomeAboutText>
-            <b>Quear</b> es el canal digital de Orange Asesores de Seguros S.A,
-            broker conformado por un equipo de profesionales con{" "}
-            <b>+ de 20 años de experiencia </b>en el mercado asegurador.
-          </HomeAboutText>
-        </HomeAboutTextBox>
+        <div>
+          <HomeAboutTextBox>
+            <HomeAboutText>
+              <b>Quear</b> es el canal digital de Orange Asesores de Seguros
+              S.A, broker conformado por un equipo de profesionales con{" "}
+              <b>+ de 20 años de experiencia </b>en el mercado asegurador.
+            </HomeAboutText>
+          </HomeAboutTextBox>
 
-        <HomeAboutCarousel
-          cellAlign="center"
-          autoplay={true}
-          wrapAround={true}
-          slidesToShow={3}
-        >
-          <SancorSVGIcon />
-          <SanCristobalSVGIcon />
-          <RusSVGIcon />
-          <SancorSVGIcon />
-          <SanCristobalSVGIcon />
-          <RusSVGIcon />
-        </HomeAboutCarousel>
+          <HomeAboutCarousel
+            cellAlign="center"
+            autoplay={true}
+            wrapAround={true}
+            slidesToShow={3}
+          >
+            <HomeAboutCarouselSlide>
+              <SancorSVGIcon />
+            </HomeAboutCarouselSlide>
+            <HomeAboutCarouselSlide>
+              <SancorSVGIcon />
+            </HomeAboutCarouselSlide>
+            <HomeAboutCarouselSlide>
+              <SancorSVGIcon />
+            </HomeAboutCarouselSlide>
+            <HomeAboutCarouselSlide>
+              <SancorSVGIcon />
+            </HomeAboutCarouselSlide>
+            <HomeAboutCarouselSlide>
+              <SancorSVGIcon />
+            </HomeAboutCarouselSlide>
+            <HomeAboutCarouselSlide>
+              <SancorSVGIcon />
+            </HomeAboutCarouselSlide>
+          </HomeAboutCarousel>
 
-        <FaqComponent />
+          <FaqComponent />
+        </div>
       </HomeAbout>
-      <div
-        style={{
-          height: "467px",
-          backgroundColor: "var(--bg-secondary)",
-          border: "none",
-        }}
-      >
-        Footer
-      </div>
+
+      <Footer showFooterMobile></Footer>
     </HomeRoot>
   );
 }

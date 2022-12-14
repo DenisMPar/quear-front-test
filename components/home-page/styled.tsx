@@ -116,3 +116,8 @@ export const HomeAboutCarousel = styled(CarouselComponent)`
     height: 112px !important;
   }
 `;
+export const HomeAboutCarouselSlide = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
