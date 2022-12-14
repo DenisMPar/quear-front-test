@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
 import { NextPage } from "next";
 import { CardComponent } from "../../components/card";
-import { CarouselComponent } from "../../components/carousel";
 import { CarouselResponsiveComponent } from "../../components/carousel/responsive";
 import { HeaderDestkop } from "../../components/header/header-desktop";
 import { HeaderMobile } from "../../components/header/headerMobile";
+import { SelectComponent } from "../../components/select";
+import { SelectGroupedComponent } from "../../components/select/grouped";
 import {
   ButtonBig,
   ButtonOutlined,
@@ -311,7 +312,38 @@ const Ui: NextPage = () => {
         <CardComponent />
       </CarouselResponsiveComponent>
 
-      <div style={{ height: "150px" }}></div>
+      <div
+        style={{
+          backgroundColor: "var(--bg-secondary)",
+          width: "100%",
+          maxWidth: "750px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "10px",
+          padding: "16px",
+        }}
+      >
+        <SelectGroupedComponent
+          onChange={(e) => console.log(e?.target.textContent)}
+          placeHolder="Elegir personaje"
+          values={[
+            { title: "Hobbits:", options: ["frodo", "sam"] },
+            { title: "Elfos:", options: ["Legolas", "Elrond"] },
+          ]}
+        />
+
+        <SelectComponent
+          onChange={(e) => {
+            console.log(e?.target.textContent);
+          }}
+          values={["1", "2", "3", "4"]}
+          placeHolder={"Elegir número"}
+        />
+      </div>
+
+      <div style={{ height: "400px" }}></div>
     </>
   );
 };

@@ -12,7 +12,7 @@ import {
 } from "./styled";
 
 interface Props {
-  showFooterMobile: boolean;
+  showFooterMobile?: boolean;
 }
 
 export function Footer(props: Props) {

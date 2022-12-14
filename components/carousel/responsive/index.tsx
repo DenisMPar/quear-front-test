@@ -19,20 +19,6 @@ interface Props {
 export function CarouselResponsiveComponent(props: Props) {
   return (
     <>
-      {/* <CarouselContainerTiny>
-        <Carousel
-          withoutControls={true}
-          autoplay={props.autoplay}
-          autoplayInterval={props.autoplayInterval}
-          wrapAround={props.wrapAround}
-          slidesToShow={1}
-          cellSpacing={16}
-          cellAlign={props.cellAlign}
-          style={props.style}
-        >
-          {props.children}
-        </Carousel>
-      </CarouselContainerTiny> */}
       {/* 390px */}
       <CarouselContainerSmall>
         <Carousel
@@ -41,7 +27,7 @@ export function CarouselResponsiveComponent(props: Props) {
           autoplayInterval={props.autoplayInterval}
           wrapAround={props.wrapAround}
           slidesToShow={1.5}
-          cellSpacing={16}
+          cellSpacing={200}
           cellAlign={props.cellAlign}
           style={props.style}
         >

@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { BodyPrimary } from "../../ui/text";
 
 interface Props extends React.HTMLAttributes<HTMLElement> {
-  showFooterMobile: boolean;
+  showFooterMobile: boolean | undefined;
 }
 
 export const FooterRoot = styled.footer<Props>`
