@@ -7,7 +7,7 @@ export const CarDesktopSVGIcon = ({ className }: any) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_1396_4410)">
+      <g clipPath="url(#clip0_1396_4410)">
         <path
           d="M453.701 234.057H103.251C97.3002 234.057 91.6095 231.841 87.2246 227.812L88.3022 226.641C92.3898 230.394 97.6984 232.462 103.251 232.462H453.701V234.052V234.057Z"
           fill="#52EEAC"

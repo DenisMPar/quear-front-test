@@ -330,10 +330,16 @@ const Ui: NextPage = () => {
       >
         <SelectGroupedComponent
           onChange={(e) => console.log(e?.target.textContent)}
-          placeHolder="Elegir personaje"
+          placeHolder="Elegir marca"
           values={[
-            { title: "Hobbits:", options: ["frodo", "sam"] },
-            { title: "Elfos:", options: ["Legolas", "Elrond"] },
+            {
+              title: "Más buscadas:",
+              options: ["Chevrolet", "Ford", "Renault"],
+            },
+            {
+              title: "Todas las marcas:",
+              options: ["Audi", "BMW"],
+            },
           ]}
         />
 
@@ -341,8 +347,8 @@ const Ui: NextPage = () => {
           onChange={(e) => {
             console.log(e?.target.textContent);
           }}
-          values={["1", "2", "3", "4"]}
-          placeHolder={"Elegir número"}
+          values={["2022", "2021", "2020", "2019"]}
+          placeHolder={"Elegir año"}
         />
       </div>
       <div

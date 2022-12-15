@@ -116,6 +116,7 @@ export const StyledGroupOptions = styled("ul")`
 `;
 export const StyledLine = styled.hr`
   margin: 0;
+  margin-top: 16px;
   height: 1px;
   background-color: var(--primary);
   border: none;

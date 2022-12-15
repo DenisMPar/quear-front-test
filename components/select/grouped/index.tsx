@@ -51,18 +51,16 @@ export function SelectGroupedComponent(props: Props) {
   function renderGroups() {
     return props.values.map((el, index) => {
       return (
-        <>
-          <CustomOptionGroup key={el.title} label={el.title}>
-            {el.options.map((el) => {
-              return (
-                <StyledOption key={el} value={el}>
-                  {el}
-                </StyledOption>
-              );
-            })}
-          </CustomOptionGroup>
+        <CustomOptionGroup key={el.title} label={el.title}>
+          {el.options.map((el, index) => {
+            return (
+              <StyledOption key={el + index.toString()} value={el}>
+                {el}
+              </StyledOption>
+            );
+          })}
           {index < props.values.length - 1 ? <StyledLine /> : null}
-        </>
+        </CustomOptionGroup>
       );
     });
   }
