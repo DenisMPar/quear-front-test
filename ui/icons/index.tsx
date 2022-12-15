@@ -129,6 +129,7 @@ const Close = styled(CloseSVGIcon)`
   height: ${(props) => (props.height ? props.height : "24px")};
   fill: ${(props) =>
     props.color ? `var(--${props.color})` : `var(--primary)`};
+  cursor: pointer;
 `;
 export const StyledClose = ({ color, width, height }: IconsProps) => {
   return <Close color={color} width={width} height={height}></Close>;

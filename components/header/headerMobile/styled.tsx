@@ -34,6 +34,7 @@ export const PhoneContainerBig = styled.div`
   border-radius: 100%;
   border: solid 2px;
   border-color: var(--terciary);
+  cursor: pointer;
 `;
 
 export const PhoneContainerSmall = styled.div`
@@ -46,6 +47,7 @@ export const PhoneContainerSmall = styled.div`
   border-radius: 100%;
   border: solid 2px;
   border-color: var(--terciary);
+  cursor: pointer;
 `;
 export const HamburguerContainer = styled.div`
   align-self: center;

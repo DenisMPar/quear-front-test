@@ -96,8 +96,6 @@ export function HomePage() {
           </div>
         </HomeAbout>
       </HomeAboutBackground>
-
-      <Footer showFooterMobile />
     </HomeRoot>
   );
 }

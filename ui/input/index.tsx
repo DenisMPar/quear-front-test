@@ -31,8 +31,6 @@ export const InputWithIcon = (props: Props) => {
 export const InputPassword = (props: Props) => {
   const [showPassword, setShowPassword] = useState(false);
   function togglePassword() {
-    console.log();
-
     setShowPassword(!showPassword);
   }
   return (
