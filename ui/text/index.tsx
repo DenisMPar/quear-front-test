@@ -43,3 +43,6 @@ export const BodyPrimary = styled(BaseBody)`
 export const BodySecondary = styled(BaseBody)`
   font-size: 13px;
 `;
+export const BodyTerciary = styled(BaseBody)`
+  font-size: 12px;
+`;

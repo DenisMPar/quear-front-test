@@ -24,6 +24,9 @@ export const ButtonPrimary = styled(BaseButton)<Props>`
   background-color: ${(props) =>
     props.variant == "dark" ? `var(--primary)` : `var(--bg)`};
 `;
+export const ButtonPrimaryBig = styled(ButtonPrimary)`
+  height: 48px;
+`;
 export const ButtonOutlined = styled(BaseButton)`
   color: var(--primary);
   font-size: 16px;

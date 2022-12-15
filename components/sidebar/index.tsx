@@ -24,6 +24,7 @@ import {
 type props = {
   show: boolean;
   toggle: () => any;
+  toggleContact: () => any;
 };
 
 export const SideBarComponent = (props: props) => {
@@ -81,13 +82,14 @@ export const SideBarComponent = (props: props) => {
                   </SideBarMenuLinkTextDark>
                 </SideBarMenuLinkContainer>
               </Link>
-              <Link href={"/contacto"}>
-                <SideBarMenuLinkContainer active={path == "/contacto"}>
-                  <SideBarMenuLinkTextDark as={"p"}>
-                    Contacto
-                  </SideBarMenuLinkTextDark>
-                </SideBarMenuLinkContainer>
-              </Link>
+              <SideBarMenuLinkContainer
+                active={path == "/contacto"}
+                onClick={props.toggleContact}
+              >
+                <SideBarMenuLinkTextDark as={"p"}>
+                  Contacto
+                </SideBarMenuLinkTextDark>
+              </SideBarMenuLinkContainer>
             </SideBarMenuContainer>
           </SideBarContainer>
         ) : (

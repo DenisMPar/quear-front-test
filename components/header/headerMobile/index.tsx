@@ -5,6 +5,7 @@ import {
   StyledQuearBigLogo,
   StyledQuearSmallLogo,
 } from "../../../ui/icons";
+import { ContactPopUpComponent } from "../../contact-popup";
 import { SideBarComponent } from "../../sidebar";
 import { HeaderDestkop } from "../header-desktop";
 import {
@@ -21,19 +22,33 @@ interface Props {
 
 export function HeaderMobile(props: Props) {
   const [showMenu, setShowMenu] = useState(false);
+  const [showContact, setShowContact] = useState(false);
+
   function toggleMenu() {
+    setShowMenu(!showMenu);
+  }
+  function toggleContact() {
     console.log("toggle");
 
-    setShowMenu(!showMenu);
+    setShowContact(!showContact);
   }
   return props.type == "small" ? (
     <>
       <SmallHeaderMobile>
-        <SideBarComponent show={showMenu} toggle={toggleMenu} />
+        <SideBarComponent
+          toggleContact={toggleContact}
+          show={showMenu}
+          toggle={toggleMenu}
+        />
         <StyledQuearSmallLogo></StyledQuearSmallLogo>
-        <PhoneContainerSmall>
+        <PhoneContainerSmall onClick={toggleContact}>
           <StyledPhone color="bg" width="19px" height="19px" />
         </PhoneContainerSmall>
+        <ContactPopUpComponent
+          show={showContact}
+          toggle={toggleContact}
+          type="small"
+        />
       </SmallHeaderMobile>
       <HeaderDestkop />
     </>
@@ -41,12 +56,21 @@ export function HeaderMobile(props: Props) {
     <>
       <BigHeaderMobile>
         <HamburguerContainer>
-          <SideBarComponent show={showMenu} toggle={toggleMenu} />
+          <SideBarComponent
+            toggleContact={toggleContact}
+            show={showMenu}
+            toggle={toggleMenu}
+          />
         </HamburguerContainer>
         <StyledQuearBigLogo width="117px" height="45px" />
-        <PhoneContainerBig>
+        <PhoneContainerBig onClick={toggleContact}>
           <StyledPhone color="bg" width="25px" height="25px" />
         </PhoneContainerBig>
+        <ContactPopUpComponent
+          show={showContact}
+          toggle={toggleContact}
+          type="big"
+        />
       </BigHeaderMobile>
       <HeaderDestkop />
     </>
