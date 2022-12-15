@@ -40,7 +40,7 @@ export function Footer(props: Props) {
               <FooterText>Nº de Inscripción en SSN Registro Nº XXX</FooterText>
               <FooterText>Atención al asegurado XXX-XXX-XXX</FooterText>
             </FooterContainerText>
-            <FooterLink href="https://www.argentina.gob.ar/ssn">
+            <FooterLink href="https://www.argentina.gob.ar/ssn" target="_blank">
               Organismo de control www.argentina.gob.ar/ssn
             </FooterLink>
           </FooterContainerTextAndLink>

@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { NextPage } from "next";
+import Image from "next/image";
 import { CardComponent } from "../../components/card";
 import { CarouselResponsiveComponent } from "../../components/carousel/responsive";
 import { HeaderDestkop } from "../../components/header/header-desktop";
@@ -50,6 +51,8 @@ import {
   InputShadowed,
   TextAreaShadowed,
 } from "../../ui/input/styled";
+import { AddLabel } from "../../ui/label/add-label";
+import { PictureLabel } from "../../ui/label/picture-label";
 import { SubtitleSecondary } from "../../ui/text";
 import { TextBox } from "../../ui/text-box/styled";
 
@@ -342,7 +345,31 @@ const Ui: NextPage = () => {
           placeHolder={"Elegir número"}
         />
       </div>
-
+      <div
+        style={{
+          backgroundColor: "var(--bg-secondary)",
+          width: "100%",
+          height: "600px",
+          maxWidth: "750px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "10px",
+          padding: "16px",
+        }}
+      >
+        <AddLabel type="big">Agregar foto</AddLabel>
+        <AddLabel label="parte trasera" type="small">
+          Agregar foto
+        </AddLabel>
+        <PictureLabel
+          onClose={() => console.log("close")}
+          label="Parte trasera"
+        >
+          <Image alt="car-image" width={131} height={193} src="/img-car.png" />
+        </PictureLabel>
+      </div>
       <div style={{ height: "400px" }}></div>
     </>
   );

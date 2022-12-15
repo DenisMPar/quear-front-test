@@ -37,6 +37,7 @@ import { EditSVGIcon } from "./svg/edit-icon";
 import { QuearBigLogoBlueSVGIcon } from "./svg/quear-big-logo-blue";
 import { ArrowSVGIcon } from "./svg/arrow-icon";
 import { CarDesktopSVGIcon } from "./svg/car-logo-desktop";
+import { PlusSVGIcon } from "./svg/plus-icon";
 
 export interface IconsProps {
   color?: "primary" | "secondary" | "terciary" | "bg" | "dark-ligth";
@@ -189,6 +190,7 @@ const Twitter = styled(TwitterSVGIcon)`
   height: ${(props) => (props.height ? props.height : "24px")};
   fill: ${(props) =>
     props.color ? `var(--${props.color})` : `var(--primary)`};
+  cursor: pointer;
 `;
 export const StyledTwitter = ({ color, width, height }: IconsProps) => {
   return <Twitter color={color} width={width} height={height}></Twitter>;
@@ -199,6 +201,7 @@ const Linkedin = styled(LinkedinSVGIcon)`
   height: ${(props) => (props.height ? props.height : "24px")};
   fill: ${(props) =>
     props.color ? `var(--${props.color})` : `var(--primary)`};
+  cursor: pointer;
 `;
 export const StyledLinkedin = ({ color, width, height }: IconsProps) => {
   return <Linkedin color={color} width={width} height={height}></Linkedin>;
@@ -209,6 +212,7 @@ const Instagram = styled(InstagramSVGIcon)`
   height: ${(props) => (props.height ? props.height : "24px")};
   fill: ${(props) =>
     props.color ? `var(--${props.color})` : `var(--primary)`};
+  cursor: pointer;
 `;
 export const StyledInstagram = ({ color, width, height }: IconsProps) => {
   return <Instagram color={color} width={width} height={height}></Instagram>;
@@ -221,6 +225,15 @@ const Arrow = styled(ArrowSVGIcon)`
 `;
 export const StyledArrow = ({ color, width, height }: IconsProps) => {
   return <Arrow color={color} width={width} height={height}></Arrow>;
+};
+const Plus = styled(PlusSVGIcon)`
+  width: ${(props) => (props.width ? props.width : "24px")};
+  height: ${(props) => (props.height ? props.height : "24px")};
+  fill: ${(props) =>
+    props.color ? `var(--${props.color})` : `var(--primary)`};
+`;
+export const StyledPlus = ({ color, width, height }: IconsProps) => {
+  return <Plus color={color} width={width} height={height}></Plus>;
 };
 
 //two colors icons (can change one color)
