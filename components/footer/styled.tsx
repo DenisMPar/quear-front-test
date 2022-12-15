@@ -3,33 +3,16 @@ import { BodyPrimary } from "../../ui/text";
 
 interface Props extends React.HTMLAttributes<HTMLElement> {
   showFooterMobile: boolean | undefined;
+  topLine: boolean | undefined;
 }
 
 export const FooterRoot = styled.footer<Props>`
-  /* height: 467px; */
   background-color: var(--bg-secondary);
   display: ${(props) => (props.showFooterMobile ? "block" : "none")};
-  /* grid-template-columns: 1fr;
-  grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  justify-items: center;
-  align-items: center;
-  gap: 34px;
-  padding-top: 25px;
-  padding-bottom: 164px;
+  border-top: ${(props) =>
+    props.topLine ? "solid 1px var(--primary)" : "none"};
   @media screen and (min-width: 1024px) {
-    max-width: 885px;
-    padding: 40px 0 81px 0;
-    margin: 0 auto;
-    height: 227px;
-    display: grid;
-    grid-template-columns: 5fr 2fr 2fr;
-    grid-template-rows: 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-  } */
-  @media screen and (min-width: 1024px) {
+    display: block;
     background-color: var(--bg);
   }
 `;

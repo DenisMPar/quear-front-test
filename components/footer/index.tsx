@@ -14,11 +14,15 @@ import {
 
 interface Props {
   showFooterMobile?: boolean;
+  topLine?: boolean;
 }
 
 export function Footer(props: Props) {
   return (
-    <FooterRoot showFooterMobile={props.showFooterMobile}>
+    <FooterRoot
+      topLine={props.topLine}
+      showFooterMobile={props.showFooterMobile}
+    >
       <FooterBackground>
         <FooterContainerQr>
           <Image

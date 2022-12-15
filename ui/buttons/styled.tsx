@@ -35,6 +35,9 @@ export const ButtonOutlined = styled(BaseButton)`
   border: solid 1px;
   border-color: var(--primary);
 `;
+export const ButtonOutlinedBig = styled(ButtonOutlined)`
+  height: 48px;
+`;
 export const ButtonBig = styled(BaseButton)`
   height: 100%;
   max-height: 125px;

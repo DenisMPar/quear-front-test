@@ -50,7 +50,6 @@ export function HeaderMobile(props: Props) {
           type="small"
         />
       </SmallHeaderMobile>
-      <HeaderDestkop />
     </>
   ) : (
     <>
@@ -72,7 +71,6 @@ export function HeaderMobile(props: Props) {
           type="big"
         />
       </BigHeaderMobile>
-      <HeaderDestkop />
     </>
   );
 }
