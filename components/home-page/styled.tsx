@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { ButtonPrimary } from "../../ui/buttons/styled";
 import { StyledQuearBigLogo } from "../../ui/icons";
+import { SancorSVGIcon } from "../../ui/icons/svg/sancor-icon";
 import { TitlePrimary, SubtitleSecondary, BodyPrimary } from "../../ui/text";
 import { TextBox } from "../../ui/text-box/styled";
 import { CarouselComponent } from "../carousel";
@@ -14,7 +15,9 @@ export const HomeRoot = styled.div`
 `;
 
 export const HomeMainBackground = styled.div`
+  height: 100%;
   background-color: var(--primary);
+  padding: 76px 0 60px 0;
 `;
 export const HomeMain = styled.main`
   background-color: var(--primary);
@@ -24,7 +27,7 @@ export const HomeMain = styled.main`
   flex-direction: column;
   align-items: center;
   height: 257px;
-  margin: 76px 0 60px 0;
+
   color: var(--bg);
   @media screen and (min-width: 1024px) {
     max-width: 1095px;
@@ -135,4 +138,10 @@ export const HomeAboutCarouselSlide = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+export const HomeSancorIcon = styled(SancorSVGIcon)`
+  @media screen and (min-width: 1024px) {
+    width: 226px;
+    height: 112px;
+  }
 `;

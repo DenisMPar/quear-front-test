@@ -38,6 +38,7 @@ import { QuearBigLogoBlueSVGIcon } from "./svg/quear-big-logo-blue";
 import { ArrowSVGIcon } from "./svg/arrow-icon";
 import { CarDesktopSVGIcon } from "./svg/car-logo-desktop";
 import { PlusSVGIcon } from "./svg/plus-icon";
+import { PasswordHideSVGIcon } from "./svg/password-hide-icon";
 
 export interface IconsProps {
   color?: "primary" | "secondary" | "terciary" | "bg" | "dark-ligth";
@@ -234,6 +235,17 @@ const Plus = styled(PlusSVGIcon)`
 `;
 export const StyledPlus = ({ color, width, height }: IconsProps) => {
   return <Plus color={color} width={width} height={height}></Plus>;
+};
+const PasswordHide = styled(PasswordHideSVGIcon)`
+  width: ${(props) => (props.width ? props.width : "24px")};
+  height: ${(props) => (props.height ? props.height : "24px")};
+  fill: ${(props) =>
+    props.color ? `var(--${props.color})` : `var(--primary)`};
+`;
+export const StyledPasswordHide = ({ color, width, height }: IconsProps) => {
+  return (
+    <PasswordHide color={color} width={width} height={height}></PasswordHide>
+  );
 };
 
 //two colors icons (can change one color)

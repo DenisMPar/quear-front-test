@@ -32,6 +32,13 @@ export const InputOutlined = styled(BaseInput)`
     border-color: var(--primary);
   }
 `;
+export const InputOutlinedBig = styled(BaseInput)`
+  height: 57px;
+  border: solid 1px var(--dark-secondary);
+  &:focus {
+    border-color: var(--primary);
+  }
+`;
 
 export const InputWithIconRoot = styled.div`
   width: 100%;
@@ -47,6 +54,16 @@ export const InputWithIconRoot = styled.div`
 `;
 export const InputWithIconStyled = styled(BaseInput)`
   padding: 0 10px;
+`;
+export const InputWithIconStyledBig = styled(BaseInput)`
+  height: 57px;
+  padding: 0 10px;
+`;
+export const InputPasswordContainerIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 `;
 
 const BaseTextArea = styled.textarea`

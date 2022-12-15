@@ -1,4 +1,4 @@
-export const SancorSVGIcon = () => {
+export const SancorSVGIcon = ({ className }: any) => {
   return (
     <svg
       width="87"
@@ -7,6 +7,7 @@ export const SancorSVGIcon = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      className={className}
     >
       <rect width="87" height="43" fill="url(#pattern0)" />
       <defs>

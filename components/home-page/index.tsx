@@ -24,6 +24,7 @@ import {
   HomeMainQuearLogoContainer,
   HomeMainTextContainer,
   HomeRoot,
+  HomeSancorIcon,
   HomeSubTitle,
   HomeTitle,
 } from "./styled";
@@ -31,7 +32,6 @@ import {
 export function HomePage() {
   return (
     <HomeRoot>
-      <HeaderMobile type="big" />
       <HomeMainBackground>
         <HomeMain>
           <HomeMainLogoContainer>
@@ -72,22 +72,22 @@ export function HomePage() {
                 slidesToShow={3}
               >
                 <HomeAboutCarouselSlide>
-                  <SancorSVGIcon />
+                  <HomeSancorIcon />
                 </HomeAboutCarouselSlide>
                 <HomeAboutCarouselSlide>
-                  <SancorSVGIcon />
+                  <HomeSancorIcon />
                 </HomeAboutCarouselSlide>
                 <HomeAboutCarouselSlide>
-                  <SancorSVGIcon />
+                  <HomeSancorIcon />
                 </HomeAboutCarouselSlide>
                 <HomeAboutCarouselSlide>
-                  <SancorSVGIcon />
+                  <HomeSancorIcon />
                 </HomeAboutCarouselSlide>
                 <HomeAboutCarouselSlide>
-                  <SancorSVGIcon />
+                  <HomeSancorIcon />
                 </HomeAboutCarouselSlide>
                 <HomeAboutCarouselSlide>
-                  <SancorSVGIcon />
+                  <HomeSancorIcon />
                 </HomeAboutCarouselSlide>
               </CarouselComponent>
             </HomeAboutCarouselContainer>
