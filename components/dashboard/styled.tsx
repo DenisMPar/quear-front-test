@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { BodyPrimary, SubtitleSecondary } from "../../ui/text";
+import { SubtitleSecondary } from "../../ui/text";
 
 export const DashboardRoot = styled.div`
   min-height: 100vh;

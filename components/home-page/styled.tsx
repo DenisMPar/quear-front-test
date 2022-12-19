@@ -1,10 +1,8 @@
 import styled from "@emotion/styled";
 import { ButtonPrimary } from "../../ui/buttons/styled";
-import { StyledQuearBigLogo } from "../../ui/icons";
 import { SancorSVGIcon } from "../../ui/icons/svg/sancor-icon";
-import { TitlePrimary, SubtitleSecondary, BodyPrimary } from "../../ui/text";
+import { BodyPrimary, SubtitleSecondary, TitlePrimary } from "../../ui/text";
 import { TextBox } from "../../ui/text-box/styled";
-import { CarouselComponent } from "../carousel";
 
 export const HomeRoot = styled.div`
   min-height: 100vh;

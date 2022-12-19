@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import Head from "next/head";
 
 const HeaderRoot = styled.header`
   display: flex;
@@ -35,6 +34,9 @@ export const PhoneContainerBig = styled.div`
   border: solid 2px;
   border-color: var(--terciary);
   cursor: pointer;
+  &:hover {
+    border-color: var(--terciary-hover);
+  }
 `;
 
 export const PhoneContainerSmall = styled.div`

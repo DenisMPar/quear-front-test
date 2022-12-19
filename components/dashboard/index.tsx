@@ -1,7 +1,7 @@
-import { ButtonPrimary, ButtonPrimaryBig } from "../../ui/buttons/styled";
+import { ButtonPrimaryBig } from "../../ui/buttons/styled";
 import { StyledQuearBigLogo } from "../../ui/icons";
 import { InputPassword } from "../../ui/input";
-import { InputOutlined, InputOutlinedBig } from "../../ui/input/styled";
+import { InputOutlinedBig } from "../../ui/input/styled";
 import {
   DashboardButtonContainer,
   DashboardContentContainer,

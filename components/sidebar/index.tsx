@@ -23,8 +23,8 @@ import {
 
 type props = {
   show: boolean;
-  toggle: () => any;
-  toggleContact: () => any;
+  toggle: () => void;
+  toggleContact: () => void;
 };
 
 export const SideBarComponent = (props: props) => {
@@ -37,8 +37,8 @@ export const SideBarComponent = (props: props) => {
 
   return (
     <>
-      {menuTranstition((style, item) =>
-        item ? (
+      {menuTranstition((style, show) =>
+        show ? (
           <SideBarContainer style={style} onClick={props.toggle}>
             <SideBarHeader>
               <StyledClose color="bg" width="26px" height="26px" />

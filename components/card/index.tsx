@@ -1,21 +1,25 @@
-import { fontSize } from "@mui/system";
 import { ButtonOutlined, ButtonPrimary } from "../../ui/buttons/styled";
 import { BodyPrimary, SubtitleTerciary } from "../../ui/text";
 import {
-  CardTop,
-  CardRoot,
-  CardCompany,
+  CardArrow,
   CardBody,
+  CardCompany,
+  CardCompanyLogo,
   CardContainerButtons,
   CardContainerMain,
-  CardContainerTitle,
   CardContainerSubtitle,
-  CardCompanyLogo,
+  CardContainerTitle,
+  CardRoot,
+  CardTop,
 } from "./styled";
 
-export function CardComponent() {
+interface Props {
+  active?: boolean;
+}
+
+export function CardComponent(props: Props) {
   return (
-    <CardRoot>
+    <CardRoot active={props.active}>
       <CardTop>Contra todo riesgo</CardTop>
       <CardBody>
         <CardCompany>
@@ -42,6 +46,7 @@ export function CardComponent() {
           <ButtonOutlined>Ver detalle</ButtonOutlined>
         </CardContainerButtons>
       </CardBody>
+      <CardArrow active={props.active} />
     </CardRoot>
   );
 }

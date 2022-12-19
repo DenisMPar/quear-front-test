@@ -1,20 +1,10 @@
-import {
-  ButtonOutlinedBig,
-  ButtonPrimary,
-  ButtonPrimaryBig,
-} from "../../ui/buttons/styled";
-import {
-  StyledPhone,
-  StyledQuearBigLogoBlue,
-  StyledWhatsApp,
-} from "../../ui/icons";
+import { ButtonOutlinedBig, ButtonPrimary } from "../../ui/buttons/styled";
+import { StyledPhone, StyledWhatsApp } from "../../ui/icons";
 import { InputShadowed, TextAreaShadowed } from "../../ui/input/styled";
 import { BodyTerciary } from "../../ui/text";
 import {
   ContactPageButtonText,
-  ContactPageCloseContainer,
   ContactPageContentContainer,
-  ContactPageLogoContainer,
   ContactPageRoot,
   ContactPageSendButtonContainer,
   ContactPageSendMailContainer,
@@ -62,7 +52,7 @@ export function ContactPage() {
       </ContactPageContentContainer>
       <ContactPageSendMailContainer>
         <InputShadowed placeholder="Nombre"></InputShadowed>
-        <InputShadowed placeholder="Mail"></InputShadowed>
+        <InputShadowed type="email" placeholder="Mail"></InputShadowed>
         <ContactPageTextAreaContainer>
           <TextAreaShadowed placeholder="Consulta"></TextAreaShadowed>
         </ContactPageTextAreaContainer>

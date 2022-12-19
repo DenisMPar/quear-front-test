@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import Link from "next/link";
 import { animated } from "react-spring";
 import { SubtitleSecondary } from "../../ui/text";
 
@@ -9,7 +8,6 @@ export const SideBarContainer = styled(animated.aside)`
   top: 0;
   z-index: 999;
   width: 100%;
-  max-width: 400px;
   height: 100vh;
   background: var(--secondary);
   display: flex;

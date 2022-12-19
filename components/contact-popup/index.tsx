@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useTransition } from "react-spring";
-import { getPath } from "../../lib";
 import { ButtonPrimary, ButtonPrimaryBig } from "../../ui/buttons/styled";
 import {
   StyledClose,
@@ -35,7 +34,7 @@ export const ContactPopUpComponent = (props: props) => {
   function toggleSendMail() {
     setShowSendMail(!showSendMail);
   }
-  const path = getPath();
+
   const menuTranstition = useTransition(props.show, {
     from: { opacity: 0, bottom: `-100%` },
     enter: { opacity: 1, bottom: `-0%` },

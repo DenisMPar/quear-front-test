@@ -4,7 +4,7 @@ import {
   StyledMoneyUnColored,
   StyledSearchBig,
 } from "../../../ui/icons";
-import { MenuLinkDesktop, MenuLinkDesktopBold } from "../../../ui/link/styled";
+import { MenuLinkDesktop } from "../../../ui/link/styled";
 import { LinkWithIconHeader } from "../links";
 import {
   HeaderDesktopContainer,

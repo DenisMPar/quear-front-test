@@ -1,13 +1,11 @@
 import { useState } from "react";
 import {
-  StyledHamburguer,
   StyledPhone,
   StyledQuearBigLogo,
   StyledQuearSmallLogo,
 } from "../../../ui/icons";
 import { ContactPopUpComponent } from "../../contact-popup";
 import { SideBarComponent } from "../../sidebar";
-import { HeaderDestkop } from "../header-desktop";
 import {
   BigHeaderMobile,
   HamburguerContainer,

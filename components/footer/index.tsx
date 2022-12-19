@@ -2,6 +2,7 @@ import Image from "next/image";
 import { StyledInstagram, StyledLinkedin, StyledTwitter } from "../../ui/icons";
 import {
   FooterBackground,
+  FooterContainerIcon,
   FooterContainerMain,
   FooterContainerQr,
   FooterContainerSocialMedia,
@@ -50,9 +51,15 @@ export function Footer(props: Props) {
           </FooterContainerTextAndLink>
         </FooterContainerMain>
         <FooterContainerSocialMedia>
-          <StyledInstagram />
-          <StyledLinkedin />
-          <StyledTwitter />
+          <FooterContainerIcon>
+            <StyledInstagram />
+          </FooterContainerIcon>
+          <FooterContainerIcon>
+            <StyledLinkedin />
+          </FooterContainerIcon>
+          <FooterContainerIcon>
+            <StyledTwitter />
+          </FooterContainerIcon>
         </FooterContainerSocialMedia>
       </FooterBackground>
     </FooterRoot>

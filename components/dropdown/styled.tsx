@@ -1,6 +1,4 @@
 import styled from "@emotion/styled";
-import { IconProps } from "@mui/material";
-import { StyledArrow } from "../../ui/icons";
 import { BodyPrimary } from "../../ui/text";
 import { TextBox } from "../../ui/text-box/styled";
 

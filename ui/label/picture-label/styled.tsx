@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { StyledCloseRounded } from "../../icons";
 
 export const PictureLabelRoot = styled.div`
   position: relative;

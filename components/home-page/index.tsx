@@ -3,11 +3,8 @@ import {
   StyledCarMobile,
   StyledQuearBigLogo,
 } from "../../ui/icons";
-import { SancorSVGIcon } from "../../ui/icons/svg/sancor-icon";
 import { CarouselComponent } from "../carousel";
 import { FaqComponent } from "../faq";
-import { Footer } from "../footer";
-import { HeaderMobile } from "../header/headerMobile";
 import {
   HomeAbout,
   HomeAboutBackground,

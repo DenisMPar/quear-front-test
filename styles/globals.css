@@ -19,8 +19,10 @@ a {
 :root {
   
   --primary:#4145FB;
+  --primary-hover:#575afd;
   --secondary:#ECECFF;
   --terciary: #52F0AE;
+  --terciary-hover: #a6fad7;
   --bg:#FFFFFF;
   --bg-secondary:#F7F7F7;
   --dark-ligth:#4F4F4F;

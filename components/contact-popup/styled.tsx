@@ -11,7 +11,7 @@ import {
 export const ContactPopUpRoot = styled(animated.aside)`
   display: grid;
   grid-template-rows: 4fr 1fr;
-
+  gap: 10px;
   margin: 0 auto;
   position: fixed;
   margin-left: auto;
@@ -20,9 +20,9 @@ export const ContactPopUpRoot = styled(animated.aside)`
   right: 0;
   z-index: 999;
   width: 100%;
-  max-width: 600px;
   min-height: 70vh;
   padding: 27px 14px;
+  padding-bottom: 6px;
   padding-top: 33px;
   background: var(--bg);
   border-radius: 32px 32px 0px 0px;
@@ -36,6 +36,9 @@ export const ContactPopUpContentContainer = styled.div`
   margin: 0 auto;
 `;
 export const ContactPopUpTitleContainer = styled.div`
+  max-width: 400px;
+  margin: 0 auto;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -1,17 +1,9 @@
-import OptionGroupUnstyled, {
-  OptionGroupUnstyledProps,
-} from "@mui/base/OptionGroupUnstyled";
 import SelectUnstyled, {
   SelectOption,
   SelectUnstyledProps,
 } from "@mui/base/SelectUnstyled";
-import { SelectChangeEvent } from "@mui/material";
-import * as React from "react";
 import {
   StyledButton,
-  StyledGroupHeader,
-  StyledGroupOptions,
-  StyledGroupRoot,
   StyledListbox,
   StyledOption,
   StyledPopper,

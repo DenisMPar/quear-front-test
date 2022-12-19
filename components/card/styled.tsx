@@ -1,8 +1,22 @@
 import styled from "@emotion/styled";
-export const CardRoot = styled.div`
+
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
+  active: boolean | undefined;
+}
+export const CardRoot = styled.div<Props>`
   width: 234px;
   height: 388px;
   border-radius: 10px;
+  border: ${(props) => (props.active ? "1px solid var(--primary)" : "")};
+`;
+export const CardArrow = styled.div<Props>`
+  display: ${(props) => (props.active ? "block" : "none")};
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--primary);
 `;
 export const CardTop = styled.div`
   background-color: var(--primary);
@@ -13,7 +27,7 @@ export const CardTop = styled.div`
   justify-content: center;
   width: 100%;
   height: 35px;
-  border-radius: 10px 10px 0 0;
+  border-radius: 7px 7px 0 0;
 `;
 export const CardBody = styled.div`
   background-color: var(--bg-secondary);

@@ -23,6 +23,10 @@ export const ButtonPrimary = styled(BaseButton)<Props>`
     props.variant == "dark" ? `var(--bg)` : `var(--primary)`};
   background-color: ${(props) =>
     props.variant == "dark" ? `var(--primary)` : `var(--bg)`};
+  &:hover {
+    background-color: ${(props) =>
+      props.variant == "dark" ? `var(--primary-hover)` : `var(--secondary)`};
+  }
 `;
 export const ButtonPrimaryBig = styled(ButtonPrimary)`
   height: 48px;
@@ -34,6 +38,9 @@ export const ButtonOutlined = styled(BaseButton)`
   background: none;
   border: solid 1px;
   border-color: var(--primary);
+  &:hover {
+    background-color: var(--secondary);
+  }
 `;
 export const ButtonOutlinedBig = styled(ButtonOutlined)`
   height: 48px;
@@ -52,5 +59,8 @@ export const ButtonBig = styled(BaseButton)`
   border-radius: 12px;
   @media screen and (min-width: 1024px) {
     padding: 22px;
+  }
+  &:hover {
+    background-color: var(--secondary);
   }
 `;

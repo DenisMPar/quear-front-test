@@ -86,7 +86,9 @@ export const FooterLink = styled.a`
   font-size: 12px;
   font-weight: 700;
   color: var(--primary);
-  text-decoration-line: underline;
+  &:hover {
+    text-decoration-line: underline;
+  }
 `;
 export const FooterContainerSocialMedia = styled.div`
   display: flex;
@@ -94,5 +96,10 @@ export const FooterContainerSocialMedia = styled.div`
   margin: 0 auto;
   @media screen and (min-width: 1024px) {
     grid-area: 1 / 3 / 2 / 4;
+  }
+`;
+export const FooterContainerIcon = styled.div`
+  &:hover {
+    scale: 1.1;
   }
 `;

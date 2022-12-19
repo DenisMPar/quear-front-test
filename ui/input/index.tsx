@@ -1,13 +1,9 @@
-import { jsx } from "@emotion/react";
-import { IconProps } from "@mui/material";
-import { ComponentType, useState } from "react";
-import { JsxElement } from "typescript";
-import { StyledPasswordHide } from "../icons";
+import { useState } from "react";
+import { StyledEyeUnColored, StyledPasswordHide } from "../icons";
 import {
-  InputWithIconStyled,
-  InputWithIconRoot,
-  InputOutlined,
   InputPasswordContainerIcon,
+  InputWithIconRoot,
+  InputWithIconStyled,
   InputWithIconStyledBig,
 } from "./styled";
 
@@ -41,7 +37,11 @@ export const InputPassword = (props: Props) => {
         type={showPassword ? "text" : "password"}
       ></InputWithIconStyledBig>
       <InputPasswordContainerIcon onClick={togglePassword}>
-        <StyledPasswordHide color="dark-ligth" />
+        {showPassword ? (
+          <StyledEyeUnColored color="dark-ligth" />
+        ) : (
+          <StyledPasswordHide color="dark-ligth" />
+        )}
       </InputPasswordContainerIcon>
     </InputWithIconRoot>
   );

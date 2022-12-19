@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import { NextPage } from "next";
 import Image from "next/image";
 import { CardComponent } from "../../components/card";
-import { CarouselResponsiveComponent } from "../../components/carousel/responsive";
 import { HeaderDestkop } from "../../components/header/header-desktop";
 import { HeaderMobile } from "../../components/header/headerMobile";
 import { SelectComponent } from "../../components/select";
@@ -177,9 +176,8 @@ const Ui: NextPage = () => {
         <div
           style={{
             width: "100%",
-            maxWidth: "400px",
+            maxWidth: "800px",
             display: "flex",
-            flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
             gap: "10px",
@@ -187,6 +185,7 @@ const Ui: NextPage = () => {
           }}
         >
           <CardComponent></CardComponent>
+          <CardComponent active></CardComponent>
         </div>
         <h2>Textbox</h2>
         <div
@@ -234,90 +233,12 @@ const Ui: NextPage = () => {
           />
           <TextAreaShadowed placeholder="Text Area" />
         </div>
-
-        <CarouselResponsiveComponent
-          cellAlign="center"
-          autoplay={true}
-          wrapAround={true}
-          style={{ maxWidth: "375px" }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <StyledCreditCard></StyledCreditCard>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <StyledCreditCard></StyledCreditCard>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <StyledCreditCard></StyledCreditCard>
-          </div>
-        </CarouselResponsiveComponent>
       </div>
-      <div
-        style={{
-          width: "100%",
-          maxWidth: "1366px",
-          overflowX: "scroll",
-        }}
-      >
-        <div
-          style={{
-            width: "fit-content",
-            display: "flex",
-            gap: "15px",
-          }}
-        >
-          <CardComponent />
-          <CardComponent />
-          <CardComponent />
-          <CardComponent />
-          <CardComponent />
-          <CardComponent />
-          <CardComponent />
-        </div>
-      </div>
-      <CarouselResponsiveComponent
-        cellAlign="left"
-        autoplay={false}
-        wrapAround={false}
-        style={{ marginTop: "40px" }}
-      >
-        <CardComponent />
-        <CardComponent />
-        <CardComponent />
-        <CardComponent />
-        <CardComponent />
-        <CardComponent />
-        <CardComponent />
-        <CardComponent />
-        <CardComponent />
-        <CardComponent />
-        <CardComponent />
-        <CardComponent />
-        <CardComponent />
-        <CardComponent />
-      </CarouselResponsiveComponent>
 
       <div
         style={{
           backgroundColor: "var(--bg-secondary)",
+          margin: "0 auto",
           width: "100%",
           maxWidth: "750px",
           display: "flex",
@@ -329,7 +250,6 @@ const Ui: NextPage = () => {
         }}
       >
         <SelectGroupedComponent
-          onChange={(e) => console.log(e?.target.textContent)}
           placeHolder="Elegir marca"
           values={[
             {
@@ -354,6 +274,7 @@ const Ui: NextPage = () => {
       <div
         style={{
           backgroundColor: "var(--bg-secondary)",
+          margin: "0 auto",
           width: "100%",
           height: "600px",
           maxWidth: "750px",

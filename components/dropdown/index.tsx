@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { StyledArrow } from "../../ui/icons";
-import { TextBox } from "../../ui/text-box/styled";
 import {
   ArrowContainer,
   ArrowContainerMobile,

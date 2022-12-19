@@ -1,13 +1,12 @@
 import styled from "@emotion/styled";
 
-import SelectUnstyled, {
-  SelectUnstyledProps,
-  selectUnstyledClasses,
-} from "@mui/base/SelectUnstyled";
 import OptionUnstyled, {
   optionUnstyledClasses,
 } from "@mui/base/OptionUnstyled";
 import PopperUnstyled from "@mui/base/PopperUnstyled";
+import SelectUnstyled, {
+  selectUnstyledClasses,
+} from "@mui/base/SelectUnstyled";
 
 export const StyledSelect = styled(SelectUnstyled)`
   background-color: var(--bg);
@@ -115,7 +114,8 @@ export const StyledGroupOptions = styled("ul")`
   }
 `;
 export const StyledLine = styled.hr`
-  margin: 0;
+  max-width: 90%;
+  margin: 0 auto;
   margin-top: 16px;
   height: 1px;
   background-color: var(--primary);

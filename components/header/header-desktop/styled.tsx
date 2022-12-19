@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import Head from "next/head";
 
 export const HeaderDesktopRoot = styled.header`
   padding: 0 16px;

@@ -1,13 +1,6 @@
 import styled from "@emotion/styled";
 
-import Link from "next/link";
-import { animated } from "react-spring";
-import {
-  BodyPrimary,
-  SubtitlePrimary,
-  SubtitleSecondary,
-  SubtitleTerciary,
-} from "../../ui/text";
+import { BodyPrimary, SubtitlePrimary, SubtitleTerciary } from "../../ui/text";
 
 export const ContactPageRoot = styled.div`
   display: grid;
@@ -67,7 +60,6 @@ export const ContactPageBody = styled(SubtitlePrimary)`
 export const ContactPageTextContainer = styled.div`
   width: 100%;
   max-width: 400px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 12px;
