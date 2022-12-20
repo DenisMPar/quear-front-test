@@ -1,24 +1,13 @@
 import { useState } from "react";
 import { useTransition } from "react-spring";
-import { ButtonPrimary, ButtonPrimaryBig } from "../../ui/buttons/styled";
+import { StyledClose, StyledQuearBigLogoBlue } from "../../ui/icons";
+import { ContactPopUpMainComponent } from "./main";
+import { ContactPopUpSendMailComponent } from "./send-mail";
 import {
-  StyledClose,
-  StyledPhone,
-  StyledQuearBigLogoBlue,
-  StyledWhatsApp,
-} from "../../ui/icons";
-import { InputShadowed, TextAreaShadowed } from "../../ui/input/styled";
-import { BodyTerciary } from "../../ui/text";
-import {
-  ContactPopUpButtonText,
   ContactPopUpCloseContainer,
   ContactPopUpContentContainer,
   ContactPopUpLogoContainer,
   ContactPopUpRoot,
-  ContactPopUpSendMailContainer,
-  ContactPopUpSubTitle,
-  ContactPopUpTextAreaContainer,
-  ContactPopUpTextContainer,
   ContactPopUpTitle,
   ContactPopUpTitleContainer,
 } from "./styled";
@@ -56,58 +45,11 @@ export const ContactPopUpComponent = (props: props) => {
                 </ContactPopUpCloseContainer>
               </ContactPopUpTitleContainer>
               {showSendMail ? (
-                <ContactPopUpSendMailContainer>
-                  <InputShadowed placeholder="Nombre"></InputShadowed>
-                  <InputShadowed placeholder="Mail"></InputShadowed>
-                  <ContactPopUpTextAreaContainer>
-                    <TextAreaShadowed placeholder="Consulta"></TextAreaShadowed>
-                  </ContactPopUpTextAreaContainer>
-                  <div>
-                    <ButtonPrimary variant="dark">Enviar</ButtonPrimary>
-                    <p
-                      style={{ margin: 0, textAlign: "center" }}
-                      onClick={toggleSendMail}
-                    >
-                      atras
-                    </p>
-                  </div>
-                </ContactPopUpSendMailContainer>
+                <ContactPopUpSendMailComponent
+                  toggleSendMail={toggleSendMail}
+                />
               ) : (
-                <>
-                  <ContactPopUpTextContainer>
-                    <ContactPopUpSubTitle>
-                      Atención telefónica
-                    </ContactPopUpSubTitle>
-                    <BodyTerciary>
-                      Lunes a viernes de 9am a 6pm. <br /> Sábados de 9am a 2pm.
-                    </BodyTerciary>
-                    <ButtonPrimaryBig variant="dark">
-                      <StyledPhone color="bg" />
-                      <ContactPopUpButtonText>4793-4566</ContactPopUpButtonText>
-                    </ButtonPrimaryBig>
-                  </ContactPopUpTextContainer>
-                  <ContactPopUpTextContainer>
-                    <ContactPopUpSubTitle>Whatsapp</ContactPopUpSubTitle>
-                    <BodyTerciary>
-                      Lunes a viernes de 9am a 6pm. <br /> Sábados de 9am a 2pm.
-                    </BodyTerciary>
-                    <ButtonPrimaryBig variant="dark">
-                      <StyledWhatsApp color="bg" />
-                      <ContactPopUpButtonText>
-                        ¡Chateá con nosotros!
-                      </ContactPopUpButtonText>
-                    </ButtonPrimaryBig>
-                  </ContactPopUpTextContainer>
-                  <ContactPopUpTextContainer>
-                    <ContactPopUpSubTitle>Mail</ContactPopUpSubTitle>
-                    <ButtonPrimaryBig variant="dark" onClick={toggleSendMail}>
-                      <StyledPhone color="bg" />
-                      <ContactPopUpButtonText>
-                        contacto@seguros.com
-                      </ContactPopUpButtonText>
-                    </ButtonPrimaryBig>
-                  </ContactPopUpTextContainer>
-                </>
+                <ContactPopUpMainComponent toggleSendMail={toggleSendMail} />
               )}
             </ContactPopUpContentContainer>
             <ContactPopUpLogoContainer>

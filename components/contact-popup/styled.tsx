@@ -55,29 +55,12 @@ export const ContactPopUpTitle = styled(SubtitlePrimary)`
   color: var(--primary);
   line-height: 21px;
 `;
-export const ContactPopUpSubTitle = styled(SubtitleTerciary)`
-  margin: 0;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--dark-ligth);
-`;
+
 export const ContactPopUpBody = styled(SubtitlePrimary)`
   color: var(--primary);
   line-height: 24px;
 `;
-export const ContactPopUpTextContainer = styled.div`
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-`;
-export const ContactPopUpButtonText = styled(BodyPrimary)`
-  font-weight: 700;
-  font-size: 16px;
-  margin-left: 10px;
-`;
+
 export const ContactPopUpLogoContainer = styled.div`
   display: flex;
   align-items: center;
@@ -87,16 +70,4 @@ export const ContactPopUpLogoContainer = styled.div`
 `;
 export const ContactPopUpPhoneContainer = styled.div`
   cursor: pointer;
-`;
-export const ContactPopUpSendMailContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  max-width: 346px;
-  margin: 0 auto;
-`;
-export const ContactPopUpTextAreaContainer = styled.div`
-  height: 218px;
 `;
