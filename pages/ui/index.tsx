@@ -249,19 +249,27 @@ const Ui: NextPage = () => {
           padding: "16px",
         }}
       >
-        <SelectGroupedComponent
-          placeHolder="Elegir marca"
-          values={[
-            {
-              title: "Más buscadas:",
-              options: ["Chevrolet", "Ford", "Renault"],
-            },
-            {
-              title: "Todas las marcas:",
-              options: ["Audi", "BMW"],
-            },
-          ]}
-        />
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            console.log(e.target);
+          }}
+        >
+          <SelectGroupedComponent
+            placeHolder="Elegir marca"
+            values={[
+              {
+                title: "Más buscadas:",
+                options: ["Chevrolet", "Ford", "Renault"],
+              },
+              {
+                title: "Todas las marcas:",
+                options: ["Audi", "BMW"],
+              },
+            ]}
+          />
+          <button type="submit">sunmit</button>
+        </form>
 
         <SelectComponent
           onChange={(e) => {

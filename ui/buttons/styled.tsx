@@ -39,7 +39,7 @@ export const ButtonOutlined = styled(BaseButton)`
   border: solid 1px;
   border-color: var(--primary);
   &:hover {
-    background-color: var(--secondary);
+    background-color: var(--secondary-hover);
   }
 `;
 export const ButtonOutlinedBig = styled(ButtonOutlined)`

@@ -27,7 +27,7 @@ export function HeaderDestkop() {
               </LinkWithIconHeader>
             </HeaderDesktopLi>
             <HeaderDesktopLi>
-              <LinkWithIconHeader Icon={StyledMoneyUnColored} href="/">
+              <LinkWithIconHeader Icon={StyledMoneyUnColored} href="/cotiza">
                 Cotizá
               </LinkWithIconHeader>
             </HeaderDesktopLi>

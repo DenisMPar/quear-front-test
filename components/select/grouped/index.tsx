@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { Paper, Popper } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import { styled as style } from "@mui/system";
+import { useState } from "react";
 
 const GroupHeader = style("div")(({ theme }) => ({
   fontFamily: "Nunito",
@@ -58,6 +59,15 @@ interface Props {
 }
 
 export function SelectGroupedComponent(props: Props) {
+  const [value, setValue] = useState<
+    | {
+        firstLetter: string;
+        option: string;
+        group: string;
+      }
+    | null
+    | undefined
+  >(null);
   //crate a new object with first letter capitalized and a key first letter to sort later
   const options = props.values.map((option) => {
     let title = option.title;
@@ -80,6 +90,7 @@ export function SelectGroupedComponent(props: Props) {
 
   return (
     <Autocomplete
+      value={value}
       onChange={(
         event: any,
         newValue: {
@@ -88,7 +99,7 @@ export function SelectGroupedComponent(props: Props) {
           group: string;
         } | null
       ) => {
-        console.log(newValue?.option);
+        setValue(newValue);
       }}
       PaperComponent={PaperStyled}
       PopperComponent={PopperStyled}
