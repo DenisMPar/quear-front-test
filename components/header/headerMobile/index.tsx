@@ -26,8 +26,6 @@ export function HeaderMobile(props: Props) {
     setShowMenu(!showMenu);
   }
   function toggleContact() {
-    console.log("toggle");
-
     setShowContact(!showContact);
   }
   return props.type == "small" ? (
