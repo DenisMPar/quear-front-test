@@ -40,66 +40,9 @@ export const FooterBackground = styled.div`
     grid-row-gap: 0px;
   }
 `;
-export const FooterContainerMain = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 23px;
-  @media screen and (min-width: 1024px) {
-    grid-area: 1 / 1 / 2 / 2;
-  }
-`;
-export const FooterContainerTextAndLink = styled.div`
-  width: 100%;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-export const FooterContainerText = styled.div`
-  width: 100%;
-  max-width: 526px;
-  margin: 0 auto;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  @media screen and (min-width: 1024px) {
-    justify-content: center;
-    flex-direction: row;
-    gap: 10px;
-  }
-`;
 export const FooterContainerQr = styled.div`
   @media screen and (min-width: 1024px) {
     justify-content: center;
-  }
-`;
-export const FooterText = styled(BodyPrimary)`
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--dark-ligth);
-`;
-export const FooterLink = styled.a`
-  margin-top: 9px;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--primary);
-  &:hover {
-    text-decoration-line: underline;
-  }
-`;
-export const FooterContainerSocialMedia = styled.div`
-  display: flex;
-  gap: 33px;
-  margin: 0 auto;
-  @media screen and (min-width: 1024px) {
-    grid-area: 1 / 3 / 2 / 4;
-  }
-`;
-export const FooterContainerIcon = styled.div`
-  &:hover {
-    scale: 1.1;
   }
 `;
