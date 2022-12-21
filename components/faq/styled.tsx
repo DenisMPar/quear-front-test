@@ -3,13 +3,14 @@ import { SubtitleSecondary } from "../../ui/text";
 import { TextBox } from "../../ui/text-box/styled";
 
 export const FaqRoot = styled(TextBox)`
-  padding: 15px;
+  padding: 24px;
   padding-top: 24px;
   display: flex;
   flex-direction: column;
   gap: 22px;
   @media screen and (min-width: 1024px) {
-    padding: 20px 79px 58px 46px;
+    padding: 58px 46px;
+    gap: 40px;
   }
 `;
 export const FaqTitle = styled(SubtitleSecondary)`
