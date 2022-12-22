@@ -26,7 +26,9 @@ a {
   --terciary-hover: #a6fad7;
   --bg:#FFFFFF;
   --bg-secondary:#F7F7F7;
+  --bg-terciary:#EAEAEA;
   --dark-ligth:#4F4F4F;
   --dark-secondary:#AEAEAE;
+  --dark-terciary:#c7c7c7;
   --shadow:rgba(65, 69, 251, 0.25);
 }

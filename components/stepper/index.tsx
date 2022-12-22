@@ -1,18 +1,21 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepButton from "@mui/material/StepButton";
 import Button from "@mui/material/Button";
+import Step from "@mui/material/Step";
+import Stepper from "@mui/material/Stepper";
 import Typography from "@mui/material/Typography";
-import { StyledCheckRounded } from "../../ui/icons";
-import { CheckRoundedStepper } from "./styled";
-import { CheckRoundedSVGIcon } from "../../ui/icons/svg/check-rounded-icon";
+import * as React from "react";
+import { StyledEdit } from "../../ui/icons";
+import { BodyPrimary } from "../../ui/text";
+import { StepperConectorComponent } from "./connector";
+import { StepperIconComponent } from "./icon";
+import { StyledStepLabel } from "./styled";
 
 const steps = [
-  "Select campaign settings",
-  "Create an ad group",
-  "Create an ad",
+  "Versión",
+  "Cantidad de puertas",
+  "GNC",
+  "Localizador",
+  "Donde vivís",
 ];
 
 export default function StepperComponent() {
@@ -59,6 +62,7 @@ export default function StepperComponent() {
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
+
     handleNext();
   };
 
@@ -69,12 +73,29 @@ export default function StepperComponent() {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Stepper orientation="vertical" nonLinear activeStep={activeStep}>
+      <Stepper
+        orientation="vertical"
+        nonLinear
+        activeStep={activeStep}
+        connector={<StepperConectorComponent />}
+      >
         {steps.map((label, index) => (
           <Step key={label} completed={completed[index]}>
-            <StepButton color="inherit" onClick={handleStep(index)}>
-              {label}
-            </StepButton>
+            <StyledStepLabel
+              StepIconComponent={StepperIconComponent}
+              color="inherit"
+              onClick={handleStep(index)}
+            >
+              <div>
+                {label}{" "}
+                {completed[index] ? (
+                  <BodyPrimary>1.0 Premier I L/21</BodyPrimary>
+                ) : (
+                  <BodyPrimary>-</BodyPrimary>
+                )}{" "}
+              </div>
+              {completed[index] && <StyledEdit width="20px" height="20px" />}
+            </StyledStepLabel>
           </Step>
         ))}
       </Stepper>

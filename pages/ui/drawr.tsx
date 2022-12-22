@@ -1,10 +1,10 @@
 import { NextPage } from "next";
-import SwipeableEdgeDrawer from "../../components/steps-menu";
+import { StepsDrawer } from "../../components/steps-drawer";
 
 const Drawer: NextPage = () => {
   return (
-    <div style={{ height: "100vh", backgroundColor: "blue" }}>
-      <SwipeableEdgeDrawer />
+    <div style={{ height: "100vh", backgroundColor: "var(--secondary)" }}>
+      <StepsDrawer />
     </div>
   );
 };

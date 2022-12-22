@@ -39,9 +39,16 @@ import { ArrowSVGIcon } from "./svg/arrow-icon";
 import { CarDesktopSVGIcon } from "./svg/car-logo-desktop";
 import { PlusSVGIcon } from "./svg/plus-icon";
 import { PasswordHideSVGIcon } from "./svg/password-hide-icon";
+import { BulletSVGIcon } from "./svg/bullet-icon";
 
 export interface IconsProps {
-  color?: "primary" | "secondary" | "terciary" | "bg" | "dark-ligth";
+  color?:
+    | "primary"
+    | "secondary"
+    | "terciary"
+    | "bg"
+    | "bg-terciary"
+    | "dark-ligth";
   width?: string;
   height?: string;
 }
@@ -247,6 +254,15 @@ export const StyledPasswordHide = ({ color, width, height }: IconsProps) => {
   return (
     <PasswordHide color={color} width={width} height={height}></PasswordHide>
   );
+};
+const Bullet = styled(BulletSVGIcon)`
+  width: ${(props) => (props.width ? props.width : "24px")};
+  height: ${(props) => (props.height ? props.height : "24px")};
+  fill: ${(props) =>
+    props.color ? `var(--${props.color})` : `var(--primary)`};
+`;
+export const StyledBullet = ({ color, width, height }: IconsProps) => {
+  return <Bullet color={color} width={width} height={height}></Bullet>;
 };
 
 //two colors icons (can change one color)

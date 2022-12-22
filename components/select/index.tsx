@@ -1,24 +1,12 @@
-import SelectUnstyled, {
-  SelectOption,
-  SelectUnstyledProps,
-} from "@mui/base/SelectUnstyled";
+import { Autocomplete } from "@mui/material";
+import { useState } from "react";
 import {
-  StyledButton,
-  StyledListbox,
-  StyledOption,
-  StyledPopper,
+  PaperStyled,
+  PopperStyled,
+  StyledInput,
+  StyledLi,
+  StyledTextField,
 } from "./styled";
-
-function CustomSelect(props: SelectUnstyledProps<string>) {
-  const slots: SelectUnstyledProps<string>["slots"] = {
-    root: StyledButton,
-    listbox: StyledListbox,
-    popper: StyledPopper,
-    ...props.slots,
-  };
-
-  return <SelectUnstyled {...props} slots={slots} />;
-}
 
 interface Props {
   values: string[];
@@ -27,26 +15,29 @@ interface Props {
 }
 
 export function SelectComponent(props: Props) {
-  function renderOptions() {
-    return props.values.map((el) => {
-      return (
-        <StyledOption key={el} value={el}>
-          {el}
-        </StyledOption>
-      );
-    });
-  }
-
-  function renderValue(option: SelectOption<string> | null) {
-    if (option == null) {
-      return <span>{props.placeHolder}</span>;
-    }
-
-    return <span>{option.label}</span>;
-  }
+  const [value, setValue] = useState<string | null>(null);
   return (
-    <CustomSelect onChange={props.onChange} renderValue={renderValue}>
-      {renderOptions()}
-    </CustomSelect>
+    <Autocomplete
+      value={value}
+      onChange={(event: any, newValue: string | null) => {
+        setValue(newValue);
+        props.onChange(newValue);
+      }}
+      PaperComponent={PaperStyled}
+      PopperComponent={PopperStyled}
+      id="Autocomplete"
+      options={props.values}
+      sx={{ width: "100%", maxWidth: "320px", color: "var(--primary)" }}
+      renderInput={(params) => (
+        <StyledTextField ref={params.InputProps.ref}>
+          <StyledInput
+            type="text"
+            placeholder={props.placeHolder}
+            {...params.inputProps}
+          />
+        </StyledTextField>
+      )}
+      renderOption={(props, option) => <StyledLi {...props}>{option}</StyledLi>}
+    />
   );
 }

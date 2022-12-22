@@ -1,9 +1,14 @@
 import styled from "@emotion/styled";
-import { Box } from "@mui/system";
+import { Box, styled as materialStyled } from "@mui/system";
 import { StyledArrow } from "../../ui/icons";
 import { SubtitlePrimary } from "../../ui/text";
 
-export const StepsMenuHeader = styled(Box)`
+export const StepsDrawerRoot = styled.div`
+  height: 100%;
+  padding: 0 18px;
+`;
+
+export const StepsDrawerHeader = styled(Box)`
   border-radius: 10px 10px 0px 0px;
   display: flex;
   align-items: center;
@@ -20,10 +25,10 @@ export const StepsMenuHeader = styled(Box)`
   color: var(--bg);
   background-color: var(--primary);
 `;
-export const StepsMenutitle = styled(SubtitlePrimary)`
+export const StepsDrawertitle = styled(SubtitlePrimary)`
   font-size: 14px;
 `;
-export const StepsMenuArrowContainer = styled.div`
+export const StepsDrawerArrowContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
