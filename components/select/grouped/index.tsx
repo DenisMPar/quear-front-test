@@ -11,6 +11,8 @@ interface Props {
   values: Array<{ title: string; options: string[] }>;
   placeHolder?: string;
   onChange: (props?: any) => any;
+  handleSelect: (key: string, value: any) => void;
+  selectKey: string;
 }
 
 export function SelectGroupedComponent(props: Props) {
@@ -46,6 +48,7 @@ export function SelectGroupedComponent(props: Props) {
         } | null
       ) => {
         props.onChange(newValue);
+        props.handleSelect(props.selectKey, newValue?.option);
       }}
       PaperComponent={PaperStyled}
       PopperComponent={PopperStyled}
@@ -56,7 +59,7 @@ export function SelectGroupedComponent(props: Props) {
       isOptionEqualToValue={(option, value) => {
         return option.option == value.option;
       }}
-      sx={{ width: "100%", maxWidth: "320px" }}
+      sx={{ width: "100%", maxWidth: "343px" }}
       renderInput={(params) => (
         <StyledTextField ref={params.InputProps.ref}>
           <StyledInput

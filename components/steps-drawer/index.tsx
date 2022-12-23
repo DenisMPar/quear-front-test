@@ -15,24 +15,24 @@ import {
 const drawerBleeding = 56;
 
 interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window?: () => Window;
+  goToStep: (step: number) => void;
+  stepsData: any;
+  activeStep: number;
+  completed: any;
+  steps: any[];
 }
 
 export function StepsDrawer(props: Props) {
-  const { window } = props;
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = () => {
     setOpen(!open);
   };
 
-  // This is used only for the example
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
+  function handleStep(step: any) {
+    props.goToStep(step);
+    toggleDrawer();
+  }
 
   return (
     <StepsDrawerRoot>
@@ -47,7 +47,6 @@ export function StepsDrawer(props: Props) {
       />
 
       <SwipeableDrawer
-        container={container}
         anchor="bottom"
         open={open}
         onClose={toggleDrawer}
@@ -59,7 +58,9 @@ export function StepsDrawer(props: Props) {
         }}
       >
         <StepsDrawerHeader>
-          <StepsDrawertitle>Cotizá: Paso 1/10</StepsDrawertitle>
+          <StepsDrawertitle>
+            Cotizá: Paso {props.activeStep + 1 + "/" + props.steps.length}
+          </StepsDrawertitle>
           <StepsDrawerArrowContainer
             onClick={toggleDrawer}
             style={{ transform: open ? "rotate(180deg)" : "" }}
@@ -75,7 +76,13 @@ export function StepsDrawer(props: Props) {
             overflow: "auto",
           }}
         >
-          <StepperComponent />
+          <StepperComponent
+            steps={props.steps}
+            completed={props.completed}
+            activeStep={props.activeStep}
+            stepsData={props.stepsData}
+            goToStep={handleStep}
+          />
         </Box>
       </SwipeableDrawer>
     </StepsDrawerRoot>

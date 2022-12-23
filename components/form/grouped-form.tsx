@@ -5,6 +5,9 @@ import { SelectGroupedComponent } from "../select/grouped";
 export function GroupedFormComponent() {
   const { handleSubmit, reset, setValue, control } = useForm();
   const [data, setData] = useState(null);
+  function handleSelect(data: any) {
+    console.log(data);
+  }
   return (
     <>
       <div>
@@ -18,6 +21,7 @@ export function GroupedFormComponent() {
           render={({ field }: any) => (
             <SelectGroupedComponent
               {...field}
+              handleSelect={handleSelect}
               ref={null}
               placeHolder="Elegir marca"
               values={[

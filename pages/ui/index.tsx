@@ -248,32 +248,7 @@ const Ui: NextPage = () => {
           gap: "10px",
           padding: "16px",
         }}
-      >
-        <SelectGroupedComponent
-          onChange={(e) => {
-            console.log(e);
-          }}
-          placeHolder="Elegir marca"
-          values={[
-            {
-              title: "Más buscadas:",
-              options: ["Chevrolet", "Ford", "Renault"],
-            },
-            {
-              title: "Todas las marcas:",
-              options: ["Audi", "BMW"],
-            },
-          ]}
-        />
-
-        <SelectComponent
-          onChange={(e) => {
-            console.log(e);
-          }}
-          values={["2022", "2021", "2020", "2019"]}
-          placeHolder={"Elegir año"}
-        />
-      </div>
+      ></div>
       <div
         style={{
           backgroundColor: "var(--bg-secondary)",
