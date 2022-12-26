@@ -12,7 +12,7 @@ interface Props {
   values: string[];
   placeHolder: string;
   onChange: (prp?: any) => any;
-  handleSelect: (key: string, value: any) => void;
+  handleSelect?: (key: string, value: any) => void;
   selectKey: string;
 }
 
@@ -24,7 +24,9 @@ export function SelectComponent(props: Props) {
       onChange={(event: any, newValue: string | null) => {
         setValue(newValue);
         props.onChange(newValue);
-        props.handleSelect(props.selectKey, newValue);
+        if (props.handleSelect) {
+          props.handleSelect(props.selectKey, newValue);
+        }
       }}
       PaperComponent={PaperStyled}
       PopperComponent={PopperStyled}

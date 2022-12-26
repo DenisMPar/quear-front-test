@@ -1,8 +1,9 @@
-import { Controller } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { SubtitlePrimary } from "../../../ui/text";
 import { SelectComponent } from "../../select";
 
-export function YearStepComponent({ control, handleSelect }: any) {
+export function YearStepComponent({ handleSelect }: any) {
+  const { handleSubmit, reset, setValue, control } = useForm();
   return (
     <div
       style={{

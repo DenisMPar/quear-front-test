@@ -6,60 +6,44 @@ import { BrandStepComponent } from "./car-brand";
 import { DoorsStepComponent } from "./car-doors";
 import { ModelStepComponent } from "./car-model";
 import { Root } from "./styled";
-import { YearStepComponent } from "./year";
-
-interface CotizaInfo {
-  año: string;
-  marca: string;
-  modelo: string;
-  version: string;
-  puertas: number;
-  gnc: boolean;
-  localizador: boolean;
-  direccion: {
-    provincia: string;
-    ciudad: string;
-    codigoPostal: string;
-  };
-  garage: boolean;
-  nacimiento: {
-    dia: number;
-    mes: string;
-    año: number;
-  };
-  mayor: boolean;
-}
+import { YearStepComponent } from "./car-year";
+import { AddressStepComponent } from "./user-adress";
+import { VersionStepComponent } from "./car-version";
+import { FuelStepComponent } from "./car-fuel";
+import { AgeStepComponent } from "./user-age";
+import { TrackerStepComponent } from "./car-tracker";
+import { GarageStepComponent } from "./car-garage";
 
 export function CotizaStepsPage() {
-  const { handleSubmit, reset, setValue, control } = useForm();
   const [data, setData] = useState<any>({});
   const [activeStep, setActiveStep] = useState(0);
   const router = useRouter();
-  const steps = ["Año", "Marca", "Modelo", "Puertas"];
+  const steps = [
+    "Año",
+    "Marca",
+    "Modelo",
+    "Version",
+    "Puertas",
+    "GNC",
+    "Localizador",
+    "Direccion",
+    "Donde duerme",
+    "Fecha de nacimiento",
+  ];
   const [completed, setCompleted] = useState<{
     [key: number]: boolean;
   }>({});
   const stepToShow = [
-    <YearStepComponent
-      key="step1"
-      control={control}
-      handleSelect={handleSelect}
-    />,
-    <BrandStepComponent
-      key="step2"
-      control={control}
-      handleSelect={handleSelect}
-    />,
-    <DoorsStepComponent
-      key="step4"
-      control={control}
-      handleSelect={handleSelect}
-    />,
-    <ModelStepComponent
-      key="step3"
-      control={control}
-      handleSelect={handleSelect}
-    />,
+    <YearStepComponent key="step1" handleSelect={handleSelect} />,
+    <BrandStepComponent key="step2" handleSelect={handleSelect} />,
+    <ModelStepComponent key="step3" handleSelect={handleSelect} />,
+    <VersionStepComponent key="step4" handleSelect={handleSelect} />,
+    <DoorsStepComponent key="step5" handleSelect={handleSelect} />,
+    <FuelStepComponent key="step6" handleSelect={handleSelect} />,
+    <TrackerStepComponent key="step7" handleSelect={handleSelect} />,
+    <AddressStepComponent key="step8" handleSelect={handleSelect} />,
+    <GarageStepComponent key="step8" handleSelect={handleSelect} />,
+    <AgeStepComponent key="step910" handleSelect={handleSelect} />,
   ];
 
   function handleSelect(key: string, value: any) {
@@ -92,8 +76,8 @@ export function CotizaStepsPage() {
     }
   }
   function goToStep(step: number) {
-    setActiveStep(step);
     if (completed[step]) {
+      setActiveStep(step);
       const newCompleted = completed;
       newCompleted[step] = false;
       setCompleted(newCompleted);
@@ -106,12 +90,11 @@ export function CotizaStepsPage() {
 
   return (
     <Root>
-      <p>{JSON.stringify(data)}</p>
       <div onClick={stepBack}>Volver al paso anterior</div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {stepToShow[activeStep]}
-        {isLastStep() && <button>Submit</button>}
-      </form>
+
+      {stepToShow[activeStep]}
+      {isLastStep() && <button>Submit</button>}
+
       <StepsDrawer
         steps={steps}
         completed={completed}

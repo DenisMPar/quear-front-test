@@ -31,18 +31,21 @@ export default function StepperComponent(props: Props) {
             <StyledStepLabel
               StepIconComponent={StepperIconComponent}
               color="inherit"
-              onClick={() => props.goToStep(index)}
             >
               <div>
                 {label}
                 {props.completed[index] ? (
-                  <BodyPrimary>{props.stepsData[keys[index]]}</BodyPrimary>
+                  <BodyPrimary>
+                    {JSON.stringify(props.stepsData[keys[index]])}
+                  </BodyPrimary>
                 ) : (
                   <BodyPrimary>-</BodyPrimary>
                 )}
               </div>
               {props.completed[index] && (
-                <StyledEdit width="20px" height="20px" />
+                <div onClick={() => props.goToStep(index)}>
+                  <StyledEdit width="20px" height="20px" />
+                </div>
               )}
             </StyledStepLabel>
           </Step>

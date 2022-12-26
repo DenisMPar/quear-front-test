@@ -1,13 +1,8 @@
 import { Controller, useForm } from "react-hook-form";
-import {
-  StyledCarFiveDoors,
-  StyledCarFourDoors,
-  StyledCarThreeDoors,
-} from "../../../ui/icons";
 import { SubtitlePrimary } from "../../../ui/text";
 import { SelectButtonsComponent } from "../../select/buttons";
 
-export function DoorsStepComponent({ handleSelect }: any) {
+export function TrackerStepComponent({ handleSelect }: any) {
   const { handleSubmit, reset, setValue, control } = useForm();
   return (
     <div
@@ -19,29 +14,22 @@ export function DoorsStepComponent({ handleSelect }: any) {
         gap: "20px",
       }}
     >
-      <SubtitlePrimary>¿Cuantas puertas tiene?</SubtitlePrimary>
+      <SubtitlePrimary>¿Tiene localizador?</SubtitlePrimary>
       <Controller
         render={({ field }: any) => (
           <SelectButtonsComponent
             {...field}
             handleSelect={handleSelect}
-            selectKey="puertas"
+            selectKey="tracker"
             ref={null}
             values={[
               {
-                icon: <StyledCarThreeDoors />,
-                value: "3",
-                text: "Tres puertas",
+                value: "Si",
+                text: "Si",
               },
               {
-                icon: <StyledCarFourDoors />,
-                value: "4",
-                text: "Cuatro puertas",
-              },
-              {
-                icon: <StyledCarFiveDoors />,
-                value: "5",
-                text: "Cinco puertas",
+                value: "No",
+                text: "No",
               },
             ]}
           />

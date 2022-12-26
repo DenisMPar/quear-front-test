@@ -1,8 +1,9 @@
-import { Controller } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { SubtitlePrimary } from "../../../ui/text";
 import { SelectGroupedComponent } from "../../select/grouped";
 
-export function BrandStepComponent({ control, handleSelect }: any) {
+export function BrandStepComponent({ handleSelect }: any) {
+  const { handleSubmit, reset, setValue, control } = useForm();
   return (
     <div
       style={{

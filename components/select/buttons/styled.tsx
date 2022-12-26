@@ -1,7 +1,11 @@
 import styled from "@emotion/styled";
 
-export const SelectButtonRoot = styled.div`
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
+  horizontal: boolean | undefined;
+}
+
+export const SelectButtonRoot = styled.div<Props>`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${(props) => (props.horizontal ? "row" : "column")};
   gap: 16px;
 `;

@@ -7,7 +7,7 @@ import {
 import { SubtitlePrimary } from "../../../ui/text";
 import { SelectButtonsComponent } from "../../select/buttons";
 
-export function DoorsStepComponent({ handleSelect }: any) {
+export function FuelStepComponent({ handleSelect }: any) {
   const { handleSubmit, reset, setValue, control } = useForm();
   return (
     <div
@@ -19,29 +19,22 @@ export function DoorsStepComponent({ handleSelect }: any) {
         gap: "20px",
       }}
     >
-      <SubtitlePrimary>¿Cuantas puertas tiene?</SubtitlePrimary>
+      <SubtitlePrimary>¿Usa GNC?</SubtitlePrimary>
       <Controller
         render={({ field }: any) => (
           <SelectButtonsComponent
             {...field}
             handleSelect={handleSelect}
-            selectKey="puertas"
+            selectKey="gnc"
             ref={null}
             values={[
               {
-                icon: <StyledCarThreeDoors />,
-                value: "3",
-                text: "Tres puertas",
+                value: "Si",
+                text: "Si",
               },
               {
-                icon: <StyledCarFourDoors />,
-                value: "4",
-                text: "Cuatro puertas",
-              },
-              {
-                icon: <StyledCarFiveDoors />,
-                value: "5",
-                text: "Cinco puertas",
+                value: "No",
+                text: "Otro combustible",
               },
             ]}
           />
