@@ -30,12 +30,7 @@ export function HomeAboutComponent() {
           </HomeAboutText>
         </HomeAboutTextBox>
         <HomeAboutCarouselContainer>
-          <CarouselComponent
-            cellAlign="center"
-            autoplay={true}
-            wrapAround={true}
-            slidesToShow={3}
-          >
+          <CarouselComponent autoplay={true} infinite={true} slidesToShow={3}>
             {carouselIcons.map((icon, index) => {
               return (
                 <HomeAboutCarouselSlide key={index}>
