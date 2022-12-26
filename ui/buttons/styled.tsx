@@ -47,7 +47,7 @@ export const ButtonOutlinedBig = styled(ButtonOutlined)`
 `;
 export const ButtonBig = styled(BaseButton)`
   height: 100%;
-  max-height: 125px;
+  max-height: 96px;
   flex-direction: column;
   padding: 13px 0;
   gap: 7px;
@@ -58,6 +58,7 @@ export const ButtonBig = styled(BaseButton)`
   box-shadow: 2px 4px 4px var(--shadow);
   border-radius: 12px;
   @media screen and (min-width: 1024px) {
+    max-height: 125px;
     padding: 22px;
   }
   &:hover {

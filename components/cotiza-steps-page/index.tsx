@@ -5,7 +5,15 @@ import { StepsDrawer } from "../steps-drawer";
 import { BrandStepComponent } from "./car-brand";
 import { DoorsStepComponent } from "./car-doors";
 import { ModelStepComponent } from "./car-model";
-import { Root } from "./styled";
+import {
+  Root,
+  StepBackArrowContainer,
+  StepBackRoot,
+  StepBackText,
+  StepContainer,
+  StepsContainerLogo,
+  StepsSubmitButton,
+} from "./styled";
 import { YearStepComponent } from "./car-year";
 import { AddressStepComponent } from "./user-adress";
 import { VersionStepComponent } from "./car-version";
@@ -13,6 +21,8 @@ import { FuelStepComponent } from "./car-fuel";
 import { AgeStepComponent } from "./user-age";
 import { TrackerStepComponent } from "./car-tracker";
 import { GarageStepComponent } from "./car-garage";
+import { StyledArrow, StyledQuearBigLogoBlue } from "../../ui/icons";
+import { ButtonPrimary } from "../../ui/buttons/styled";
 
 export function CotizaStepsPage() {
   const [data, setData] = useState<any>({});
@@ -46,23 +56,35 @@ export function CotizaStepsPage() {
     <AgeStepComponent key="step910" handleSelect={handleSelect} />,
   ];
 
+  function handleSubmit() {
+    console.log("submit", { data });
+  }
+
   function handleSelect(key: string, value: any) {
     const newData = { ...data, [key]: value };
     setData(newData);
-    console.log({ data: newData });
 
     setStepCompleted();
     !isLastStep() && handleNext();
   }
   const handleNext = () => {
-    const newActiveStep = steps.findIndex((step, i) => !(i in completed));
-    setActiveStep(newActiveStep);
+    const newActiveStep = !allStepsCompleted()
+      ? steps.findIndex((step, i) => !(i in completed))
+      : steps.length;
+
+    setActiveStep(
+      newActiveStep > steps.length - 1 ? steps.length - 1 : newActiveStep
+    );
   };
   function setStepCompleted() {
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
   }
+  const allStepsCompleted = () => {
+    const completedSteps = Object.keys(completed).length;
+    return completedSteps === steps.length;
+  };
   function stepBack() {
     if (activeStep == 0) {
       router.push("/cotiza");
@@ -90,10 +112,23 @@ export function CotizaStepsPage() {
 
   return (
     <Root>
-      <div onClick={stepBack}>Volver al paso anterior</div>
-
-      {stepToShow[activeStep]}
-      {isLastStep() && <button>Submit</button>}
+      <StepBackRoot onClick={stepBack}>
+        <StepBackArrowContainer>
+          <StyledArrow color="dark-ligth" width="20px" height="20px" />
+        </StepBackArrowContainer>
+        <StepBackText>Volver al paso anterior</StepBackText>
+      </StepBackRoot>
+      <StepContainer>{stepToShow[activeStep]}</StepContainer>
+      {isLastStep() && (
+        <>
+          <StepsSubmitButton onClick={handleSubmit} variant="dark">
+            Ver planes disponibles
+          </StepsSubmitButton>
+          <StepsContainerLogo>
+            <StyledQuearBigLogoBlue />
+          </StepsContainerLogo>
+        </>
+      )}
 
       <StepsDrawer
         steps={steps}

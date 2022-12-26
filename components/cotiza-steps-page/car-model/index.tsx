@@ -1,21 +1,14 @@
 import { Controller, useForm } from "react-hook-form";
 import { SubtitlePrimary } from "../../../ui/text";
 import { SelectComponent } from "../../select";
+import { StepModelInputContainer, StepModelRoot } from "./styled";
 
 export function ModelStepComponent({ handleSelect }: any) {
   const { handleSubmit, reset, setValue, control } = useForm();
   return (
-    <div
-      style={{
-        color: "var(--primary)",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        gap: "20px",
-      }}
-    >
+    <StepModelRoot>
       <SubtitlePrimary>¿Y el modelo?</SubtitlePrimary>
-      <div style={{ width: "100%", maxWidth: "343px" }}>
+      <StepModelInputContainer>
         <Controller
           render={({ field }: any) => (
             <SelectComponent
@@ -30,7 +23,7 @@ export function ModelStepComponent({ handleSelect }: any) {
           name="TextField"
           control={control}
         />
-      </div>
-    </div>
+      </StepModelInputContainer>
+    </StepModelRoot>
   );
 }

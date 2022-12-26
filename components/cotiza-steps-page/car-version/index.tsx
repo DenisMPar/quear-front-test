@@ -1,21 +1,14 @@
 import { Controller, useForm } from "react-hook-form";
 import { SubtitlePrimary } from "../../../ui/text";
 import { SelectComponent } from "../../select";
+import { StepVersionInputContainer, StepVersionRoot } from "./styled";
 
 export function VersionStepComponent({ handleSelect }: any) {
   const { handleSubmit, reset, setValue, control } = useForm();
   return (
-    <div
-      style={{
-        color: "var(--primary)",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        gap: "20px",
-      }}
-    >
+    <StepVersionRoot>
       <SubtitlePrimary>¿Y la versión?</SubtitlePrimary>
-      <div style={{ width: "100%", maxWidth: "343px" }}>
+      <StepVersionInputContainer>
         <Controller
           render={({ field }: any) => (
             <SelectComponent
@@ -35,7 +28,7 @@ export function VersionStepComponent({ handleSelect }: any) {
           name="TextField"
           control={control}
         />
-      </div>
-    </div>
+      </StepVersionInputContainer>
+    </StepVersionRoot>
   );
 }

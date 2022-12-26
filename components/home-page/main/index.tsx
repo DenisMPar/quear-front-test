@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   StyledCarDesktop,
   StyledCarMobile,
@@ -34,7 +35,9 @@ export function HomeMainComponent() {
         <HomeSubTitle>
           Cotizá y comprá el mejor seguro para tu auto.
         </HomeSubTitle>
-        <HomeButton variant="light">COTIZAR</HomeButton>
+        <Link href={"/cotiza"}>
+          <HomeButton variant="light">COTIZAR</HomeButton>
+        </Link>
       </HomeMainTextContainer>
     </HomeMain>
   );

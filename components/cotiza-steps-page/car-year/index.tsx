@@ -1,21 +1,14 @@
 import { Controller, useForm } from "react-hook-form";
 import { SubtitlePrimary } from "../../../ui/text";
 import { SelectComponent } from "../../select";
+import { StepYearInputContainer, StepYearRoot } from "./styled";
 
 export function YearStepComponent({ handleSelect }: any) {
   const { handleSubmit, reset, setValue, control } = useForm();
   return (
-    <div
-      style={{
-        color: "var(--primary)",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        gap: "20px",
-      }}
-    >
+    <StepYearRoot>
       <SubtitlePrimary>¿De qué año es tu auto?</SubtitlePrimary>
-      <div style={{ width: "100%", maxWidth: "343px" }}>
+      <StepYearInputContainer>
         <Controller
           render={({ field }: any) => (
             <SelectComponent
@@ -30,7 +23,7 @@ export function YearStepComponent({ handleSelect }: any) {
           name="TextField"
           control={control}
         />
-      </div>
-    </div>
+      </StepYearInputContainer>
+    </StepYearRoot>
   );
 }

@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
-import { Box, styled as materialStyled } from "@mui/system";
-import { StyledArrow } from "../../ui/icons";
+import { Box } from "@mui/system";
 import { SubtitlePrimary } from "../../ui/text";
 
 export const StepsDrawerRoot = styled.div`
+  position: absolute;
   height: 100%;
   padding: 0 18px;
 `;

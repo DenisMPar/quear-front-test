@@ -4,14 +4,17 @@ import { InputShadowed } from "../../../ui/input/styled";
 import { SubtitlePrimary } from "../../../ui/text";
 import { SelectComponent } from "../../select";
 import { SelectButtonsComponent } from "../../select/buttons";
-import { StyledForm, StyledSubtitle } from "./styled";
+import {
+  StyledForm,
+  StyledFormContainer,
+  StyledFormSelectContainer,
+  StyledSubtitle,
+} from "./styled";
 
 export function AgeStepComponent({ handleSelect }: any) {
   const { handleSubmit, reset, setValue, control, register } = useForm();
 
   function onSubmit(submit: any) {
-    console.log({ submit });
-
     handleSelect("nacimiento", submit);
   }
 
@@ -26,7 +29,7 @@ export function AgeStepComponent({ handleSelect }: any) {
       }}
     >
       <SubtitlePrimary>Fecha de nacimiento</SubtitlePrimary>
-      <div style={{ width: "100%", maxWidth: "343px" }}>
+      <StyledFormContainer>
         <StyledForm action="" onSubmit={handleSubmit(onSubmit)}>
           <InputShadowed
             {...register("dia", { required: true })}
@@ -41,32 +44,34 @@ export function AgeStepComponent({ handleSelect }: any) {
             placeholder="Año"
           />
           <div>
-            <StyledSubtitle>¿El conductor es mayor a 25 años?</StyledSubtitle>
-            <Controller
-              render={({ field }: any) => (
-                <SelectButtonsComponent
-                  horizontal
-                  {...field}
-                  selectKey="mayor"
-                  ref={null}
-                  values={[
-                    {
-                      value: "Si",
-                      text: "Si",
-                    },
-                    {
-                      value: "No",
-                      text: "No",
-                    },
-                  ]}
-                />
-              )}
-              name="mayor"
-              control={control}
-            />
+            <StyledFormSelectContainer>
+              <StyledSubtitle>¿El conductor es mayor a 25 años?</StyledSubtitle>
+              <Controller
+                render={({ field }: any) => (
+                  <SelectButtonsComponent
+                    horizontal
+                    {...field}
+                    selectKey="mayor"
+                    ref={null}
+                    values={[
+                      {
+                        value: "Si",
+                        text: "Si",
+                      },
+                      {
+                        value: "No",
+                        text: "No",
+                      },
+                    ]}
+                  />
+                )}
+                name="mayor"
+                control={control}
+              />
+            </StyledFormSelectContainer>
           </div>
         </StyledForm>
-      </div>
+      </StyledFormContainer>
     </div>
   );
 }
