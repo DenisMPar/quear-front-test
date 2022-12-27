@@ -5,7 +5,7 @@ import { StyledEdit } from "../../ui/icons";
 import { BodyPrimary } from "../../ui/text";
 import { StepperConectorComponent } from "./connector";
 import { StepperIconComponent } from "./icon";
-import { StyledStepLabel } from "./styled";
+import { StepperContainerEdit, StyledStepLabel } from "./styled";
 
 interface Props {
   goToStep: (step: number) => void;
@@ -43,9 +43,9 @@ export default function StepperComponent(props: Props) {
                 )}
               </div>
               {props.completed[index] && (
-                <div onClick={() => props.goToStep(index)}>
+                <StepperContainerEdit onClick={() => props.goToStep(index)}>
                   <StyledEdit width="20px" height="20px" />
-                </div>
+                </StepperContainerEdit>
               )}
             </StyledStepLabel>
           </Step>

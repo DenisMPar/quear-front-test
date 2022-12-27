@@ -32,7 +32,7 @@ export function SelectComponent(props: Props) {
       PopperComponent={PopperStyled}
       id="Autocomplete"
       options={props.values}
-      sx={{ width: "100%", maxWidth: "343px", color: "var(--primary)" }}
+      sx={{ width: "100%", maxWidth: "600px", color: "var(--primary)" }}
       renderInput={(params) => (
         <StyledTextField ref={params.InputProps.ref}>
           <StyledInput

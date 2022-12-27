@@ -59,7 +59,7 @@ export function SelectGroupedComponent(props: Props) {
       isOptionEqualToValue={(option, value) => {
         return option.option == value.option;
       }}
-      sx={{ width: "100%", maxWidth: "343px" }}
+      sx={{ width: "100%", maxWidth: "600px" }}
       renderInput={(params) => (
         <StyledTextField ref={params.InputProps.ref}>
           <StyledInput

@@ -16,7 +16,7 @@ export function YearStepComponent({ handleSelect }: any) {
               handleSelect={handleSelect}
               selectKey="año"
               ref={null}
-              values={["2022", "2021", "2020", "2019"]}
+              values={["2022", "2021", "2020", "2019", "2018", "2017", "2016"]}
               placeHolder={"Elegir año"}
             />
           )}

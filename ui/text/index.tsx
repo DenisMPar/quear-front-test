@@ -24,6 +24,9 @@ export const TitlePrimary = styled(BaseTitle)`
 export const SubtitlePrimary = styled(BaseSubtitle)`
   font-size: 24px;
   line-height: 33px;
+  @media screen and (min-width: 1024px) {
+    font-size: 35px;
+  }
 `;
 
 export const SubtitleSecondary = styled(BaseSubtitle)`

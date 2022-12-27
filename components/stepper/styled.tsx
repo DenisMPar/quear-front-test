@@ -34,3 +34,6 @@ export const CheckRoundedStepper = styled(CheckRoundedSVGIcon)`
   height: ${(props) => (props.height ? props.height : "24px")};
   fill: inherit;
 `;
+export const StepperContainerEdit = styled.div`
+  cursor: pointer;
+`;

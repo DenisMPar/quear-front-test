@@ -1,6 +1,17 @@
 import styled from "@emotion/styled";
+export const StepAddressRoot = styled.div`
+  color: var(--primary);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  @media screen and (min-width: 1024px) {
+    margin-top: 20px;
+    gap: 46px;
+  }
+`;
 export const StepAddressContainerForm = styled.div`
-  max-width: 327px;
+  max-width: 600px;
   width: 100%;
   margin: 24px auto;
 `;

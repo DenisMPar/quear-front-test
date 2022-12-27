@@ -1,13 +1,18 @@
 import styled from "@emotion/styled";
+import { SwipeableDrawer } from "@mui/material";
 import { Box } from "@mui/system";
 import { SubtitlePrimary } from "../../ui/text";
 
 export const StepsDrawerRoot = styled.div`
   position: absolute;
-  height: 100%;
+
   padding: 0 18px;
 `;
-
+export const StyledSwippeable = styled(SwipeableDrawer)`
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+`;
 export const StepsDrawerHeader = styled(Box)`
   border-radius: 10px 10px 0px 0px;
   display: flex;

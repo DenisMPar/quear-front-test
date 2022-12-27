@@ -9,9 +9,16 @@ export const StepRoot = styled.div`
   gap: 20px;
   text-align: center;
   align-items: center;
+  @media screen and (min-width: 1024px) {
+    text-align: left;
+  }
 `;
 export const StepDoorsInputContainer = styled.div`
   height: 319px;
+  @media screen and (min-width: 1024px) {
+    height: 407px;
+    max-width: 305px;
+  }
 `;
 export const StyledSubtitle = styled(SubtitlePrimary)`
   margin: 60px 0;

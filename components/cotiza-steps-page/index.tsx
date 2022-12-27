@@ -6,12 +6,17 @@ import { BrandStepComponent } from "./car-brand";
 import { DoorsStepComponent } from "./car-doors";
 import { ModelStepComponent } from "./car-model";
 import {
+  InfoDesktopContainer,
   Root,
   StepBackArrowContainer,
   StepBackRoot,
   StepBackText,
   StepContainer,
+  StepperDesktopBoxTitle,
+  StepperDesktopContainer,
+  StepperDesktopTitle,
   StepsContainerLogo,
+  StepsContainerSubmit,
   StepsSubmitButton,
 } from "./styled";
 import { YearStepComponent } from "./car-year";
@@ -23,6 +28,8 @@ import { TrackerStepComponent } from "./car-tracker";
 import { GarageStepComponent } from "./car-garage";
 import { StyledArrow, StyledQuearBigLogoBlue } from "../../ui/icons";
 import { ButtonPrimary } from "../../ui/buttons/styled";
+import StepperComponent from "../stepper";
+import { TextBox } from "../../ui/text-box/styled";
 
 export function CotizaStepsPage() {
   const [data, setData] = useState<any>({});
@@ -118,17 +125,19 @@ export function CotizaStepsPage() {
         </StepBackArrowContainer>
         <StepBackText>Volver al paso anterior</StepBackText>
       </StepBackRoot>
-      <StepContainer>{stepToShow[activeStep]}</StepContainer>
-      {isLastStep() && (
-        <>
-          <StepsSubmitButton onClick={handleSubmit} variant="dark">
-            Ver planes disponibles
-          </StepsSubmitButton>
-          <StepsContainerLogo>
-            <StyledQuearBigLogoBlue />
-          </StepsContainerLogo>
-        </>
-      )}
+      <StepContainer>
+        {stepToShow[activeStep]}
+        {isLastStep() && (
+          <StepsContainerSubmit>
+            <StepsSubmitButton onClick={handleSubmit} variant="dark">
+              Ver planes disponibles
+            </StepsSubmitButton>
+            <StepsContainerLogo>
+              <StyledQuearBigLogoBlue />
+            </StepsContainerLogo>
+          </StepsContainerSubmit>
+        )}
+      </StepContainer>
 
       <StepsDrawer
         steps={steps}
@@ -137,6 +146,20 @@ export function CotizaStepsPage() {
         stepsData={data}
         activeStep={activeStep}
       />
+      <InfoDesktopContainer>
+        <StepperDesktopBoxTitle shadow>
+          <StepperDesktopTitle>Información</StepperDesktopTitle>
+        </StepperDesktopBoxTitle>
+        <StepperDesktopContainer>
+          <StepperComponent
+            steps={steps}
+            completed={completed}
+            goToStep={goToStep}
+            stepsData={data}
+            activeStep={activeStep}
+          />
+        </StepperDesktopContainer>
+      </InfoDesktopContainer>
     </Root>
   );
 }

@@ -10,6 +10,7 @@ import {
   StepsDrawerHeader,
   StepsDrawerRoot,
   StepsDrawertitle,
+  StyledSwippeable,
 } from "./styled";
 
 const drawerBleeding = 56;
@@ -46,7 +47,7 @@ export function StepsDrawer(props: Props) {
         }}
       />
 
-      <SwipeableDrawer
+      <StyledSwippeable
         anchor="bottom"
         open={open}
         onClose={toggleDrawer}
@@ -84,7 +85,7 @@ export function StepsDrawer(props: Props) {
             goToStep={handleStep}
           />
         </Box>
-      </SwipeableDrawer>
+      </StyledSwippeable>
     </StepsDrawerRoot>
   );
 }

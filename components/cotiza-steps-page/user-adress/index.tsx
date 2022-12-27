@@ -8,6 +8,7 @@ import {
   StepAddressContainerButton,
   StepAddressContainerInput,
   StepAddressInputError,
+  StepAddressRoot,
   StyledForm,
 } from "./styled";
 
@@ -24,17 +25,9 @@ export function AddressStepComponent({ handleSelect }: any) {
   }, [formState]);
 
   return (
-    <div
-      style={{
-        color: "var(--primary)",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        gap: "20px",
-      }}
-    >
+    <StepAddressRoot>
       <SubtitlePrimary>¿Donde vivis?</SubtitlePrimary>
-      <div style={{ width: "100%", maxWidth: "343px" }}>
+      <div style={{ width: "100%", maxWidth: "600px" }}>
         <StyledForm action="" onSubmit={handleSubmit(onSubmit)}>
           <StepAddressContainerInput>
             <Controller
@@ -96,6 +89,6 @@ export function AddressStepComponent({ handleSelect }: any) {
           </StepAddressContainerButton>
         </StyledForm>
       </div>
-    </div>
+    </StepAddressRoot>
   );
 }
