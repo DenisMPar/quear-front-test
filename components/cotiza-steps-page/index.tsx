@@ -70,18 +70,23 @@ export function CotizaStepsPage() {
   function handleSelect(key: string, value: any) {
     const newData = { ...data, [key]: value };
     setData(newData);
-
     setStepCompleted();
     !isLastStep() && handleNext();
   }
   const handleNext = () => {
-    const newActiveStep = !allStepsCompleted()
-      ? steps.findIndex((step, i) => !(i in completed))
-      : steps.length;
+    // if brand or model changes you need to modified next steps
+    if (activeStep > 0 && activeStep < 3) {
+      setActiveStep(activeStep + 1);
+    } else {
+      //all other steps can jump to next step incompleted
+      const newActiveStep = !allStepsCompleted()
+        ? steps.findIndex((step, i) => !(i in completed))
+        : steps.length;
 
-    setActiveStep(
-      newActiveStep > steps.length - 1 ? steps.length - 1 : newActiveStep
-    );
+      setActiveStep(
+        newActiveStep > steps.length - 1 ? steps.length - 1 : newActiveStep
+      );
+    }
   };
   function setStepCompleted() {
     const newCompleted = completed;
@@ -96,6 +101,7 @@ export function CotizaStepsPage() {
     if (activeStep == 0) {
       router.push("/cotiza");
     } else {
+      //if the previous step is completed, change it to false.
       if (completed[activeStep - 1]) {
         const newCompleted = completed;
         newCompleted[activeStep - 1] = false;
@@ -105,6 +111,7 @@ export function CotizaStepsPage() {
     }
   }
   function goToStep(step: number) {
+    //you can manually move only to a completed step
     if (completed[step]) {
       setActiveStep(step);
       const newCompleted = completed;

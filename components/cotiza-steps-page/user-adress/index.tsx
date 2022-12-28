@@ -25,7 +25,9 @@ export function AddressStepComponent({ handleSelect }: any) {
 
     handleSelect("direccion", orderedSubmit);
   }
-
+  useEffect(() => {
+    console.log(formState.errors);
+  }, [formState]);
   return (
     <StepAddressRoot>
       <SubtitlePrimary>¿Donde vivis?</SubtitlePrimary>
@@ -77,14 +79,23 @@ export function AddressStepComponent({ handleSelect }: any) {
           </StepAddressContainerInput>
           <StepAddressContainerInput>
             <InputShadowed
-              {...register("postal", { required: true })}
+              {...register("postal", {
+                required: true,
+                pattern: /^[0-9]+$/,
+                maxLength: 4,
+              })}
               placeholder="Código postal"
             />
-            {formState.errors.postal && (
-              <StepAddressInputError>
-                *completa este campo
-              </StepAddressInputError>
-            )}
+            {formState.errors.postal &&
+              (formState.errors.postal.type == "required" ? (
+                <StepAddressInputError>
+                  *completa este campo
+                </StepAddressInputError>
+              ) : (
+                <StepAddressInputError>
+                  *Ingresa un código de 4 números. Ej: 5600
+                </StepAddressInputError>
+              ))}
           </StepAddressContainerInput>
           <StepAddressContainerButton>
             <ButtonPrimary variant="dark">Siguiente paso</ButtonPrimary>
