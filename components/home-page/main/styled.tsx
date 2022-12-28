@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Link from "next/link";
 import { ButtonPrimary } from "../../../ui/buttons/styled";
 import { SubtitleSecondary, TitlePrimary } from "../../../ui/text";
 
@@ -63,6 +64,9 @@ export const HomeSubTitle = styled(SubtitleSecondary)`
     max-width: 450px;
     margin-top: 6px;
   }
+`;
+export const HomeButtonLink = styled(Link)`
+  width: 100%;
 `;
 export const HomeButton = styled(ButtonPrimary)`
   margin-top: 45px;

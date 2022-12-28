@@ -62,6 +62,9 @@ export const StepContainer = styled.div`
 export const StepsSubmitButton = styled(ButtonPrimary)`
   max-width: 327px;
   margin: 26px auto;
+  &:disabled {
+    background-color: var(--primary-disabled);
+  }
 `;
 export const StepsContainerSubmit = styled.div`
   height: 100%;
@@ -97,27 +100,26 @@ export const InfoDesktopContainer = styled.div`
 export const StepperDesktopContainer = styled(Box)`
   padding: 18px 16px;
   height: 100%;
+  max-height: 760px;
   width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
   box-shadow: 0px 1px 4px var(--shadow);
   border-radius: 10px 10px 0px 0px;
   margin-bottom: 1px;
-  -ms-overflow-style: none;
+  /* -ms-overflow-style: none;
   scrollbar-width: none;
 
   &::-webkit-scrollbar {
     display: none;
-  }
-
-  /* Hide scrollbar for IE, Edge and Firefox */
-
-  /* & {
-    scrollbar-width: thin;
-    scrollbar-color: var(--dark-terciary) var(--bg);
   } */
 
-  /* &::-webkit-scrollbar {
+  & {
+    scrollbar-width: thin;
+    scrollbar-color: var(--dark-terciary) var(--bg);
+  }
+
+  &::-webkit-scrollbar {
     width: 12px;
   }
 
@@ -129,7 +131,7 @@ export const StepperDesktopContainer = styled(Box)`
     background-color: var(--dark-terciary);
     border-radius: 20px;
     border: 3px solid var(--bg);
-  } */
+  }
 `;
 export const StepperDesktopBoxTitle = styled(TextBox)`
   max-height: 40px;

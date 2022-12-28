@@ -1,21 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { InputShadowed } from "../../../ui/input/styled";
 import { SubtitlePrimary } from "../../../ui/text";
 import { SelectComponent } from "../../select";
 import { SelectButtonsComponent } from "../../select/buttons";
 import {
+  StepAgeInputError,
   StyledForm,
   StyledFormContainer,
   StyledFormSelectContainer,
+  StyledInputContainer,
   StyledSubtitle,
 } from "./styled";
 
 export function AgeStepComponent({ handleSelect }: any) {
-  const { handleSubmit, reset, setValue, control, register } = useForm();
+  const { handleSubmit, getValues, control, register, formState } = useForm();
 
   function onSubmit(submit: any) {
-    handleSelect("nacimiento", submit);
+    const orderedSubmit = {
+      Día: submit.dia,
+      Mes: submit.mes,
+      Año: submit.año,
+      "Mayor de 25": submit.mayor,
+    };
+
+    handleSelect("nacimiento", orderedSubmit);
   }
 
   return (
@@ -31,18 +40,33 @@ export function AgeStepComponent({ handleSelect }: any) {
       <SubtitlePrimary>Fecha de nacimiento</SubtitlePrimary>
       <StyledFormContainer>
         <StyledForm action="" onSubmit={handleSubmit(onSubmit)}>
-          <InputShadowed
-            {...register("dia", { required: true })}
-            placeholder="Día"
-          />
-          <InputShadowed
-            {...register("mes", { required: true })}
-            placeholder="Mes"
-          />
-          <InputShadowed
-            {...register("año", { required: true })}
-            placeholder="Año"
-          />
+          <StyledInputContainer>
+            <InputShadowed
+              {...register("dia", { required: true })}
+              placeholder="Día"
+            />
+            {formState.errors.dia && (
+              <StepAgeInputError> *completa este campo</StepAgeInputError>
+            )}
+          </StyledInputContainer>
+          <StyledInputContainer>
+            <InputShadowed
+              {...register("mes", { required: true })}
+              placeholder="Mes"
+            />
+            {formState.errors.mes && (
+              <StepAgeInputError> *completa este campo</StepAgeInputError>
+            )}
+          </StyledInputContainer>
+          <StyledInputContainer>
+            <InputShadowed
+              {...register("año", { required: true })}
+              placeholder="Año"
+            />
+            {formState.errors.año && (
+              <StepAgeInputError> *completa este campo</StepAgeInputError>
+            )}
+          </StyledInputContainer>
           <div>
             <StyledFormSelectContainer>
               <StyledSubtitle>¿El conductor es mayor a 25 años?</StyledSubtitle>

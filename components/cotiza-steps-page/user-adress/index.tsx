@@ -17,12 +17,14 @@ export function AddressStepComponent({ handleSelect }: any) {
     useForm();
 
   function onSubmit(submit: any) {
-    handleSelect("direccion", submit);
-  }
+    const orderedSubmit = {
+      Provincia: submit.provincia,
+      Departamento: submit.departamento,
+      "Código postal": submit.postal,
+    };
 
-  useEffect(() => {
-    console.log(formState.errors);
-  }, [formState]);
+    handleSelect("direccion", orderedSubmit);
+  }
 
   return (
     <StepAddressRoot>
@@ -59,7 +61,7 @@ export function AddressStepComponent({ handleSelect }: any) {
                   {...field}
                   selectKey="departamento"
                   ref={null}
-                  values={["mgue", "san rafael", "guaymallen"]}
+                  values={["Mendoza", "San rafael", "Guaymallen"]}
                   placeHolder={"departamento"}
                 />
               )}

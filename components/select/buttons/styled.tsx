@@ -17,9 +17,3 @@ export const SelectButtonRoot = styled.div<PropsRoot>`
   margin: ${(props) => (props.horizontal ? "0 auto" : "")};
   height: ${(props) => (props.horizontal ? "54px" : "")}; ;
 `;
-interface PropsButton extends IconsProps {
-  selected: boolean | undefined;
-}
-export const SelectStyledButton = styled(ButtonBig)<PropsButton>`
-  background-color: ${(props) => (props.selected ? "var(--secondary)" : "")};
-`;

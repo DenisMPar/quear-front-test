@@ -1,6 +1,6 @@
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { ButtonBig } from "../../../ui/buttons/styled";
-import { SelectButtonRoot, SelectStyledButton } from "./styled";
+import { SelectButtonRoot } from "./styled";
 
 type Values = {
   icon?: ReactNode;
@@ -16,9 +16,7 @@ interface Props {
   horizontal?: boolean;
 }
 export function SelectButtonsComponent(props: Props) {
-  const [selected, setSelected] = useState<number | null>(null);
   function handleClick(key: any, value: any, index: number) {
-    setSelected(index);
     if (props.handleSelect) {
       props.handleSelect(key, value);
     }
@@ -30,14 +28,13 @@ export function SelectButtonsComponent(props: Props) {
     <SelectButtonRoot horizontal={props.horizontal}>
       {props.values.map((values, index) => {
         return (
-          <SelectStyledButton
-            selected={selected == index}
+          <ButtonBig
             onClick={() => handleClick(props.selectKey, values.value, index)}
             key={index}
           >
             {values.icon ? values.icon : null}
             {values.text}
-          </SelectStyledButton>
+          </ButtonBig>
         );
       })}
     </SelectButtonRoot>

@@ -6,6 +6,7 @@ import {
 } from "../../../ui/icons";
 import {
   HomeButton,
+  HomeButtonLink,
   HomeMain,
   HomeMainCarDesktopContainer,
   HomeMainCarMobileContainer,
@@ -35,9 +36,9 @@ export function HomeMainComponent() {
         <HomeSubTitle>
           Cotizá y comprá el mejor seguro para tu auto.
         </HomeSubTitle>
-        <Link href={"/cotiza"}>
+        <HomeButtonLink href={"/cotiza"}>
           <HomeButton variant="light">COTIZAR</HomeButton>
-        </Link>
+        </HomeButtonLink>
       </HomeMainTextContainer>
     </HomeMain>
   );

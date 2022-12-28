@@ -3,6 +3,9 @@ import { SubtitlePrimary } from "../../../ui/text";
 
 export const StyledSubtitle = styled(SubtitlePrimary)`
   font-size: 21px;
+  @media screen and (min-width: 1024px) {
+    font-size: 30px;
+  }
 `;
 export const StyledFormContainer = styled.div`
   width: 100%;
@@ -16,6 +19,12 @@ export const StyledForm = styled.form`
   @media screen and (min-width: 1024px) {
     gap: 24px;
   }
+`;
+export const StyledInputContainer = styled.div``;
+export const StepAgeInputError = styled.span`
+  font-size: 12px;
+  margin-top: 5px;
+  color: red;
 `;
 export const StyledFormSelectContainer = styled.div`
   text-align: center;

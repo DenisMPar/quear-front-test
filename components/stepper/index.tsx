@@ -16,8 +16,23 @@ interface Props {
 }
 
 export default function StepperComponent(props: Props) {
-  const keys = Object.keys(props.stepsData);
-
+  function formatData(index: number) {
+    const keys = Object.keys(props.stepsData);
+    const dataToShow = props.stepsData[keys[index]];
+    if (typeof dataToShow == "object") {
+      const result = [];
+      for (const key in dataToShow) {
+        result.push(
+          <BodyPrimary key={key}>
+            {key}: {dataToShow[key]}
+          </BodyPrimary>
+        );
+      }
+      return result;
+    } else {
+      return <BodyPrimary>{dataToShow}</BodyPrimary>;
+    }
+  }
   return (
     <Box sx={{ width: "100%" }}>
       <Stepper
@@ -35,9 +50,7 @@ export default function StepperComponent(props: Props) {
               <div>
                 {label}
                 {props.completed[index] ? (
-                  <BodyPrimary>
-                    {JSON.stringify(props.stepsData[keys[index]])}
-                  </BodyPrimary>
+                  formatData(index)
                 ) : (
                   <BodyPrimary>-</BodyPrimary>
                 )}

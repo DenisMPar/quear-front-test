@@ -39,11 +39,11 @@ export function CotizaStepsPage() {
     "Año",
     "Marca",
     "Modelo",
-    "Version",
+    "Versión",
     "Puertas",
     "GNC",
     "Localizador",
-    "Direccion",
+    "Dirección",
     "Donde duerme",
     "Fecha de nacimiento",
   ];
@@ -129,7 +129,11 @@ export function CotizaStepsPage() {
         {stepToShow[activeStep]}
         {isLastStep() && (
           <StepsContainerSubmit>
-            <StepsSubmitButton onClick={handleSubmit} variant="dark">
+            <StepsSubmitButton
+              disabled={!allStepsCompleted()}
+              onClick={handleSubmit}
+              variant="dark"
+            >
               Ver planes disponibles
             </StepsSubmitButton>
             <StepsContainerLogo>
