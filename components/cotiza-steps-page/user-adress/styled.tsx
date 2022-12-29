@@ -4,10 +4,9 @@ export const StepAddressRoot = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 50px;
   @media screen and (min-width: 1024px) {
     margin-top: 20px;
-    gap: 46px;
   }
 `;
 export const StepAddressContainerForm = styled.div`
@@ -18,7 +17,7 @@ export const StepAddressContainerForm = styled.div`
 
 export const StyledForm = styled.form`
   height: 100%;
-  min-height: 369px;
+  gap: 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

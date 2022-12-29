@@ -39,6 +39,7 @@ export function SelectGroupedComponent(props: Props) {
 
   return (
     <Autocomplete
+      loading={props.values[0].options.length == 0}
       onChange={(
         event: any,
         newValue: {

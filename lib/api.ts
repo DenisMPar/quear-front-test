@@ -1,10 +1,14 @@
+const DEVELOPMENT = process.env.NODE_ENV == "development";
+
 interface RequestOptions {
   method: string;
   body?: any;
   headers: any;
 }
 export async function fetchApi(direction: string, config: RequestOptions) {
-  const BASE_API_URL = "http://localhost:3080/api/";
+  const BASE_API_URL = DEVELOPMENT
+    ? "http://localhost:3080/api/"
+    : process.env.NEXT_PUBLIC_API_BASE_URL;
   const url = BASE_API_URL + direction;
 
   const fullConfig = {
