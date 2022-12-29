@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ReactNode } from "react";
-import { getPath } from "../../../lib";
+import { getPath } from "../../../lib/functions";
 import {
   StyledEyeColored,
   StyledHomeColored,

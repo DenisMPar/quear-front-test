@@ -1,10 +1,12 @@
 import { Controller, useForm } from "react-hook-form";
+import { useGetYears } from "../../../lib/hooks";
 import { SubtitlePrimary } from "../../../ui/text";
 import { SelectComponent } from "../../select";
 import { StepYearInputContainer, StepYearRoot } from "./styled";
 
 export function YearStepComponent({ handleSelect }: any) {
   const { handleSubmit, reset, setValue, control } = useForm();
+  const years = useGetYears();
   return (
     <StepYearRoot>
       <SubtitlePrimary>¿De qué año es tu auto?</SubtitlePrimary>
@@ -16,7 +18,7 @@ export function YearStepComponent({ handleSelect }: any) {
               handleSelect={handleSelect}
               selectKey="año"
               ref={null}
-              values={["2022", "2021", "2020", "2019", "2018", "2017", "2016"]}
+              values={years}
               placeHolder={"Elegir año"}
             />
           )}

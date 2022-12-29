@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, set, useForm } from "react-hook-form";
+import { useGetDepartments, useGetProvincies } from "../../../lib/hooks";
 import { ButtonPrimary } from "../../../ui/buttons/styled";
 import { InputShadowed } from "../../../ui/input/styled";
 import { SubtitlePrimary } from "../../../ui/text";
@@ -13,8 +14,23 @@ import {
 } from "./styled";
 
 export function AddressStepComponent({ handleSelect }: any) {
-  const { handleSubmit, reset, setValue, control, register, formState } =
+  const [provinceId, setProvinceId] = useState("");
+  const { handleSubmit, watch, reset, setValue, control, register, formState } =
     useForm();
+  const { provincesNames, provincesWithId } = useGetProvincies();
+  const departments = useGetDepartments(provinceId);
+  const watchShowAge = watch("provincia");
+
+  useEffect(() => {
+    if (watchShowAge) {
+      const el = provincesWithId.find((el) => {
+        return el.nombre == watchShowAge;
+      });
+      if (el) {
+        setProvinceId(el.id);
+      }
+    }
+  }, [watchShowAge, provincesWithId]);
 
   function onSubmit(submit: any) {
     const orderedSubmit = {
@@ -25,9 +41,9 @@ export function AddressStepComponent({ handleSelect }: any) {
 
     handleSelect("direccion", orderedSubmit);
   }
-  useEffect(() => {
-    console.log(formState.errors);
-  }, [formState]);
+  // useEffect(() => {
+  //   console.log(formState);
+  // }, [formState]);
   return (
     <StepAddressRoot>
       <SubtitlePrimary>¿Donde vivis?</SubtitlePrimary>
@@ -41,7 +57,7 @@ export function AddressStepComponent({ handleSelect }: any) {
                   {...field}
                   selectKey="provincia"
                   ref={null}
-                  values={["Mendoza", "Bs as", "Cordoba"]}
+                  values={provincesNames}
                   placeHolder={"Provincia"}
                 />
               )}
@@ -63,7 +79,7 @@ export function AddressStepComponent({ handleSelect }: any) {
                   {...field}
                   selectKey="departamento"
                   ref={null}
-                  values={["Mendoza", "San rafael", "Guaymallen"]}
+                  values={departments}
                   placeHolder={"departamento"}
                 />
               )}

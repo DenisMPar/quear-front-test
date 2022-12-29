@@ -1,10 +1,24 @@
 import { Controller, useForm } from "react-hook-form";
+import { useRecoilState } from "recoil";
+import { useGetCarBrand } from "../../../lib/hooks";
+import { userCotizaData } from "../../../lib/state";
 import { SubtitlePrimary } from "../../../ui/text";
 import { SelectGroupedComponent } from "../../select/grouped";
 import { StepBrandInputContainer, StepBrandRoot } from "./styled";
 
 export function BrandStepComponent({ handleSelect }: any) {
   const { handleSubmit, reset, setValue, control } = useForm();
+  const { brandNames, brandWithId } = useGetCarBrand();
+  const [cotizaData, setCotizaData] = useRecoilState(userCotizaData);
+  function onSelect(key: string, value: any) {
+    const element = brandWithId.find((el) => {
+      return el.nombre == value;
+    });
+
+    element &&
+      setCotizaData({ ...cotizaData, carBrandId: parseInt(element.id) });
+    handleSelect(key, value);
+  }
   return (
     <StepBrandRoot>
       <SubtitlePrimary>¿De qué marca es tu auto?</SubtitlePrimary>
@@ -13,20 +27,11 @@ export function BrandStepComponent({ handleSelect }: any) {
           render={({ field }: any) => (
             <SelectGroupedComponent
               {...field}
-              handleSelect={handleSelect}
+              handleSelect={onSelect}
               selectKey="marca"
               ref={null}
               placeHolder="Elegir marca"
-              values={[
-                {
-                  title: "Más buscadas:",
-                  options: ["Chevrolet", "Ford", "Renault"],
-                },
-                {
-                  title: "Todas las marcas:",
-                  options: ["Audi", "BMW"],
-                },
-              ]}
+              values={brandNames}
             />
           )}
           name="TextField"
