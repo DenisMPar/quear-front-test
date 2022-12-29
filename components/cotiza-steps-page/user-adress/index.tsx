@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 import { Controller, set, useForm } from "react-hook-form";
-import { useGetDepartments, useGetProvincies } from "../../../lib/hooks";
+import { useRecoilState } from "recoil";
+import {
+  useGetCities,
+  useGetDepartments,
+  useGetProvincies,
+} from "../../../lib/hooks";
+import { userCotizaData } from "../../../lib/state";
 import { ButtonPrimary } from "../../../ui/buttons/styled";
 import { InputShadowed } from "../../../ui/input/styled";
 import { SubtitlePrimary } from "../../../ui/text";
@@ -15,30 +21,43 @@ import {
 
 export function AddressStepComponent({ handleSelect }: any) {
   const [provinceId, setProvinceId] = useState("");
+  const [departmentId, setDepartmentId] = useState("");
+  const [cotizaData, setCotizaData] = useRecoilState(userCotizaData);
   const { handleSubmit, watch, reset, setValue, control, register, formState } =
     useForm();
   const { provincesNames, provincesWithId } = useGetProvincies();
-  const departments = useGetDepartments(provinceId);
-  const watchShowAge = watch("provincia");
+  const { departmentNames, departmentWithId } = useGetDepartments(provinceId);
+  const {} = useGetCities(departmentId);
+  const watchProvince = watch("province");
+  const watchDepartment = watch("department");
 
   useEffect(() => {
-    if (watchShowAge) {
+    if (watchProvince) {
       const el = provincesWithId.find((el) => {
-        return el.nombre == watchShowAge;
+        return el.nombre == watchProvince;
       });
       if (el) {
         setProvinceId(el.id);
       }
     }
-  }, [watchShowAge, provincesWithId]);
+    if (watchDepartment) {
+      const el = departmentWithId.find((el) => {
+        return el.name == watchDepartment;
+      });
+
+      if (el) {
+        setDepartmentId(el.id);
+      }
+    }
+  }, [watchProvince, provincesWithId, watchDepartment, departmentWithId]);
 
   function onSubmit(submit: any) {
     const orderedSubmit = {
-      Provincia: submit.provincia,
-      Departamento: submit.departamento,
-      "Código postal": submit.postal,
+      Provincia: submit.province,
+      Departamento: submit.department,
+      "Código postal": submit.zipCode,
     };
-
+    setCotizaData({ ...cotizaData, userAddress: submit });
     handleSelect("direccion", orderedSubmit);
   }
   // useEffect(() => {
@@ -61,7 +80,7 @@ export function AddressStepComponent({ handleSelect }: any) {
                   placeHolder={"Provincia"}
                 />
               )}
-              name="provincia"
+              name="province"
               control={control}
             />
             {formState.errors.provincia && (
@@ -79,11 +98,11 @@ export function AddressStepComponent({ handleSelect }: any) {
                   {...field}
                   selectKey="departamento"
                   ref={null}
-                  values={departments}
+                  values={departmentNames}
                   placeHolder={"departamento"}
                 />
               )}
-              name="departamento"
+              name="department"
               control={control}
             />
             {formState.errors.departamento && (
@@ -95,7 +114,7 @@ export function AddressStepComponent({ handleSelect }: any) {
           </StepAddressContainerInput>
           <StepAddressContainerInput>
             <InputShadowed
-              {...register("postal", {
+              {...register("zipCode", {
                 required: true,
                 pattern: /^[0-9]+$/,
                 maxLength: 4,

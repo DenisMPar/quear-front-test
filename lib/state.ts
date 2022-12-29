@@ -3,6 +3,7 @@ import { atom } from "recoil";
 export const userCotizaData = atom({
   key: "userCotizaData",
   default: {
+    patent: 0,
     carBrandId: 0,
     carModelId: 0,
     carVersionId: 0,
@@ -10,5 +11,7 @@ export const userCotizaData = atom({
     gnc: false,
     locator: false,
     sleep: "",
+    userAddress: {},
+    userAge: {},
   },
 });

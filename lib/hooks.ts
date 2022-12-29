@@ -2,14 +2,35 @@ import { useState } from "react";
 import { fetchApi } from "./api";
 import useSWR from "swr";
 export function useGetYears() {
+  const yearsArray: string[] = [];
+  for (let index = 2022; index >= 1910; index--) {
+    yearsArray.push(index.toString());
+  }
+
+  return yearsArray;
+}
+export function useGetDays() {
+  const daysArray: string[] = [];
+  for (let index = 1; index <= 31; index++) {
+    daysArray.push(index.toString());
+  }
+
+  return daysArray;
+}
+export function useGetMonths() {
   const [years, setYears] = useState([
-    "2022",
-    "2021",
-    "2020",
-    "2019",
-    "2018",
-    "2017",
-    "2016",
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
   ]);
   return years;
 }
@@ -25,7 +46,8 @@ export function useGetCarBrand(): {
       },
     })
   );
-  if (data) {
+
+  if (data && data.length > 0) {
     const brandNames = data.map((item: any) => {
       return item.name;
     });
@@ -58,7 +80,10 @@ export function useGetCarBrand(): {
     };
   }
 }
-export function useGetCarModel(brandId: any) {
+export function useGetCarModel(brandId: any): {
+  carModelNames: string[];
+  carModelWithId: Array<{ name: string; id: string }>;
+} {
   const { data, error, isLoading } = useSWR(
     `infoAutos/carBrand/${brandId}/groups`,
     (url) =>
@@ -69,10 +94,42 @@ export function useGetCarModel(brandId: any) {
         },
       })
   );
-  if (data) {
-    console.log({ data });
+  if (data && data.length > 0) {
+    const carModelNames = data.map((item: any) => {
+      return item.name;
+    });
+    const carModelWithId = data.map((item: any) => {
+      return { name: item.name, id: item.id };
+    });
+    return { carModelNames, carModelWithId };
   } else {
-    return [];
+    return { carModelNames: [], carModelWithId: [] };
+  }
+}
+export function useGetCarVersion(brandId: any): {
+  carVersionNames: string[];
+  carVersionWithId: Array<{ name: string; id: string }>;
+} {
+  const { data, error, isLoading } = useSWR(
+    `infoAutos/carBrand/` + brandId,
+    (url) =>
+      fetchApi(url, {
+        method: "get",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+  );
+  if (data && data.length > 0) {
+    const carVersionNames = data.map((item: any) => {
+      return item.description;
+    });
+    const carVersionWithId = data.map((item: any) => {
+      return { name: item.description, id: item.codia };
+    });
+    return { carVersionNames, carVersionWithId: carVersionWithId };
+  } else {
+    return { carVersionNames: [], carVersionWithId: [] };
   }
 }
 export function useGetProvincies(): {
@@ -87,7 +144,7 @@ export function useGetProvincies(): {
       },
     })
   );
-  if (data) {
+  if (data && data.length > 0) {
     const provincesNames = data.success.result.map((item: any) => {
       return item.nombre;
     });
@@ -99,7 +156,10 @@ export function useGetProvincies(): {
     return { provincesNames: [], provincesWithId: [] };
   }
 }
-export function useGetDepartments(provinceId: string) {
+export function useGetDepartments(provinceId: string): {
+  departmentNames: string[];
+  departmentWithId: Array<{ name: string; id: string }>;
+} {
   const { data, error, isLoading } = useSWR(
     "location/departments/" + provinceId,
     (url) =>
@@ -110,11 +170,43 @@ export function useGetDepartments(provinceId: string) {
         },
       })
   );
-  if (data) {
-    return data.success.result.map((item: any) => {
+  if (data && data.length > 0) {
+    const departmentNames = data.success.result.map((item: any) => {
       return item.nombre;
     });
+    const departmentWithId = data.success.result.map((item: any) => {
+      return { name: item.nombre, id: item.id };
+    });
+    return { departmentNames, departmentWithId };
   } else {
-    return [];
+    return { departmentNames: [], departmentWithId: [] };
+  }
+}
+export function useGetCities(departmentId: string): {
+  citiesNames: string[];
+  citiesWithId: Array<{ name: string; id: string }>;
+} {
+  const { data, error, isLoading } = useSWR(
+    "location/cities/" + departmentId,
+    (url) =>
+      fetchApi(url, {
+        method: "get",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+  );
+  if (data && data.length > 0) {
+    console.log({ cities: data });
+
+    const citiesNames = data.success.result.map((item: any) => {
+      return item.nombre;
+    });
+    const citiesWithId = data.success.result.map((item: any) => {
+      return { name: item.nombre, id: item.id };
+    });
+    return { citiesNames: [], citiesWithId: [] };
+  } else {
+    return { citiesNames: [], citiesWithId: [] };
   }
 }

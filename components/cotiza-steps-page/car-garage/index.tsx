@@ -1,4 +1,6 @@
 import { Controller, useForm } from "react-hook-form";
+import { useRecoilState } from "recoil";
+import { userCotizaData } from "../../../lib/state";
 import { SubtitlePrimary } from "../../../ui/text";
 import { SelectButtonsComponent } from "../../select/buttons";
 import {
@@ -9,6 +11,11 @@ import {
 
 export function GarageStepComponent({ handleSelect }: any) {
   const { handleSubmit, reset, setValue, control } = useForm();
+  const [cotizaData, setCotizaData] = useRecoilState(userCotizaData);
+  function onSelect(key: string, value: any) {
+    setCotizaData({ ...cotizaData, sleep: value });
+    handleSelect(key, value);
+  }
   return (
     <StepGarageRoot>
       <StyledSubtitle>¿Dónde duerme?</StyledSubtitle>
@@ -17,7 +24,7 @@ export function GarageStepComponent({ handleSelect }: any) {
           render={({ field }: any) => (
             <SelectButtonsComponent
               {...field}
-              handleSelect={handleSelect}
+              handleSelect={onSelect}
               selectKey="garage"
               ref={null}
               values={[

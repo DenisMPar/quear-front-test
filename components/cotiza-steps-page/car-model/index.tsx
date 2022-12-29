@@ -9,7 +9,19 @@ import { StepModelInputContainer, StepModelRoot } from "./styled";
 export function ModelStepComponent({ handleSelect }: any) {
   const { handleSubmit, reset, setValue, control } = useForm();
   const [cotizaData, setCotizaData] = useRecoilState(userCotizaData);
-  useGetCarModel(cotizaData.carBrandId);
+  const { carModelNames, carModelWithId } = useGetCarModel(
+    cotizaData.carBrandId
+  );
+
+  function onSelect(key: string, value: any) {
+    const element = carModelWithId.find((el) => {
+      return el.name == value;
+    });
+
+    element &&
+      setCotizaData({ ...cotizaData, carModelId: parseInt(element.id) });
+    handleSelect(key, value);
+  }
   return (
     <StepModelRoot>
       <SubtitlePrimary>¿Y el modelo?</SubtitlePrimary>
@@ -18,10 +30,10 @@ export function ModelStepComponent({ handleSelect }: any) {
           render={({ field }: any) => (
             <SelectComponent
               {...field}
-              handleSelect={handleSelect}
+              handleSelect={onSelect}
               selectKey="modelo"
               ref={null}
-              values={["Camaro", "Cruze", "Equinox", "Onix"]}
+              values={carModelNames}
               placeHolder={"Elegir modelo"}
             />
           )}

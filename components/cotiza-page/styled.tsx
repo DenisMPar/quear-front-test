@@ -54,4 +54,12 @@ export const CotizaContainerInputs = styled.div`
   flex-direction: column;
   gap: 11px;
 `;
+export const CotizaForm = styled.form`
+  max-width: 327px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+`;
 export const CotizaContainerLogo = styled.div``;

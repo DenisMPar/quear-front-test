@@ -30,9 +30,12 @@ import { StyledArrow, StyledQuearBigLogoBlue } from "../../ui/icons";
 import { ButtonPrimary } from "../../ui/buttons/styled";
 import StepperComponent from "../stepper";
 import { TextBox } from "../../ui/text-box/styled";
+import { useRecoilState } from "recoil";
+import { userCotizaData } from "../../lib/state";
 
 export function CotizaStepsPage() {
   const [data, setData] = useState<any>({});
+  const [cotizaData, setCotizaData] = useRecoilState(userCotizaData);
   const [activeStep, setActiveStep] = useState(0);
   const router = useRouter();
   const steps = [
@@ -64,7 +67,7 @@ export function CotizaStepsPage() {
   ];
 
   function handleSubmit() {
-    console.log("submit", { data });
+    console.log("submit", { data, cotizaData });
   }
 
   function handleSelect(key: string, value: any) {
@@ -101,10 +104,10 @@ export function CotizaStepsPage() {
     if (activeStep == 0) {
       router.push("/cotiza");
     } else {
-      //if the previous step is completed, change it to false.
+      //if the previous step is completed, remove it from array.
       if (completed[activeStep - 1]) {
         const newCompleted = completed;
-        newCompleted[activeStep - 1] = false;
+        delete newCompleted[activeStep - 1];
         setCompleted(newCompleted);
       }
       setActiveStep(activeStep - 1);

@@ -1,4 +1,6 @@
 import { Controller, useForm } from "react-hook-form";
+import { useRecoilState } from "recoil";
+import { userCotizaData } from "../../../lib/state";
 import {
   StyledCarFiveDoors,
   StyledCarFourDoors,
@@ -10,6 +12,11 @@ import { StepFuelInputContainer, StepFuelRoot, StyledSubtitle } from "./styled";
 
 export function FuelStepComponent({ handleSelect }: any) {
   const { handleSubmit, reset, setValue, control } = useForm();
+  const [cotizaData, setCotizaData] = useRecoilState(userCotizaData);
+  function onSelect(key: string, value: any) {
+    setCotizaData({ ...cotizaData, gnc: value });
+    handleSelect(key, value);
+  }
   return (
     <StepFuelRoot>
       <StyledSubtitle>¿Usa GNC?</StyledSubtitle>
@@ -18,7 +25,7 @@ export function FuelStepComponent({ handleSelect }: any) {
           render={({ field }: any) => (
             <SelectButtonsComponent
               {...field}
-              handleSelect={handleSelect}
+              handleSelect={onSelect}
               selectKey="gnc"
               ref={null}
               values={[

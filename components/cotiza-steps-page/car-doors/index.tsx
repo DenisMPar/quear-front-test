@@ -1,4 +1,6 @@
 import { Controller, useForm } from "react-hook-form";
+import { useRecoilState } from "recoil";
+import { userCotizaData } from "../../../lib/state";
 import {
   StyledCarFiveDoors,
   StyledCarFourDoors,
@@ -10,6 +12,11 @@ import { StepDoorsInputContainer, StepRoot } from "./styled";
 
 export function DoorsStepComponent({ handleSelect }: any) {
   const { handleSubmit, reset, setValue, control } = useForm();
+  const [cotizaData, setCotizaData] = useRecoilState(userCotizaData);
+  function onSelect(key: string, value: any) {
+    setCotizaData({ ...cotizaData, doors: value });
+    handleSelect(key, value);
+  }
   return (
     <StepRoot>
       <SubtitlePrimary>¿Cuantas puertas tiene?</SubtitlePrimary>
@@ -18,7 +25,7 @@ export function DoorsStepComponent({ handleSelect }: any) {
           render={({ field }: any) => (
             <SelectButtonsComponent
               {...field}
-              handleSelect={handleSelect}
+              handleSelect={onSelect}
               selectKey="puertas"
               ref={null}
               values={[

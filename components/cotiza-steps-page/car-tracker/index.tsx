@@ -1,4 +1,6 @@
 import { Controller, useForm } from "react-hook-form";
+import { useRecoilState } from "recoil";
+import { userCotizaData } from "../../../lib/state";
 import { SubtitlePrimary } from "../../../ui/text";
 import { SelectButtonsComponent } from "../../select/buttons";
 import {
@@ -9,6 +11,11 @@ import {
 
 export function TrackerStepComponent({ handleSelect }: any) {
   const { handleSubmit, reset, setValue, control } = useForm();
+  const [cotizaData, setCotizaData] = useRecoilState(userCotizaData);
+  function onSelect(key: string, value: any) {
+    setCotizaData({ ...cotizaData, locator: value });
+    handleSelect(key, value);
+  }
   return (
     <StepTrackerRoot>
       <StyledSubtitle>¿Tiene localizador?</StyledSubtitle>
@@ -17,7 +24,7 @@ export function TrackerStepComponent({ handleSelect }: any) {
           render={({ field }: any) => (
             <SelectButtonsComponent
               {...field}
-              handleSelect={handleSelect}
+              handleSelect={onSelect}
               selectKey="tracker"
               ref={null}
               values={[

@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import { useRecoilState } from "recoil";
+import { useGetDays, useGetMonths, useGetYears } from "../../../lib/hooks";
+import { userCotizaData } from "../../../lib/state";
 import { InputShadowed } from "../../../ui/input/styled";
 import { SubtitlePrimary } from "../../../ui/text";
 import { SelectComponent } from "../../select";
@@ -15,6 +18,10 @@ import {
 
 export function AgeStepComponent({ handleSelect }: any) {
   const { handleSubmit, getValues, control, register, formState } = useForm();
+  const [cotizaData, setCotizaData] = useRecoilState(userCotizaData);
+  const years = useGetYears();
+  const months = useGetMonths();
+  const days = useGetDays();
 
   function onSubmit(submit: any) {
     const orderedSubmit = {
@@ -23,7 +30,7 @@ export function AgeStepComponent({ handleSelect }: any) {
       Año: submit.año,
       "Mayor de 25": submit.mayor,
     };
-
+    setCotizaData({ ...cotizaData, userAge: submit });
     handleSelect("nacimiento", orderedSubmit);
   }
 
@@ -41,27 +48,57 @@ export function AgeStepComponent({ handleSelect }: any) {
       <StyledFormContainer>
         <StyledForm action="" onSubmit={handleSubmit(onSubmit)}>
           <StyledInputContainer>
-            <InputShadowed
-              {...register("dia", { required: true })}
-              placeholder="Día"
+            <Controller
+              rules={{ required: true }}
+              render={({ field }: any) => (
+                <SelectComponent
+                  {...field}
+                  selectKey="dia"
+                  ref={null}
+                  values={days}
+                  placeHolder={"Día"}
+                />
+              )}
+              name="dia"
+              control={control}
             />
             {formState.errors.dia && (
               <StepAgeInputError> *completa este campo</StepAgeInputError>
             )}
           </StyledInputContainer>
           <StyledInputContainer>
-            <InputShadowed
-              {...register("mes", { required: true })}
-              placeholder="Mes"
+            <Controller
+              rules={{ required: true }}
+              render={({ field }: any) => (
+                <SelectComponent
+                  {...field}
+                  selectKey="mes"
+                  ref={null}
+                  values={months}
+                  placeHolder={"Mes"}
+                />
+              )}
+              name="mes"
+              control={control}
             />
             {formState.errors.mes && (
               <StepAgeInputError> *completa este campo</StepAgeInputError>
             )}
           </StyledInputContainer>
           <StyledInputContainer>
-            <InputShadowed
-              {...register("año", { required: true })}
-              placeholder="Año"
+            <Controller
+              rules={{ required: true }}
+              render={({ field }: any) => (
+                <SelectComponent
+                  {...field}
+                  selectKey="año"
+                  ref={null}
+                  values={years}
+                  placeHolder={"Año"}
+                />
+              )}
+              name="año"
+              control={control}
             />
             {formState.errors.año && (
               <StepAgeInputError> *completa este campo</StepAgeInputError>
