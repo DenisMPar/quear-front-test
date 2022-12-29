@@ -22,7 +22,7 @@ export function HomeAboutComponent() {
   return (
     <HomeAbout>
       <div>
-        <HomeAboutTextBox>
+        <HomeAboutTextBox id="about">
           <HomeAboutText>
             <b>Quear</b> es el canal digital de Orange Asesores de Seguros S.A,
             broker conformado por un equipo de profesionales con{" "}
@@ -40,7 +40,7 @@ export function HomeAboutComponent() {
             })}
           </CarouselComponent>
         </HomeAboutCarouselContainer>
-        <FaqComponent />
+        <FaqComponent id="faq" />
       </div>
     </HomeAbout>
   );

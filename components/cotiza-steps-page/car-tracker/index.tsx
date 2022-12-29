@@ -13,7 +13,7 @@ export function TrackerStepComponent({ handleSelect }: any) {
   const { handleSubmit, reset, setValue, control } = useForm();
   const [cotizaData, setCotizaData] = useRecoilState(userCotizaData);
   function onSelect(key: string, value: any) {
-    setCotizaData({ ...cotizaData, locator: value });
+    setCotizaData({ ...cotizaData, locator: value == "Si" });
     handleSelect(key, value);
   }
   return (

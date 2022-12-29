@@ -38,7 +38,7 @@ export function useGetCarBrand(): {
   brandNames: Array<{ title: string; options: string[] }>;
   brandWithId: Array<{ nombre: string; id: string }>;
 } {
-  const { data, error, isLoading } = useSWR("infoAutos/carBrand", (url) =>
+  const { data, error, isLoading } = useSWR("infoAutos/", (url) =>
     fetchApi(url, {
       method: "get",
       headers: {
@@ -58,7 +58,7 @@ export function useGetCarBrand(): {
     const brandNamesFormatted = [
       {
         title: "Más buscadas:",
-        options: ["CHEVROLET", "FORD", "RENAULT", "VOLKSWAGEN"],
+        options: ["CHEVROLET", "FORD", "PEUGEOT"],
       },
       { title: "Todas las marcas:", options: brandNames },
     ];
@@ -84,15 +84,13 @@ export function useGetCarModel(brandId: any): {
   carModelNames: string[];
   carModelWithId: Array<{ name: string; id: string }>;
 } {
-  const { data, error, isLoading } = useSWR(
-    `infoAutos/carBrand/${brandId}/groups`,
-    (url) =>
-      fetchApi(url, {
-        method: "get",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+  const { data, error, isLoading } = useSWR(`infoAutos/${brandId}`, (url) =>
+    fetchApi(url, {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
   );
   if (data && data.length > 0) {
     const carModelNames = data.map((item: any) => {
@@ -101,17 +99,20 @@ export function useGetCarModel(brandId: any): {
     const carModelWithId = data.map((item: any) => {
       return { name: item.name, id: item.id };
     });
-    return { carModelNames, carModelWithId };
+    return { carModelNames: carModelNames, carModelWithId: carModelWithId };
   } else {
     return { carModelNames: [], carModelWithId: [] };
   }
 }
-export function useGetCarVersion(brandId: any): {
+export function useGetCarVersion(
+  brandId: any,
+  modelId: any
+): {
   carVersionNames: string[];
   carVersionWithId: Array<{ name: string; id: string }>;
 } {
   const { data, error, isLoading } = useSWR(
-    `infoAutos/carBrand/` + brandId,
+    `/infoAutos/${brandId}/${modelId}/`,
     (url) =>
       fetchApi(url, {
         method: "get",
@@ -144,11 +145,12 @@ export function useGetProvincies(): {
       },
     })
   );
-  if (data && data.length > 0) {
-    const provincesNames = data.success.result.map((item: any) => {
+
+  if (data && !data.success.result.error) {
+    const provincesNames = data.success.result.province.map((item: any) => {
       return item.nombre;
     });
-    const provincesWithId = data.success.result.map((item: any) => {
+    const provincesWithId = data.success.result.province.map((item: any) => {
       return { nombre: item.nombre, id: item.id };
     });
     return { provincesNames, provincesWithId };
@@ -161,7 +163,7 @@ export function useGetDepartments(provinceId: string): {
   departmentWithId: Array<{ name: string; id: string }>;
 } {
   const { data, error, isLoading } = useSWR(
-    "location/departments/" + provinceId,
+    "location/provinces/" + provinceId,
     (url) =>
       fetchApi(url, {
         method: "get",
@@ -170,13 +172,18 @@ export function useGetDepartments(provinceId: string): {
         },
       })
   );
-  if (data && data.length > 0) {
-    const departmentNames = data.success.result.map((item: any) => {
-      return item.nombre;
-    });
-    const departmentWithId = data.success.result.map((item: any) => {
-      return { name: item.nombre, id: item.id };
-    });
+
+  if (data && data.success.result.province.locations) {
+    const departmentNames = data.success.result.province.locations.map(
+      (item: any) => {
+        return item.nombre;
+      }
+    );
+    const departmentWithId = data.success.result.province.locations.map(
+      (item: any) => {
+        return { name: item.nombre, id: item.id };
+      }
+    );
     return { departmentNames, departmentWithId };
   } else {
     return { departmentNames: [], departmentWithId: [] };
@@ -197,8 +204,6 @@ export function useGetCities(departmentId: string): {
       })
   );
   if (data && data.length > 0) {
-    console.log({ cities: data });
-
     const citiesNames = data.success.result.map((item: any) => {
       return item.nombre;
     });

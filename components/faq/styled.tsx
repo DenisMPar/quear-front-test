@@ -23,5 +23,5 @@ export const FaqTitle = styled(SubtitleSecondary)`
 export const FaqContainerQuestions = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 24px;
 `;

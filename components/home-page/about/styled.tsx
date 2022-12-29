@@ -24,8 +24,7 @@ export const HomeAbout = styled.div`
 `;
 export const HomeAboutTextBox = styled(TextBox)`
   text-align: center;
-  padding: 16px 20px;
-  padding-top: 36px;
+  padding: 36px 20px;
   max-width: 1155px;
   margin: 0 auto;
   @media screen and (min-width: 1024px) {

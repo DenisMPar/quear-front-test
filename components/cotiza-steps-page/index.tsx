@@ -79,16 +79,20 @@ export function CotizaStepsPage() {
   const handleNext = () => {
     // if brand or model changes you need to modified next steps
     if (activeStep > 0 && activeStep < 3) {
-      setActiveStep(activeStep + 1);
+      //added time out so the user can see de value before change to next step
+      setTimeout(() => {
+        setActiveStep(activeStep + 1);
+      }, 600);
     } else {
       //all other steps can jump to next step incompleted
       const newActiveStep = !allStepsCompleted()
         ? steps.findIndex((step, i) => !(i in completed))
         : steps.length;
-
-      setActiveStep(
-        newActiveStep > steps.length - 1 ? steps.length - 1 : newActiveStep
-      );
+      setTimeout(() => {
+        setActiveStep(
+          newActiveStep > steps.length - 1 ? steps.length - 1 : newActiveStep
+        );
+      }, 600);
     }
   };
   function setStepCompleted() {

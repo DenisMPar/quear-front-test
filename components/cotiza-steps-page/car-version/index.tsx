@@ -10,7 +10,8 @@ export function VersionStepComponent({ handleSelect }: any) {
   const { handleSubmit, reset, setValue, control } = useForm();
   const [cotizaData, setCotizaData] = useRecoilState(userCotizaData);
   const { carVersionNames, carVersionWithId } = useGetCarVersion(
-    cotizaData.carBrandId
+    cotizaData.carBrandId,
+    cotizaData.carModelId
   );
   function onSelect(key: string, value: any) {
     const element = carVersionWithId.find((el) => {
@@ -18,7 +19,7 @@ export function VersionStepComponent({ handleSelect }: any) {
     });
 
     element &&
-      setCotizaData({ ...cotizaData, carModelId: parseInt(element.id) });
+      setCotizaData({ ...cotizaData, carVersionId: parseInt(element.id) });
     handleSelect(key, value);
   }
 

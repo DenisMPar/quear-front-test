@@ -27,9 +27,7 @@ export function AddressStepComponent({ handleSelect }: any) {
     useForm();
   const { provincesNames, provincesWithId } = useGetProvincies();
   const { departmentNames, departmentWithId } = useGetDepartments(provinceId);
-  const {} = useGetCities(departmentId);
   const watchProvince = watch("province");
-  const watchDepartment = watch("department");
 
   useEffect(() => {
     if (watchProvince) {
@@ -40,22 +38,12 @@ export function AddressStepComponent({ handleSelect }: any) {
         setProvinceId(el.id);
       }
     }
-    if (watchDepartment) {
-      const el = departmentWithId.find((el) => {
-        return el.name == watchDepartment;
-      });
-
-      if (el) {
-        setDepartmentId(el.id);
-      }
-    }
-  }, [watchProvince, provincesWithId, watchDepartment, departmentWithId]);
+  }, [watchProvince, provincesWithId]);
 
   function onSubmit(submit: any) {
     const orderedSubmit = {
       Provincia: submit.province,
-      Departamento: submit.department,
-      "Código postal": submit.zipCode,
+      Localidad: submit.location,
     };
     setCotizaData({ ...cotizaData, userAddress: submit });
     handleSelect("direccion", orderedSubmit);
@@ -96,13 +84,13 @@ export function AddressStepComponent({ handleSelect }: any) {
               render={({ field }: any) => (
                 <SelectComponent
                   {...field}
-                  selectKey="departamento"
+                  selectKey="localidad"
                   ref={null}
                   values={departmentNames}
-                  placeHolder={"departamento"}
+                  placeHolder={"Localidad"}
                 />
               )}
-              name="department"
+              name="location"
               control={control}
             />
             {formState.errors.departamento && (
@@ -111,26 +99,6 @@ export function AddressStepComponent({ handleSelect }: any) {
                 *completa este campo
               </StepAddressInputError>
             )}
-          </StepAddressContainerInput>
-          <StepAddressContainerInput>
-            <InputShadowed
-              {...register("zipCode", {
-                required: true,
-                pattern: /^[0-9]+$/,
-                maxLength: 4,
-              })}
-              placeholder="Código postal"
-            />
-            {formState.errors.postal &&
-              (formState.errors.postal.type == "required" ? (
-                <StepAddressInputError>
-                  *completa este campo
-                </StepAddressInputError>
-              ) : (
-                <StepAddressInputError>
-                  *Ingresa un código de 4 números. Ej: 5600
-                </StepAddressInputError>
-              ))}
           </StepAddressContainerInput>
           <StepAddressContainerButton>
             <ButtonPrimary variant="dark">Siguiente paso</ButtonPrimary>

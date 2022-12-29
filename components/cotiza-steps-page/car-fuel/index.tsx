@@ -14,7 +14,7 @@ export function FuelStepComponent({ handleSelect }: any) {
   const { handleSubmit, reset, setValue, control } = useForm();
   const [cotizaData, setCotizaData] = useRecoilState(userCotizaData);
   function onSelect(key: string, value: any) {
-    setCotizaData({ ...cotizaData, gnc: value });
+    setCotizaData({ ...cotizaData, gnc: value == "Si" });
     handleSelect(key, value);
   }
   return (
