@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { BodyPrimary } from "../../../ui/text";
 import { TextBox } from "../../../ui/text-box/styled";
+import { CarouselComponent } from "../../carousel";
 
 export const HomeAbout = styled.div`
   margin: 0 auto;
@@ -44,9 +45,22 @@ export const HomeAboutCarouselContainer = styled.div`
     margin: 40px 0;
   }
 `;
+export const CarouselMobile = styled.div`
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+`;
+export const CarouselDesktop = styled.div`
+  display: none;
+  @media screen and (min-width: 1024px) {
+    display: block;
+  }
+`;
 
 export const HomeAboutCarouselSlide = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;

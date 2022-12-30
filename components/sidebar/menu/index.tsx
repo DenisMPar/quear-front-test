@@ -41,8 +41,8 @@ const sideBarMenuLinksWithIcon: Array<LinkwithIcon> = [
   },
 ];
 const sideBarMenuLinks: Array<MenuLink> = [
-  { href: "/about", text: "Sobre nosotros" },
-  { href: "/faq", text: "Preguntas Frecuentes" },
+  { href: "/#about", text: "Sobre nosotros" },
+  { href: "/#faq", text: "Preguntas Frecuentes" },
 ];
 export function SidebarMenuComponent(props: Props) {
   const path = getPath();
