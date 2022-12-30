@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Drawer, SwipeableDrawer } from "@mui/material";
 import Link from "next/link";
 import { animated } from "react-spring";
 import {
@@ -8,19 +9,26 @@ import {
   SubtitleTerciary,
 } from "../../ui/text";
 
+export const ContactPopUpDrawer = styled(Drawer)`
+  min-height: 70vh;
+  &.MuiDrawer-root > .MuiPaper-root {
+    border-radius: 32px 32px 0px 0px;
+  }
+`;
+
 export const ContactPopUpRoot = styled(animated.aside)`
+  min-height: 70vh;
   display: grid;
   grid-template-rows: 4fr 1fr;
   gap: 10px;
   margin: 0 auto;
-  position: fixed;
   margin-left: auto;
   margin-right: auto;
   left: 0;
   right: 0;
   z-index: 999;
   width: 100%;
-  min-height: 70vh;
+
   padding: 27px 14px;
   padding-bottom: 6px;
   padding-top: 33px;

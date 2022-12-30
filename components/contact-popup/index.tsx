@@ -6,6 +6,7 @@ import { ContactPopUpSendMailComponent } from "./send-mail";
 import {
   ContactPopUpCloseContainer,
   ContactPopUpContentContainer,
+  ContactPopUpDrawer,
   ContactPopUpLogoContainer,
   ContactPopUpRoot,
   ContactPopUpTitle,
@@ -20,6 +21,10 @@ type props = {
 
 export const ContactPopUpComponent = (props: props) => {
   const [showSendMail, setShowSendMail] = useState(false);
+
+  const toggleDrawer = () => {
+    props.toggle();
+  };
   function toggleSendMail() {
     setShowSendMail(!showSendMail);
   }
@@ -31,33 +36,33 @@ export const ContactPopUpComponent = (props: props) => {
   });
 
   return (
-    <>
-      {menuTranstition((style, item) =>
-        item ? (
-          <ContactPopUpRoot style={style}>
-            <ContactPopUpContentContainer>
-              <ContactPopUpTitleContainer>
-                <ContactPopUpTitle>
-                  ¿Necesitás ayuda con algo?
-                </ContactPopUpTitle>
-                <ContactPopUpCloseContainer onClick={props.toggle}>
-                  <StyledClose color="dark-ligth" height="24px" width="24px" />
-                </ContactPopUpCloseContainer>
-              </ContactPopUpTitleContainer>
-              {showSendMail ? (
-                <ContactPopUpSendMailComponent
-                  toggleSendMail={toggleSendMail}
-                />
-              ) : (
-                <ContactPopUpMainComponent toggleSendMail={toggleSendMail} />
-              )}
-            </ContactPopUpContentContainer>
-            <ContactPopUpLogoContainer>
-              <StyledQuearBigLogoBlue />
-            </ContactPopUpLogoContainer>
-          </ContactPopUpRoot>
-        ) : null
-      )}
-    </>
+    <ContactPopUpDrawer
+      sx={{ minHeight: "70vh", zIndex: "1300" }}
+      anchor="bottom"
+      open={props.show}
+      onClose={toggleDrawer}
+      ModalProps={{
+        keepMounted: true,
+      }}
+    >
+      <ContactPopUpRoot>
+        <ContactPopUpContentContainer>
+          <ContactPopUpTitleContainer>
+            <ContactPopUpTitle>¿Necesitás ayuda con algo?</ContactPopUpTitle>
+            <ContactPopUpCloseContainer onClick={props.toggle}>
+              <StyledClose color="dark-ligth" height="24px" width="24px" />
+            </ContactPopUpCloseContainer>
+          </ContactPopUpTitleContainer>
+          {showSendMail ? (
+            <ContactPopUpSendMailComponent toggleSendMail={toggleSendMail} />
+          ) : (
+            <ContactPopUpMainComponent toggleSendMail={toggleSendMail} />
+          )}
+        </ContactPopUpContentContainer>
+        <ContactPopUpLogoContainer>
+          <StyledQuearBigLogoBlue />
+        </ContactPopUpLogoContainer>
+      </ContactPopUpRoot>
+    </ContactPopUpDrawer>
   );
 };

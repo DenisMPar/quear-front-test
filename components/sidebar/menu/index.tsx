@@ -46,12 +46,14 @@ const sideBarMenuLinks: Array<MenuLink> = [
 ];
 export function SidebarMenuComponent(props: Props) {
   const path = getPath();
+  const pathSplitted = "/" + path?.split("/")[1];
+
   return (
     <SideBarMenuContainer>
       {sideBarMenuLinksWithIcon.map((link) => {
         return (
           <Link key={link.text} href={link.href}>
-            <SideBarMenuLinkContainer active={path == link.href}>
+            <SideBarMenuLinkContainer active={pathSplitted == link.href}>
               {link.icon}
               <SideBarMenuLinkText as={"p"}>{link.text}</SideBarMenuLinkText>
             </SideBarMenuLinkContainer>
