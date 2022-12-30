@@ -21,6 +21,7 @@ interface Props {
   activeStep: number;
   completed: any;
   steps: any[];
+  title: string;
 }
 
 export function StepsDrawer(props: Props) {
@@ -60,7 +61,8 @@ export function StepsDrawer(props: Props) {
       >
         <StepsDrawerHeader>
           <StepsDrawertitle>
-            Cotizá: Paso {props.activeStep + 1 + "/" + props.steps.length}
+            {props.title}: Paso{" "}
+            {props.activeStep + 1 + "/" + props.steps.length}
           </StepsDrawertitle>
           <StepsDrawerArrowContainer
             onClick={toggleDrawer}
