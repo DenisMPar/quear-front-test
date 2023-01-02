@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { ButtonPrimaryBig } from "../../ui/buttons/styled";
 import { StyledQuearBigLogo } from "../../ui/icons";
 import { InputPassword } from "../../ui/input";
@@ -9,14 +10,18 @@ import {
   DashboardInputsContainer,
   DashboardLabelContainer,
   DashboardLink,
-  DashboardLinkColored,
   DashboardLoginContainer,
   DashboardRoot,
   DashboardSubtitles,
   DashboardTitle,
 } from "./styled";
 
-export function DashboardHomePage() {
+export function DashboardLoginPage() {
+  const router = useRouter();
+  function handleOnClick() {
+    router.push("/dashboard/home");
+  }
+
   return (
     <DashboardRoot>
       <DashboardHeader>
@@ -36,10 +41,9 @@ export function DashboardHomePage() {
             </DashboardLabelContainer>
             <DashboardLink>Olvidaste tu contraseña?</DashboardLink>
             <DashboardButtonContainer>
-              <ButtonPrimaryBig variant="dark">Siguiente</ButtonPrimaryBig>
-              <DashboardLinkColored>
-                Crear una cuenta nueva
-              </DashboardLinkColored>
+              <ButtonPrimaryBig variant="dark" onClick={handleOnClick}>
+                Siguiente
+              </ButtonPrimaryBig>
             </DashboardButtonContainer>
           </DashboardInputsContainer>
         </DashboardLoginContainer>

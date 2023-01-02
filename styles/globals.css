@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap");
 
 html,
 body {
   padding: 0;
   margin: 0;
- 
+  overscroll-behavior: none;
 }
 
 a {
@@ -15,23 +14,22 @@ a {
 
 * {
   box-sizing: border-box;
-  font-family:'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
 :root {
-  
-  --primary:#4145FB;
-  --primary-hover:#575afd;
-  --primary-disabled:#9496f1d3;
-  --secondary:#ECECFF;
-  --secondary-hover:#e2e2ff;
-  --terciary: #52F0AE;
+  --primary: #4145fb;
+  --primary-hover: #575afd;
+  --primary-disabled: #9496f1d3;
+  --secondary: #ececff;
+  --secondary-hover: #e2e2ff;
+  --terciary: #52f0ae;
   --terciary-hover: #a6fad7;
-  --bg:#FFFFFF;
-  --bg-secondary:#F7F7F7;
-  --bg-terciary:#EAEAEA;
-  --dark-ligth:#4F4F4F;
-  --dark-secondary:#AEAEAE;
-  --dark-terciary:#c7c7c7;
-  --shadow:rgba(65, 69, 251, 0.25);
+  --bg: #ffffff;
+  --bg-secondary: #f7f7f7;
+  --bg-terciary: #eaeaea;
+  --dark-ligth: #4f4f4f;
+  --dark-secondary: #aeaeae;
+  --dark-terciary: #c7c7c7;
+  --shadow: rgba(65, 69, 251, 0.25);
 }
