@@ -22,6 +22,7 @@ export const StepCarForm = styled.form`
   gap: 40px;
 `;
 export const StepCarInfoContainerForm = styled.div`
+  text-align: center;
   display: flex;
   flex-direction: column;
   gap: 30px;

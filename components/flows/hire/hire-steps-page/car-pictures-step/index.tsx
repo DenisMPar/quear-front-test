@@ -2,10 +2,15 @@ import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import { useGetCarBrand } from "../../../../../lib/hooks";
 import { userCotizaData } from "../../../../../lib/state";
+import {
+  ButtonOutlined,
+  ButtonPrimary,
+} from "../../../../../ui/buttons/styled";
 import { StyledInfo } from "../../../../../ui/icons";
 import { AddLabel } from "../../../../../ui/label/add-label";
 import { BodyTerciary } from "../../../../../ui/text";
 import {
+  StepCarPicturesContainerButtons,
   StepCarPicturesContainerInfo,
   StepCarPicturesContainerMain,
   StepCarPicturesContainerPicturesLabel,
@@ -66,6 +71,10 @@ export function CarPicturesStepComponent({ handleSelect }: any) {
           Agregar foto
         </StepCarPicturesLabel>
       </StepCarPicturesContainerPicturesLabel>
+      <StepCarPicturesContainerButtons>
+        <ButtonPrimary variant="dark">Continuar</ButtonPrimary>
+        <ButtonOutlined>Saltar paso</ButtonOutlined>
+      </StepCarPicturesContainerButtons>
     </StepCarPicturesContainerMain>
   );
 }

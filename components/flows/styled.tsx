@@ -11,8 +11,8 @@ export const Root = styled.div`
   padding: 25px 16px;
   margin: 0 auto;
   display: grid;
-  grid-template-rows: 1fr 14fr;
-  gap: 4vh;
+  grid-template-rows: 1fr 30fr;
+  gap: 5vh;
 
   @media screen and (min-width: 1024px) {
     height: 100vh;

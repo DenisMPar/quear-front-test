@@ -6,6 +6,7 @@ export const StepCarPicturesContainerMain = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
+  padding-bottom: 56px;
   gap: 16px;
 `;
 
@@ -42,4 +43,10 @@ export const StepCarPicturesContainerPicturesLabel = styled.div`
 `;
 export const StepCarPicturesLabel = styled(AddLabel)`
   height: 128px;
+`;
+export const StepCarPicturesContainerButtons = styled.div`
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 `;
