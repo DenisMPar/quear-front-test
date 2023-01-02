@@ -24,6 +24,9 @@ export const StyledInput = styled.input`
   height: 100%;
   border: none;
   outline: none;
+  @media screen and (min-width: 1024px) {
+    font-size: 16px;
+  }
 `;
 export const StyledLi = styled.li`
   color: var(--primary);

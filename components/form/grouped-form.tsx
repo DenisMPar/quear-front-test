@@ -5,9 +5,7 @@ import { SelectGroupedComponent } from "../select/grouped";
 export function GroupedFormComponent() {
   const { handleSubmit, reset, setValue, control } = useForm();
   const [data, setData] = useState(null);
-  function handleSelect(data: any) {
-    console.log(data);
-  }
+  function handleSelect(data: any) {}
   return (
     <>
       <div>

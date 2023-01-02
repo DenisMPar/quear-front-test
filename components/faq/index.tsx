@@ -28,10 +28,12 @@ const FrecuentQuestions = [
       "Elit laoreet hendrerit hendrerit quis urna. varius at nulla, cursus hendrerit nec commodo Donec quam massa viverra Morbi.",
   },
 ];
-
-export function FaqComponent() {
+interface Props {
+  id?: string;
+}
+export function FaqComponent(props: Props) {
   return (
-    <FaqRoot>
+    <FaqRoot id={props.id}>
       <FaqTitle>Preguntas Frecuentes</FaqTitle>
       <FaqContainerQuestions>
         {FrecuentQuestions.map((question) => {

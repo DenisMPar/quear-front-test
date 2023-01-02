@@ -69,9 +69,11 @@ export const HomeButtonLink = styled(Link)`
   width: 100%;
 `;
 export const HomeButton = styled(ButtonPrimary)`
+  margin: 0 auto;
   margin-top: 45px;
   max-width: 214px;
   @media screen and (min-width: 1024px) {
+    margin: 0;
     margin-top: 36px;
   }
 `;

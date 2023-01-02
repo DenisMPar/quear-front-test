@@ -10,7 +10,7 @@ import {
 import Link from "next/link";
 import { ReactNode } from "react";
 import { StyledHomeColored, StyledUser } from "../../ui/icons";
-import { getPath } from "../../lib";
+import { getPath } from "../../lib/functions";
 import { SubtitleSecondary, SubtitleTerciary } from "../../ui/text";
 
 type MenuLink = {

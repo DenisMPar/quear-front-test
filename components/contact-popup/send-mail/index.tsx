@@ -19,7 +19,7 @@ export function ContactPopUpSendMailComponent(props: Props) {
       <div>
         <ButtonPrimary variant="dark">Enviar</ButtonPrimary>
         <p
-          style={{ margin: 0, textAlign: "center" }}
+          style={{ margin: 0, textAlign: "center", marginTop: "16px" }}
           onClick={props.toggleSendMail}
         >
           Cancelar

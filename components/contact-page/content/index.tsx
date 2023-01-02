@@ -1,5 +1,5 @@
 import { ButtonOutlinedBig } from "../../../ui/buttons/styled";
-import { StyledPhone, StyledWhatsApp } from "../../../ui/icons";
+import { StyledMail, StyledPhone, StyledWhatsApp } from "../../../ui/icons";
 import { BodyTerciary } from "../../../ui/text";
 import {
   ContactPageButtonText,
@@ -38,10 +38,12 @@ export function ContactContentComponent() {
       </ContactPageTextContainer>
       <ContactPageTextContainer>
         <ContactPageSubTitle>Mail</ContactPageSubTitle>
-        <ButtonOutlinedBig>
-          <StyledPhone color="primary" />
-          <ContactPageButtonText>contacto@seguros.com</ContactPageButtonText>
-        </ButtonOutlinedBig>
+        <a href="mailto:contacto@seguros.com">
+          <ButtonOutlinedBig>
+            <StyledMail color="primary" />
+            <ContactPageButtonText>contacto@seguros.com</ContactPageButtonText>
+          </ButtonOutlinedBig>
+        </a>
       </ContactPageTextContainer>
     </ContactPageContentContainer>
   );

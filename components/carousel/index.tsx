@@ -3,6 +3,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 interface Props {
   slidesToShow: number;
+  slidesToSlide?: number;
   children: ReactNode[];
   autoplay: boolean;
   autoplayInterval?: number;
@@ -13,6 +14,7 @@ interface Props {
 export function CarouselComponent(props: Props) {
   return (
     <Carousel
+      slidesToSlide={props.slidesToSlide}
       responsive={{
         allScreens: {
           breakpoint: { max: 4000, min: 0 },

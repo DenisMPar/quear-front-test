@@ -20,7 +20,7 @@ export function SelectGroupedComponent(props: Props) {
   const options = props.values.map((option) => {
     let title = option.title;
     return option.options.map((option) => {
-      const firstLetter = option[0].toUpperCase();
+      const firstLetter = option[0]?.toUpperCase();
       return {
         firstLetter: /[0-9]/.test(firstLetter) ? "0-9" : firstLetter,
         option,
@@ -39,6 +39,7 @@ export function SelectGroupedComponent(props: Props) {
 
   return (
     <Autocomplete
+      loading={props.values[0].options.length == 0}
       onChange={(
         event: any,
         newValue: {

@@ -20,6 +20,7 @@ export function SelectComponent(props: Props) {
   const [value, setValue] = useState<string | null>(null);
   return (
     <Autocomplete
+      loading={props.values.length == 0}
       value={value}
       onChange={(event: any, newValue: string | null) => {
         setValue(newValue);

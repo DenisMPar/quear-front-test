@@ -39,10 +39,12 @@ export function HeaderDestkop() {
           </HeaderDesktopUl>
           <HeaderDesktopUl>
             <HeaderDesktopLi>
-              <MenuLinkDesktop href={"/"}>Sobre Nosotros</MenuLinkDesktop>
+              <MenuLinkDesktop href={"/#about"}>Sobre Nosotros</MenuLinkDesktop>
             </HeaderDesktopLi>
             <HeaderDesktopLi>
-              <MenuLinkDesktop href={"/"}>Preguntas Frecuentes</MenuLinkDesktop>
+              <MenuLinkDesktop href={"/#faq"}>
+                Preguntas Frecuentes
+              </MenuLinkDesktop>
             </HeaderDesktopLi>
             <HeaderDesktopLi>
               <MenuLinkDesktop href={"/contact"}>Contacto</MenuLinkDesktop>

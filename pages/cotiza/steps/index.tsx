@@ -1,4 +1,4 @@
-import { CotizaStepsPage } from "../../../components/cotiza-steps-page";
+import { CotizaStepsPage } from "../../../components/flows/cotiza/cotiza-steps-page";
 import { Layout } from "../../../components/layout";
 
 export default function CotizaSteps() {

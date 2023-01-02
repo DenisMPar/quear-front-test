@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ReactNode } from "react";
-import { getPath } from "../../../lib";
+import { getPath } from "../../../lib/functions";
 import {
   StyledEyeColored,
   StyledHomeColored,
@@ -41,17 +41,19 @@ const sideBarMenuLinksWithIcon: Array<LinkwithIcon> = [
   },
 ];
 const sideBarMenuLinks: Array<MenuLink> = [
-  { href: "/about", text: "Sobre nosotros" },
-  { href: "/faq", text: "Preguntas Frecuentes" },
+  { href: "/#about", text: "Sobre nosotros" },
+  { href: "/#faq", text: "Preguntas Frecuentes" },
 ];
 export function SidebarMenuComponent(props: Props) {
   const path = getPath();
+  const pathSplitted = "/" + path?.split("/")[1];
+
   return (
     <SideBarMenuContainer>
       {sideBarMenuLinksWithIcon.map((link) => {
         return (
           <Link key={link.text} href={link.href}>
-            <SideBarMenuLinkContainer active={path == link.href}>
+            <SideBarMenuLinkContainer active={pathSplitted == link.href}>
               {link.icon}
               <SideBarMenuLinkText as={"p"}>{link.text}</SideBarMenuLinkText>
             </SideBarMenuLinkContainer>

@@ -1,5 +1,5 @@
 import { ButtonPrimaryBig } from "../../../ui/buttons/styled";
-import { StyledPhone, StyledWhatsApp } from "../../../ui/icons";
+import { StyledMail, StyledPhone, StyledWhatsApp } from "../../../ui/icons";
 import { BodyTerciary } from "../../../ui/text";
 import {
   ContactPopUpButtonText,
@@ -35,7 +35,7 @@ export function ContactPopUpMainComponent(props: Props) {
       <ContactPopUpTextContainer>
         <ContactPopUpSubTitle>Mail</ContactPopUpSubTitle>
         <ButtonPrimaryBig variant="dark" onClick={props.toggleSendMail}>
-          <StyledPhone color="bg" />
+          <StyledMail color="bg" />
           <ContactPopUpButtonText>contacto@seguros.com</ContactPopUpButtonText>
         </ButtonPrimaryBig>
       </ContactPopUpTextContainer>

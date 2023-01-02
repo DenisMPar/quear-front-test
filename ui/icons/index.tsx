@@ -40,6 +40,7 @@ import { CarDesktopSVGIcon } from "./svg/car-logo-desktop";
 import { PlusSVGIcon } from "./svg/plus-icon";
 import { PasswordHideSVGIcon } from "./svg/password-hide-icon";
 import { BulletSVGIcon } from "./svg/bullet-icon";
+import { MailSVGIcon } from "./svg/mail-icon";
 
 export interface IconsProps {
   color?:
@@ -172,6 +173,15 @@ const Phone = styled(PhoneSVGIcon)`
 `;
 export const StyledPhone = ({ color, width, height }: IconsProps) => {
   return <Phone color={color} width={width} height={height}></Phone>;
+};
+const Mail = styled(MailSVGIcon)`
+  width: ${(props) => (props.width ? props.width : "24px")};
+  height: ${(props) => (props.height ? props.height : "24px")};
+  fill: ${(props) =>
+    props.color ? `var(--${props.color})` : `var(--primary)`};
+`;
+export const StyledMail = ({ color, width, height }: IconsProps) => {
+  return <Mail color={color} width={width} height={height}></Mail>;
 };
 
 const Edit = styled(EditSVGIcon)`
