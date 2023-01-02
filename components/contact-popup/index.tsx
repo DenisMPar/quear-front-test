@@ -29,15 +29,9 @@ export const ContactPopUpComponent = (props: props) => {
     setShowSendMail(!showSendMail);
   }
 
-  const menuTranstition = useTransition(props.show, {
-    from: { opacity: 0, bottom: `-100%` },
-    enter: { opacity: 1, bottom: `-0%` },
-    leave: { opacity: 0, bottom: `-100%` },
-  });
-
   return (
     <ContactPopUpDrawer
-      sx={{ minHeight: "70vh", zIndex: "1300" }}
+      sx={{ zIndex: "1300" }}
       anchor="bottom"
       open={props.show}
       onClose={toggleDrawer}
