@@ -15,7 +15,7 @@ interface Props {
   selectKey: string;
 }
 
-export function SelectGroupedComponent(props: Props) {
+export function AutocompleteGroupedComponent(props: Props) {
   //crate a new object with first letter capitalized and a key first letter to sort later
   const options = props.values.map((option) => {
     let title = option.title;

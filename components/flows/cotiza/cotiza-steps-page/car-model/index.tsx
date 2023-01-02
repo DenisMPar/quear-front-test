@@ -3,7 +3,7 @@ import { useRecoilState } from "recoil";
 import { useGetCarModel } from "../../../../../lib/hooks";
 import { userCotizaData } from "../../../../../lib/state";
 import { SubtitlePrimary } from "../../../../../ui/text";
-import { SelectComponent } from "../../../../select";
+import { AutocompleteComponent } from "../../../../autocomplete-select";
 import { StepModelInputContainer, StepModelRoot } from "./styled";
 
 export function ModelStepComponent({ handleSelect }: any) {
@@ -28,7 +28,7 @@ export function ModelStepComponent({ handleSelect }: any) {
       <StepModelInputContainer>
         <Controller
           render={({ field }: any) => (
-            <SelectComponent
+            <AutocompleteComponent
               {...field}
               handleSelect={onSelect}
               selectKey="modelo"

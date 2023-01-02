@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { SelectGroupedComponent } from "../select/grouped";
+import { AutocompleteGroupedComponent } from "../autocomplete-select/grouped";
 
 export function GroupedFormComponent() {
   const { handleSubmit, reset, setValue, control } = useForm();
@@ -17,7 +17,7 @@ export function GroupedFormComponent() {
       >
         <Controller
           render={({ field }: any) => (
-            <SelectGroupedComponent
+            <AutocompleteGroupedComponent
               {...field}
               handleSelect={handleSelect}
               ref={null}

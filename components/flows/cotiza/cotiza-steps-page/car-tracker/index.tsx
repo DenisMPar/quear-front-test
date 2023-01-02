@@ -2,7 +2,7 @@ import { Controller, useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import { userCotizaData } from "../../../../../lib/state";
 import { SubtitlePrimary } from "../../../../../ui/text";
-import { SelectButtonsComponent } from "../../../../select/buttons";
+import { SelectButtonsComponent } from "../../../../autocomplete-select/buttons";
 import {
   StepTrackerInputContainer,
   StepTrackerRoot,

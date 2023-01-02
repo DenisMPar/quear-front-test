@@ -3,7 +3,7 @@ import { useRecoilState } from "recoil";
 import { useGetCarVersion } from "../../../../../lib/hooks";
 import { userCotizaData } from "../../../../../lib/state";
 import { SubtitlePrimary } from "../../../../../ui/text";
-import { SelectComponent } from "../../../../select";
+import { AutocompleteComponent } from "../../../../autocomplete-select";
 import { StepVersionInputContainer, StepVersionRoot } from "./styled";
 
 export function VersionStepComponent({ handleSelect }: any) {
@@ -29,7 +29,7 @@ export function VersionStepComponent({ handleSelect }: any) {
       <StepVersionInputContainer>
         <Controller
           render={({ field }: any) => (
-            <SelectComponent
+            <AutocompleteComponent
               {...field}
               handleSelect={onSelect}
               selectKey="version"

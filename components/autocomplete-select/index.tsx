@@ -16,7 +16,7 @@ interface Props {
   selectKey: string;
 }
 
-export function SelectComponent(props: Props) {
+export function AutocompleteComponent(props: Props) {
   const [value, setValue] = useState<string | null>(null);
   return (
     <Autocomplete

@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import { useForm } from "react-hook-form";
 import { FormComponent } from "../../components/form";
 import { GroupedFormComponent } from "../../components/form/grouped-form";
-import { SelectButtonsComponent } from "../../components/select/buttons";
+import { SelectButtonsComponent } from "../../components/autocomplete-select/buttons";
 import { StyledCarFourDoors, StyledCarThreeDoors } from "../../ui/icons";
 
 const Form: NextPage = () => {

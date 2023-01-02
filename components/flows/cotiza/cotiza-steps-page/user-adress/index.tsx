@@ -10,7 +10,7 @@ import { userCotizaData } from "../../../../../lib/state";
 import { ButtonPrimary } from "../../../../../ui/buttons/styled";
 import { InputShadowed } from "../../../../../ui/input/styled";
 import { SubtitlePrimary } from "../../../../../ui/text";
-import { SelectComponent } from "../../../../select";
+import { AutocompleteComponent } from "../../../../autocomplete-select";
 import {
   StepAddressContainerButton,
   StepAddressContainerInput,
@@ -60,7 +60,7 @@ export function AddressStepComponent({ handleSelect }: any) {
             <Controller
               rules={{ required: true }}
               render={({ field }: any) => (
-                <SelectComponent
+                <AutocompleteComponent
                   {...field}
                   selectKey="provincia"
                   ref={null}
@@ -82,7 +82,7 @@ export function AddressStepComponent({ handleSelect }: any) {
             <Controller
               rules={{ required: true }}
               render={({ field }: any) => (
-                <SelectComponent
+                <AutocompleteComponent
                   {...field}
                   selectKey="localidad"
                   ref={null}

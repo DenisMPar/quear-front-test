@@ -3,7 +3,7 @@ import { useRecoilState } from "recoil";
 import { useGetCarBrand } from "../../../../../lib/hooks";
 import { userCotizaData } from "../../../../../lib/state";
 import { SubtitlePrimary } from "../../../../../ui/text";
-import { SelectGroupedComponent } from "../../../../select/grouped";
+import { AutocompleteGroupedComponent } from "../../../../autocomplete-select/grouped";
 import { StepBrandInputContainer, StepBrandRoot } from "./styled";
 
 export function BrandStepComponent({ handleSelect }: any) {
@@ -25,7 +25,7 @@ export function BrandStepComponent({ handleSelect }: any) {
       <StepBrandInputContainer>
         <Controller
           render={({ field }: any) => (
-            <SelectGroupedComponent
+            <AutocompleteGroupedComponent
               {...field}
               handleSelect={onSelect}
               selectKey="marca"

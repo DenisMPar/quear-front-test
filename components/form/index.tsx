@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { SelectComponent } from "../select";
+import { AutocompleteComponent } from "../autocomplete-select";
 
 export function FormComponent() {
   const { handleSubmit, reset, setValue, control } = useForm();
@@ -16,7 +16,7 @@ export function FormComponent() {
       >
         <Controller
           render={({ field }: any) => (
-            <SelectComponent
+            <AutocompleteComponent
               {...field}
               ref={null}
               values={["2022", "2021", "2020", "2019"]}
