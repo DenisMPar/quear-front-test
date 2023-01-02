@@ -1,10 +1,10 @@
 import { NextPage } from "next";
 import {
-  TitlePrimary,
-  SubtitlePrimary,
-  SubtitleSecondary,
   BodyPrimary,
   BodySecondary,
+  SubtitlePrimary,
+  SubtitleSecondary,
+  TitlePrimary,
 } from "../../ui/text";
 
 export const UiText: NextPage = () => {

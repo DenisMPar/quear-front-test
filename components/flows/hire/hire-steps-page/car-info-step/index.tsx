@@ -2,15 +2,19 @@ import { Controller, useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import { useGetCarBrand } from "../../../../../lib/hooks";
 import { userCotizaData } from "../../../../../lib/state";
+import { StyledInfo } from "../../../../../ui/icons";
 import { InputShadowed } from "../../../../../ui/input/styled";
 import { SubtitlePrimary } from "../../../../../ui/text";
 import { SelectButtonsComponent } from "../../../../autocomplete-select/buttons";
+import { ModalComponent } from "../../../../../ui/modal";
 import {
   StepCarForm,
   StepCarInfoContainerForm,
+  StepCarInfoContainerInfo,
   StepCarInfoContainerInputs,
   StepCarInfoContainerTitle,
   StepCarInfoRoot,
+  StepCarInfoText,
   StepCarSubtitle,
 } from "./styled";
 
@@ -68,6 +72,17 @@ export function CarInfoStepComponent({ handleSelect }: any) {
           </StepCarInfoContainerInputs>
         </StepCarForm>
       </StepCarInfoContainerForm>
+      <StepCarInfoContainerInfo>
+        <StyledInfo />
+        <ModalComponent
+          text={
+            "Podés encontrar estos datos en la cédula verde. Si estás cotizando un 0km y todavía no tenes tu cédula verde, podés intentar pedirle estos datos a la consecionaria."
+          }
+          title={"¿Dónde encuentro el número de chasis y de motor?"}
+        >
+          <StepCarInfoText>¿Dónde encuentro esta información?</StepCarInfoText>
+        </ModalComponent>
+      </StepCarInfoContainerInfo>
     </StepCarInfoRoot>
   );
 }

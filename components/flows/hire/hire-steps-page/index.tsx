@@ -31,7 +31,7 @@ export function HireStepsPage() {
   const [completed, setCompleted] = useState<{
     [key: number]: boolean;
   }>({});
-  const stepToShow = [<CarPicturesStepComponent key={"1"} />];
+  const stepToShow = [<CarInfoStepComponent key={"1"} />];
 
   function handleSubmit() {
     console.log("submit", { data, cotizaData });
