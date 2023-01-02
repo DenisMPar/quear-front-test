@@ -7,11 +7,12 @@ interface Props {
   label?: string;
   type: "small" | "big";
   children: ReactNode;
+  className?: string;
 }
 
 export function AddLabel(props: Props) {
   return (
-    <AddLabelRoot type={props.type}>
+    <AddLabelRoot className={props.className} type={props.type}>
       <StyledPlus />
       {props.children}
       {props.label ? (

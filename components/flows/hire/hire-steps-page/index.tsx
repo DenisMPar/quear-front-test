@@ -20,6 +20,7 @@ import {
   StepsSubmitButton,
 } from "../../styled";
 import { CarInfoStepComponent } from "./car-info-step";
+import { CarPicturesStepComponent } from "./car-pictures-step";
 
 export function HireStepsPage() {
   const [data, setData] = useState<any>({});
@@ -30,7 +31,7 @@ export function HireStepsPage() {
   const [completed, setCompleted] = useState<{
     [key: number]: boolean;
   }>({});
-  const stepToShow = [<CarInfoStepComponent key={"1"} />];
+  const stepToShow = [<CarPicturesStepComponent key={"1"} />];
 
   function handleSubmit() {
     console.log("submit", { data, cotizaData });

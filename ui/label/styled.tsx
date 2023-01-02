@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Label = styled.div`
   font-weight: 700;
-  padding: 2px 16px;
+  padding: 2px 5px;
   font-size: 12px;
   color: var(--bg);
   width: 100%;
