@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { SubtitlePrimary } from "../../../ui/text";
+import { SubtitlePrimary } from "../../ui/text";
 
 export const DashboardPolizasRoot = styled.div`
   width: 100%;

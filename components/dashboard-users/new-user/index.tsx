@@ -1,5 +1,5 @@
-import { InputOutlined } from "../../../../ui/input/styled";
-import { SubtitleSecondary } from "../../../../ui/text";
+import { InputOutlined } from "../../../ui/input/styled";
+import { SubtitleSecondary } from "../../../ui/text";
 import {
   ButtonType,
   PopUpButtonOutlined,

@@ -45,18 +45,22 @@ export const DropContainer = styled.div`
   flex-direction: column;
   margin-top: 10px;
 `;
+// background-color: ${(props) => (props.active ? "rgba(0, 43, 152, 1)" : "")};
+// box-shadow: ${(props) => (props.active ? "0px 4px 4px var(--shadow)" : "")};
 
-interface LinkProps extends React.HTMLAttributes<HTMLDivElement> {
-  active: boolean;
-}
-
-export const DropLinkText = styled.div<LinkProps>`
+export const DropLinkText = styled.div`
   padding-left: 48px;
   color: var(--secondary);
-  background-color: ${(props) => (props.active ? "rgba(0, 43, 152, 1)" : "")};
-  box-shadow: ${(props) => (props.active ? "0px 4px 4px var(--shadow)" : "")};
   border-radius: 25px;
   height: 30px;
   align-items: center;
+  display: flex;
+`;
+
+export const SideBarMenuContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+export const SideBarDropContainer = styled.div`
   display: flex;
 `;

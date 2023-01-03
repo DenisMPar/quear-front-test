@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import { ButtonOutlined } from "../../../ui/buttons/styled";
-import { SubtitlePrimary } from "../../../ui/text";
+import { ButtonOutlined } from "../../ui/buttons/styled";
+import { SubtitlePrimary } from "../../ui/text";
 
 export const DashboardPolizasRoot = styled.div`
   width: 100%;

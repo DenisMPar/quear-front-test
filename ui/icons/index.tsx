@@ -41,6 +41,7 @@ import { PlusSVGIcon } from "./svg/plus-icon";
 import { PasswordHideSVGIcon } from "./svg/password-hide-icon";
 import { BulletSVGIcon } from "./svg/bullet-icon";
 import { MailSVGIcon } from "./svg/mail-icon";
+import { BellSVGIcon } from "./svg/bell-icon";
 
 export interface IconsProps {
   color?:
@@ -356,6 +357,14 @@ const User = styled(UserSVGIcon)`
 `;
 export const StyledUser = ({ width, height }: IconsProps) => {
   return <User width={width} height={height}></User>;
+};
+
+const Bell = styled(BellSVGIcon)`
+  width: ${(props) => (props.width ? props.width : "24px")};
+  height: ${(props) => (props.height ? props.height : "24px")};
+`;
+export const StyledBell = ({ width, height }: IconsProps) => {
+  return <Bell width={width} height={height}></Bell>;
 };
 
 const CreditCard = styled(CreditCardSVGIcon)`
