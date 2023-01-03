@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import { DropDownGroupedComponent } from "../../components/dropdown/grouped";
+import { SelectComponent } from "../../components/select";
 import { dataUno, dataUser } from "../../lib/mock-values";
 import {
   BodyPrimary,
@@ -26,6 +27,19 @@ export const UiText: NextPage = () => {
         <SubtitleSecondary>Subtitle Secondary</SubtitleSecondary>
         <BodyPrimary>Body primary</BodyPrimary>
         <BodySecondary>Body Secondary</BodySecondary>
+        <div
+          style={{
+            width: "250px",
+          }}
+        >
+          <SelectComponent
+            width="250px"
+            variant="dashboard"
+            values={["Tarjeta de crédito o débito"]}
+            placeHolder="Elegir modo de pago"
+            onChange={() => console.log("change")}
+          />
+        </div>
       </div>
     </>
   );

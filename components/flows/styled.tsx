@@ -9,7 +9,6 @@ export const Root = styled.div`
   min-height: calc(100vh - 105px);
   max-width: 600px;
   padding: 25px 16px;
-  padding-bottom: 70px;
   margin: 0 auto;
   display: grid;
   grid-template-rows: 1fr 30fr;

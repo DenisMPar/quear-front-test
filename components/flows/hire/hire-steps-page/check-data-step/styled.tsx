@@ -5,6 +5,7 @@ export const StepCheckDataRoot = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  margin-bottom: 70px;
 `;
 export const StepCheckDataTitle = styled(SubtitlePrimary)`
   font-weight: 400;

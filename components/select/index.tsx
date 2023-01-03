@@ -7,6 +7,7 @@ interface Props {
   values: string[];
   placeHolder: string;
   onChange: (prp?: any) => any;
+  width?: string;
 }
 
 export function SelectComponent(props: Props) {
@@ -29,6 +30,7 @@ export function SelectComponent(props: Props) {
   }
   return (
     <CustomSelect
+      width={props.width}
       icon={props.variant == "dashboard"}
       onChange={props.onChange}
       renderValue={renderValue}
