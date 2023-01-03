@@ -66,7 +66,7 @@ export const ButtonBig = styled(BaseButton)`
   }
 `;
 interface TextButtonProps extends React.HTMLAttributes<HTMLSpanElement> {
-  underline: boolean;
+  underline?: boolean;
   color?: string;
 }
 export const TextButton = styled.span<TextButtonProps>`

@@ -1,4 +1,6 @@
 import { NextPage } from "next";
+import { DropDownGroupedComponent } from "../../components/dropdown/grouped";
+import { dataUno, dataUser } from "../../lib/mock-values";
 import {
   BodyPrimary,
   BodySecondary,
@@ -9,21 +11,23 @@ import {
 
 export const UiText: NextPage = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <h1>Text Variants</h1>
-      <TitlePrimary>Title Primary</TitlePrimary>
-      <SubtitlePrimary>Subtitle Primary</SubtitlePrimary>
-      <SubtitleSecondary>Subtitle Secondary</SubtitleSecondary>
-      <BodyPrimary>Body primary</BodyPrimary>
-      <BodySecondary>Body Secondary</BodySecondary>
-    </div>
+    <>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <h1>Text Variants</h1>
+        <TitlePrimary>Title Primary</TitlePrimary>
+        <SubtitlePrimary>Subtitle Primary</SubtitlePrimary>
+        <SubtitleSecondary>Subtitle Secondary</SubtitleSecondary>
+        <BodyPrimary>Body primary</BodyPrimary>
+        <BodySecondary>Body Secondary</BodySecondary>
+      </div>
+    </>
   );
 };
 
