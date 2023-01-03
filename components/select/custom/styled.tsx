@@ -1,7 +1,10 @@
 import styled from "@emotion/styled";
 
-import { selectUnstyledClasses } from "@mui/base/SelectUnstyled";
-import { Popper } from "@mui/material";
+import {
+  selectUnstyledClasses,
+  SelectUnstyledPopperSlotProps,
+} from "@mui/base/SelectUnstyled";
+import { Popper, PopperProps } from "@mui/material";
 
 export const StyledButtonWitIcon = styled("button")`
   width: 100%;
@@ -46,7 +49,6 @@ export const StyledListboxWithArrow = styled("ul")`
   font-size: 16px;
   box-sizing: border-box;
   padding: 12px 12px;
-  /* min-width: 320px; */
   border-radius: 12px;
   overflow: auto;
   outline: 0px;
@@ -61,7 +63,6 @@ export const StyledButton = styled("button")`
   font-weight: 400;
   box-sizing: border-box;
   min-height: calc(1.5em + 22px);
-  /* min-width: 320px; */
   padding: 12px;
   border-radius: 12px;
   text-align: left;
@@ -89,7 +90,6 @@ export const StyledListbox = styled("ul")`
   font-size: 16px;
   box-sizing: border-box;
   padding: 12px 12px;
-  min-width: 320px;
   border-radius: 12px;
   overflow: auto;
   outline: 0px;
@@ -98,7 +98,11 @@ export const StyledListbox = styled("ul")`
   color: var(--primary);
   box-shadow: 0px 4px 4px var(--shadow);
 `;
-
-export const StyledPopper = styled(Popper)`
-  width: 190px;
+interface Props extends PopperProps {
+  width?: string;
+}
+export const StyledPopper = styled(Popper)<Props>`
+  padding: ${(props) => (props.width ? "0" : "0 16px")};
+  margin: 0 auto;
+  width: ${(props) => (props.width ? props.width : "100%")};
 `;

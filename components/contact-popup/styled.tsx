@@ -10,14 +10,15 @@ import {
 } from "../../ui/text";
 
 export const ContactPopUpDrawer = styled(Drawer)`
-  min-height: 70vh;
+  min-height: 75vh;
   &.MuiDrawer-root > .MuiPaper-root {
     border-radius: 32px 32px 0px 0px;
+    height: 90%;
   }
 `;
 
 export const ContactPopUpRoot = styled(animated.aside)`
-  min-height: 70vh;
+  min-height: 75vh;
   display: grid;
   grid-template-rows: 4fr 1fr;
   gap: 10px;

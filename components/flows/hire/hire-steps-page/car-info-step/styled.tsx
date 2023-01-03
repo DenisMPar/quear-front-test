@@ -38,3 +38,19 @@ export const StepCarInfoContainerInputs = styled.div`
   @media screen and (min-width: 1024px) {
   }
 `;
+export const StepCarInfoContainerInfo = styled.div`
+  display: flex;
+  gap: 16px;
+
+  @media screen and (min-width: 1024px) {
+  }
+`;
+export const StepCarInfoText = styled(BodyPrimary)`
+  cursor: pointer;
+  color: var(--dark-ligth);
+  font-weight: 600;
+  font-size: 16px;
+  &:hover {
+    text-decoration: underline;
+  }
+`;

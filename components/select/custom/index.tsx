@@ -1,5 +1,11 @@
-import SelectUnstyled, { SelectUnstyledProps } from "@mui/base/SelectUnstyled";
-import { Popper } from "@mui/material";
+import SelectUnstyled, {
+  selectUnstyledClasses,
+  SelectUnstyledProps,
+  SelectUnstyledRootSlotProps,
+  SelectUnstyledPopperSlotProps,
+} from "@mui/base/SelectUnstyled";
+import { width } from "@mui/system";
+import { forwardRef } from "react";
 import {
   StyledButton,
   StyledButtonWitIcon,
@@ -10,16 +16,24 @@ import {
 
 interface Props extends SelectUnstyledProps<string> {
   icon?: boolean;
-  widht?: string;
+  width?: string;
 }
 
 export function CustomSelect(props: Props) {
-  // console.log(props.icon);
+  const { width } = props;
+
+  const Popper = forwardRef(function PopperUnstyled<TValue extends {}>(
+    props: SelectUnstyledPopperSlotProps<TValue>,
+    ref: React.ForwardedRef<HTMLDivElement>
+  ) {
+    const { ownerState, ...other } = props;
+    return <StyledPopper width={width} {...other} ref={ref} />;
+  });
 
   const slots: SelectUnstyledProps<string>["slots"] = {
     root: props.icon ? StyledButtonWitIcon : StyledButton,
     listbox: props.icon ? StyledListboxWithArrow : StyledListbox,
-    popper: StyledPopper,
+    popper: Popper as any,
     ...props.slots,
   };
 

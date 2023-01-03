@@ -21,6 +21,9 @@ import {
 } from "../../styled";
 import { CarInfoStepComponent } from "./car-info-step";
 import { CarPicturesStepComponent } from "./car-pictures-step";
+import { CheckDataStepComponent } from "./check-data-step";
+import { PaymentStepComponent } from "./payment-step";
+import { UserDataStepComponent } from "./user-data-step";
 
 export function HireStepsPage() {
   const [data, setData] = useState<any>({});
@@ -31,7 +34,7 @@ export function HireStepsPage() {
   const [completed, setCompleted] = useState<{
     [key: number]: boolean;
   }>({});
-  const stepToShow = [<CarPicturesStepComponent key={"1"} />];
+  const stepToShow = [<CheckDataStepComponent key={"1"} />];
 
   function handleSubmit() {
     console.log("submit", { data, cotizaData });
@@ -123,7 +126,6 @@ export function HireStepsPage() {
           </StepsContainerSubmit>
         )}
       </StepContainer>
-
       <StepsDrawer
         title="Contratá online"
         steps={steps}

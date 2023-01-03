@@ -65,3 +65,13 @@ export const ButtonBig = styled(BaseButton)`
     background-color: var(--secondary);
   }
 `;
+interface TextButtonProps extends React.HTMLAttributes<HTMLSpanElement> {
+  underline?: boolean;
+  color?: string;
+}
+export const TextButton = styled.span<TextButtonProps>`
+  color: ${(props) =>
+    props.color ? `var(--${props.color})` : `var(--primary)`};
+  text-decoration: ${(props) => (props.underline ? `underline` : ``)};
+  cursor: pointer;
+`;
