@@ -9,8 +9,8 @@ import {
 import { userCotizaData } from "../../../../../lib/state";
 import { InputShadowed } from "../../../../../ui/input/styled";
 import { SubtitlePrimary } from "../../../../../ui/text";
-import { SelectComponent } from "../../../../select";
-import { SelectButtonsComponent } from "../../../../select/buttons";
+import { AutocompleteComponent } from "../../../../autocomplete-select";
+import { SelectButtonsComponent } from "../../../../autocomplete-select/buttons";
 import {
   StepAgeInputError,
   StyledForm,
@@ -55,7 +55,7 @@ export function AgeStepComponent({ handleSelect }: any) {
             <Controller
               rules={{ required: true }}
               render={({ field }: any) => (
-                <SelectComponent
+                <AutocompleteComponent
                   {...field}
                   selectKey="dia"
                   ref={null}
@@ -74,7 +74,7 @@ export function AgeStepComponent({ handleSelect }: any) {
             <Controller
               rules={{ required: true }}
               render={({ field }: any) => (
-                <SelectComponent
+                <AutocompleteComponent
                   {...field}
                   selectKey="mes"
                   ref={null}
@@ -93,7 +93,7 @@ export function AgeStepComponent({ handleSelect }: any) {
             <Controller
               rules={{ required: true }}
               render={({ field }: any) => (
-                <SelectComponent
+                <AutocompleteComponent
                   {...field}
                   selectKey="año"
                   ref={null}

@@ -4,7 +4,7 @@ import { useGetCarBrand } from "../../../../../lib/hooks";
 import { userCotizaData } from "../../../../../lib/state";
 import { InputShadowed } from "../../../../../ui/input/styled";
 import { SubtitlePrimary } from "../../../../../ui/text";
-import { SelectButtonsComponent } from "../../../../select/buttons";
+import { SelectButtonsComponent } from "../../../../autocomplete-select/buttons";
 import {
   StepCarForm,
   StepCarInfoContainerForm,

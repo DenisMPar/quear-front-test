@@ -4,8 +4,8 @@ import Image from "next/image";
 import { CardComponent } from "../../components/card";
 import { HeaderDestkop } from "../../components/header/header-desktop";
 import { HeaderMobile } from "../../components/header/headerMobile";
-import { SelectComponent } from "../../components/select";
-import { SelectGroupedComponent } from "../../components/select/grouped";
+import { AutocompleteComponent } from "../../components/autocomplete-select";
+import { AutocompleteGroupedComponent } from "../../components/autocomplete-select/grouped";
 import {
   ButtonBig,
   ButtonOutlined,

@@ -1,49 +1,40 @@
-import { Autocomplete } from "@mui/material";
-import { useState } from "react";
-import {
-  PaperStyled,
-  PopperStyled,
-  StyledInput,
-  StyledLi,
-  StyledTextField,
-} from "./styled";
+import { SelectOption } from "@mui/base/SelectUnstyled";
+import { CustomSelect } from "./custom";
+import { StyledOption } from "./styled";
 
 interface Props {
+  variant: "dashboard" | "app";
   values: string[];
   placeHolder: string;
+  width?: number;
   onChange: (prp?: any) => any;
-  handleSelect?: (key: string, value: any) => void;
-  selectKey: string;
 }
 
 export function SelectComponent(props: Props) {
-  const [value, setValue] = useState<string | null>(null);
+  function renderOptions() {
+    return props.values.map((el) => {
+      return (
+        <StyledOption key={el} value={el}>
+          {el}
+        </StyledOption>
+      );
+    });
+  }
+
+  function renderValue(option: SelectOption<string> | null) {
+    if (option == null) {
+      return <span>{props.placeHolder}</span>;
+    }
+
+    return <span>{option.label}</span>;
+  }
   return (
-    <Autocomplete
-      loading={props.values.length == 0}
-      value={value}
-      onChange={(event: any, newValue: string | null) => {
-        setValue(newValue);
-        props.onChange(newValue);
-        if (props.handleSelect) {
-          props.handleSelect(props.selectKey, newValue);
-        }
-      }}
-      PaperComponent={PaperStyled}
-      PopperComponent={PopperStyled}
-      id="Autocomplete"
-      options={props.values}
-      sx={{ width: "100%", maxWidth: "600px", color: "var(--primary)" }}
-      renderInput={(params) => (
-        <StyledTextField ref={params.InputProps.ref}>
-          <StyledInput
-            type="text"
-            placeholder={props.placeHolder}
-            {...params.inputProps}
-          />
-        </StyledTextField>
-      )}
-      renderOption={(props, option) => <StyledLi {...props}>{option}</StyledLi>}
-    />
+    <CustomSelect
+      icon={props.variant == "dashboard"}
+      onChange={props.onChange}
+      renderValue={renderValue}
+    >
+      {renderOptions()}
+    </CustomSelect>
   );
 }

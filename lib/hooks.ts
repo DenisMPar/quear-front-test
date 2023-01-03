@@ -238,7 +238,6 @@ export function usePaginationPolicies() {
   const [page, setPage] = useState(1);
   const [status, setStatus] = useState("");
   const [date, setDate] = useState("");
-  console.log(page);
 
   // const token = getUserBO().token;
   const token =
@@ -268,6 +267,12 @@ export function usePaginationPolicies() {
       setPage,
       setStatus,
       setDate,
+    },
+    Querys: {
+      q,
+      page,
+      status,
+      date,
     },
   };
 }

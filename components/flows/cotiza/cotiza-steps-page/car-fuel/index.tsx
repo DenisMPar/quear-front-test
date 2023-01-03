@@ -7,7 +7,7 @@ import {
   StyledCarThreeDoors,
 } from "../../../../../ui/icons";
 import { SubtitlePrimary } from "../../../../../ui/text";
-import { SelectButtonsComponent } from "../../../../select/buttons";
+import { SelectButtonsComponent } from "../../../../autocomplete-select/buttons";
 import { StepFuelInputContainer, StepFuelRoot, StyledSubtitle } from "./styled";
 
 export function FuelStepComponent({ handleSelect }: any) {

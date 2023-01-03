@@ -1,7 +1,7 @@
 import { Controller, useForm } from "react-hook-form";
 import { useGetYears } from "../../../../../lib/hooks";
 import { SubtitlePrimary } from "../../../../../ui/text";
-import { SelectComponent } from "../../../../select";
+import { AutocompleteComponent } from "../../../../autocomplete-select";
 import { StepYearInputContainer, StepYearRoot } from "./styled";
 
 export function YearStepComponent({ handleSelect }: any) {
@@ -13,7 +13,7 @@ export function YearStepComponent({ handleSelect }: any) {
       <StepYearInputContainer>
         <Controller
           render={({ field }: any) => (
-            <SelectComponent
+            <AutocompleteComponent
               {...field}
               handleSelect={handleSelect}
               selectKey="año"

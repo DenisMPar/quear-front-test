@@ -1,44 +1,75 @@
 import styled from "@emotion/styled";
-import { Paper, Popper } from "@mui/material";
 
-export const StyledTextField = styled.div`
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 400;
-  box-sizing: border-box;
-  min-height: calc(1.5em + 22px);
-  padding: 12px;
-  border-radius: 12px;
-  text-align: left;
-  line-height: 1.5;
-  background: var(--bg);
-  border: none;
-  color: var(--dark-ligth);
+import SelectUnstyled, {
+  SelectUnstyledProps,
+  selectUnstyledClasses,
+} from "@mui/base/SelectUnstyled";
+import OptionUnstyled, {
+  optionUnstyledClasses,
+} from "@mui/base/OptionUnstyled";
+import PopperUnstyled from "@mui/base/PopperUnstyled";
+import { Popper } from "@mui/material";
+
+export const StyledSelect = styled(SelectUnstyled)`
+  background-color: var(--bg);
   box-shadow: 0px 4px 4px var(--shadow);
-  cursor: pointer;
 `;
-export const StyledInput = styled.input`
-  font-family: inherit;
-  color: var(--dark-ligth);
+
+export const StyledOption = styled(OptionUnstyled)`
   width: 100%;
-  height: 100%;
-  border: none;
-  outline: none;
-  @media screen and (min-width: 1024px) {
-    font-size: 16px;
+  list-style: none;
+  padding: 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  &:last-of-type {
+    border-bottom: none;
+  }
+  &.${optionUnstyledClasses.selected} {
+    background-color: none;
+    color: var(--primary);
+  }
+  &.${optionUnstyledClasses.highlighted} {
+    background-color: none;
+    color: var(--bg-secondary);
+  }
+  &.${optionUnstyledClasses.highlighted}.${optionUnstyledClasses.selected} {
+    background-color: none;
+    color: var(--primary);
+  }
+  &.${optionUnstyledClasses.disabled} {
+    color: var(--primary);
+  }
+  &:hover:not(.${optionUnstyledClasses.disabled}) {
+    background-color: var(--bg-secondary);
+    color: var(--primary);
   }
 `;
-export const StyledLi = styled.li`
-  color: var(--primary);
-  font-family: nunito;
-  font-size: 16px;
+
+export const StyledGroupRoot = styled("li")`
+  list-style: none;
 `;
 
-export const PaperStyled = styled(Paper)`
-  box-shadow: 0px 4px 4px var(--shadow);
-  border-radius: 12px;
+export const StyledGroupHeader = styled("span")`
+  display: block;
+  padding: 10px 0 5px 10px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+  color: var(--primary);
 `;
-export const PopperStyled = styled(Popper)`
-  box-shadow: 0px 4px 4px var(--shadow);
-  border-radius: 12px;
+
+export const StyledGroupOptions = styled("ul")`
+  list-style: none;
+  margin-left: 0;
+  padding: 0;
+  padding-bottom: 8px;
+  > li {
+    padding-left: 20px;
+  }
+`;
+export const StyledLine = styled.hr`
+  margin: 0;
+  height: 1px;
+  background-color: var(--primary);
+  border: none;
 `;
