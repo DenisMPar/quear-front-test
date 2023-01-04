@@ -13,7 +13,7 @@ export function CarouselResponsiveComponent(props: Props) {
       swipeable={true}
       draggable={true}
       showDots={false}
-      ssr={true} // means to render carousel on server-side.
+      ssr={false} // means to render carousel on server-side.
       infinite={false}
       autoPlay={false}
       keyBoardControl={true}

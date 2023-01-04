@@ -41,6 +41,7 @@ import { PlusSVGIcon } from "./svg/plus-icon";
 import { PasswordHideSVGIcon } from "./svg/password-hide-icon";
 import { BulletSVGIcon } from "./svg/bullet-icon";
 import { MailSVGIcon } from "./svg/mail-icon";
+import { CheckedSVGIcon } from "./svg/checked-icon";
 
 export interface IconsProps {
   color?:
@@ -273,6 +274,15 @@ const Bullet = styled(BulletSVGIcon)`
 `;
 export const StyledBullet = ({ color, width, height }: IconsProps) => {
   return <Bullet color={color} width={width} height={height}></Bullet>;
+};
+const Checked = styled(CheckedSVGIcon)`
+  width: ${(props) => (props.width ? props.width : "24px")};
+  height: ${(props) => (props.height ? props.height : "24px")};
+  fill: ${(props) =>
+    props.color ? `var(--${props.color})` : `var(--primary)`};
+`;
+export const StyledChecked = ({ color, width, height }: IconsProps) => {
+  return <Checked color={color} width={width} height={height}></Checked>;
 };
 
 //two colors icons (can change one color)

@@ -101,6 +101,7 @@ interface Props extends PopperProps {
   width?: string;
 }
 export const StyledPopper = styled(Popper)<Props>`
+  z-index: 999;
   padding: ${(props) => (props.width ? "0" : "0 16px")};
   margin: 0 auto;
   width: ${(props) => (props.width ? props.width : "100%")};
