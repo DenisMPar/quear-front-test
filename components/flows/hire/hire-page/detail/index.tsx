@@ -1,3 +1,4 @@
+import { DatosSeguro } from "../../../../../lib/mock-values";
 import { StyledChecked, StyledClose } from "../../../../../ui/icons";
 import { BodySecondary, SubtitleSecondary } from "../../../../../ui/text";
 import {
@@ -7,13 +8,13 @@ import {
 } from "./styled";
 
 interface Props {
-  values: Array<{ title: string; value: string | boolean }>;
+  values?: DatosSeguro[];
 }
 
 export function HirePageDetailComponent(props: Props) {
   return (
     <div>
-      {props.values.map((el, index) => {
+      {props.values?.map((el, index) => {
         return (
           <HirePageDetailContainerValue dark={index % 2 != 0} key={el.title}>
             <HirePageDetailContainerText>

@@ -1,4 +1,11 @@
-interface DatosSeguro {
+export interface DatoPoliza {
+  company: string;
+  type: string;
+  fee: number;
+  total: number;
+  details: DatosSeguro[];
+}
+export interface DatosSeguro {
   title: string;
   value: string | boolean;
 }
@@ -58,7 +65,6 @@ export const dataUno: DatosSeguro[] = [
     value: "$1.596.000",
   },
 ];
-
 export const dataDos: DatosSeguro[] = [
   {
     title: "Reposición 0KM",
@@ -161,6 +167,28 @@ export const dataTres: DatosSeguro[] = [
     value: "$10.000.000",
   },
 ];
+export const dataPolizaUno: DatoPoliza = {
+  company: "Provincia",
+  type: "Contra todo riesgo",
+  fee: 9000,
+  total: 1500000,
+  details: dataUno,
+};
+export const dataPolizaDos: DatoPoliza = {
+  company: "Rio Uruguay",
+  type: "Responsabilidad civil",
+  fee: 6000,
+  total: 1100000,
+  details: dataDos,
+};
+export const dataPolizaTres: DatoPoliza = {
+  company: "San Cristobal",
+  type: "Terceros completo",
+  fee: 7000,
+  total: 1300000,
+  details: dataTres,
+};
+
 export const dataUser: DatosUser[] = [
   {
     title: "Aseguradora",

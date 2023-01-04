@@ -1,6 +1,15 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { dataUno } from "../../../../lib/mock-values";
+import { useState } from "react";
+import {
+  dataDos,
+  dataPolizaDos,
+  dataPolizaTres,
+  dataPolizaUno,
+  dataTres,
+  dataUno,
+  DatoPoliza,
+} from "../../../../lib/mock-values";
 import { StyledArrow } from "../../../../ui/icons";
 import { SubtitleSecondary } from "../../../../ui/text";
 import { CardComponent } from "../../../card";
@@ -22,7 +31,20 @@ import {
   HirePageTitle,
 } from "./styled";
 
+const results = [
+  dataPolizaUno,
+  dataPolizaDos,
+  dataPolizaTres,
+  dataPolizaDos,
+  dataPolizaTres,
+];
 export function HirePage() {
+  const [selected, setSelected] = useState<DatoPoliza | null>();
+  const [active, setActive] = useState<number | null>();
+  function handleSelected(index: number) {
+    setSelected(results[index]);
+    setActive(index);
+  }
   return (
     <HirePageRoot>
       <Link href={"/cotiza"}>
@@ -34,7 +56,7 @@ export function HirePage() {
         </StepBackRoot>
       </Link>
       <HirePageTitle>
-        Encontramos <b>cinco (5) opciones de seguros</b> para vos
+        Encontramos <b>{results.length} opciones de seguros</b> para vos
       </HirePageTitle>
       <HirePageContainerFilter>
         <HirePageText>Filtrar por:</HirePageText>
@@ -49,17 +71,29 @@ export function HirePage() {
         </HirePageContainerSelect>
       </HirePageContainerFilter>
       <CarouselResponsiveComponent>
-        <CardComponent />
-        <CardComponent />
-        <CardComponent />
+        {results.map((el, index) => {
+          return (
+            <CardComponent
+              active={index == active}
+              index={index}
+              onDetail={handleSelected}
+              key={index}
+              data={el}
+            />
+          );
+        })}
       </CarouselResponsiveComponent>
       <div>
         <HirePageSubTitle>Seguro seleccionado</HirePageSubTitle>
-        <SubtitleSecondary color="primary">
-          <b>Contra todo riesgo, Provincia Seguros</b>
-        </SubtitleSecondary>
+        {selected && (
+          <SubtitleSecondary color="primary">
+            <b>
+              {selected?.type}, {selected?.company} Seguros
+            </b>
+          </SubtitleSecondary>
+        )}
       </div>
-      <HirePageDetailComponent values={dataUno} />
+      <HirePageDetailComponent values={selected?.details} />
     </HirePageRoot>
   );
 }

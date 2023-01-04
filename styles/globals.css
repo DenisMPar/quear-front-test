@@ -20,10 +20,13 @@ a {
 :root {
   --primary: #4145fb;
   --primary-hover: #575afd;
+  --primary-ligth: #1890FF;
+  --primary-dark:#272AC2;
   --primary-disabled: #9496f1d3;
   --secondary: #ececff;
   --secondary-hover: #e2e2ff;
   --terciary: #52f0ae;
+  --terciary-dark:#00C3A0;
   --terciary-hover: #a6fad7;
   --bg: #ffffff;
   --bg-secondary: #f7f7f7;

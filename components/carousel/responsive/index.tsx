@@ -9,6 +9,8 @@ interface Props {
 export function CarouselResponsiveComponent(props: Props) {
   return (
     <Carousel
+      minimumTouchDrag={80}
+      slidesToSlide={0.5}
       responsive={responsive}
       swipeable={true}
       draggable={true}

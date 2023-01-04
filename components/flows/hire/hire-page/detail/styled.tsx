@@ -9,6 +9,7 @@ interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
 export const HirePageDetailContainerValue = styled.div<ContainerProps>`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 16px;
   background-color: ${(props) =>
     props.dark ? "var(--bg-secondary)" : "white"};

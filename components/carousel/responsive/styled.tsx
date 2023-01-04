@@ -37,15 +37,23 @@ export const responsive = {
     items: 1.7,
   },
   mobileMedium: {
-    breakpoint: { max: 470, min: 410 },
+    breakpoint: { max: 470, min: 400 },
     items: 1.5,
   },
+  mobileXMedium: {
+    breakpoint: { max: 400, min: 360 },
+    items: 1.3,
+  },
   mobileSmall: {
-    breakpoint: { max: 410, min: 335 },
+    breakpoint: { max: 360, min: 335 },
     items: 1.2,
   },
   mobileTiny: {
-    breakpoint: { max: 335, min: 0 },
+    breakpoint: { max: 335, min: 280 },
     items: 1,
+  },
+  mobileXTiny: {
+    breakpoint: { max: 280, min: 0 },
+    items: 0.8,
   },
 };

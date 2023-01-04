@@ -3,8 +3,11 @@ import styled from "@emotion/styled";
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   active: boolean | undefined;
 }
-export const CardRoot = styled.div<Props>`
+export const CardRoot = styled.div`
   width: 234px;
+`;
+export const CardContainer = styled.div<Props>`
+  width: 237px;
   height: 388px;
   border-radius: 10px;
   border: ${(props) => (props.active ? "1px solid var(--primary)" : "")};
@@ -19,7 +22,6 @@ export const CardArrow = styled.div<Props>`
   border-top: 8px solid var(--primary);
 `;
 export const CardTop = styled.div`
-  background-color: var(--primary);
   color: var(--bg);
   font-size: 14px;
   display: flex;
