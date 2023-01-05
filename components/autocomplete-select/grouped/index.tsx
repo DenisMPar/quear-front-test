@@ -39,7 +39,7 @@ export function AutocompleteGroupedComponent(props: Props) {
 
   return (
     <Autocomplete
-      loading={props.values[0].options.length == 0}
+      loading={true}
       onChange={(
         event: any,
         newValue: {
@@ -54,7 +54,7 @@ export function AutocompleteGroupedComponent(props: Props) {
       PaperComponent={PaperStyled}
       PopperComponent={PopperStyled}
       id="grouped-demo"
-      options={optionsConcated}
+      options={optionsConcated[0].option ? optionsConcated : []}
       groupBy={(option) => option.group}
       getOptionLabel={(option) => option.option}
       isOptionEqualToValue={(option, value) => {

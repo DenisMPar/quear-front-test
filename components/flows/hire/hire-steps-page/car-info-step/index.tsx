@@ -25,9 +25,15 @@ export function CarInfoStepComponent({ handleSelect }: any) {
     useForm();
 
   const [hireData, setHireData] = useRecoilState(userHireData);
-  const patente = watch("patente");
+  const patente = watch("Patente en trámite");
 
   function onSubmit(data: any) {
+    const formattedData = {
+      chasisNumber: data["Número de chasis"],
+      engineNumber: data["Número de motor"],
+      patentPending: data["Patente en trámite"] == "Si",
+    };
+    setHireData({ ...hireData, carInfo: formattedData });
     handleSelect("carInfo", data);
   }
   return (

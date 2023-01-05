@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { AddLabel } from "../../../../../ui/label/add-label";
 import { BodyPrimary } from "../../../../../ui/text";
+import { AddLabelComponent } from "../../../../add-label";
 
 export const StepCarPicturesContainerMain = styled.div`
   text-align: center;
@@ -41,7 +42,7 @@ export const StepCarPicturesContainerPicturesLabel = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 11px;
 `;
-export const StepCarPicturesLabel = styled(AddLabel)`
+export const StepCarPicturesLabel = styled(AddLabelComponent)`
   height: 128px;
 `;
 export const StepCarPicturesContainerButtons = styled.div`

@@ -39,8 +39,12 @@ export function HireStepsPage() {
       handleSelect={handleSelect}
     />,
     <UserDataStepComponent key="3" handleSelect={handleSelect} />,
-    <CheckDataStepComponent key="4" handleSelect={handleSelect} />,
-    <PaymentStepComponent key="5" handleSelect={handleSelect} />,
+    <CheckDataStepComponent key="4" handleNext={setNextAndCompleted} />,
+    <PaymentStepComponent
+      key="5"
+      handleSelect={handleSelect}
+      submit={handleSubmit}
+    />,
   ];
 
   function handleSubmit() {
@@ -50,9 +54,9 @@ export function HireStepsPage() {
   function handleSelect(key: string, value: any) {
     const newData = { ...data, [key]: value };
     setData(newData);
-    setHireData({ ...hireData, ...newData });
     setStepCompleted();
     !isLastStep() && handleNext();
+    isLastStep() && handleSubmit();
   }
 
   function setNextAndCompleted() {
@@ -80,7 +84,7 @@ export function HireStepsPage() {
   };
   function stepBack() {
     if (activeStep == 0) {
-      router.push("/cotiza");
+      router.push("/hire");
     } else {
       //if the previous step is completed, remove it from array.
       if (completed[activeStep - 1]) {

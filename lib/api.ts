@@ -6,9 +6,7 @@ interface RequestOptions {
   headers: any;
 }
 export async function fetchApi(direction: string, config: RequestOptions) {
-  const BASE_API_URL = DEVELOPMENT
-    ? "http://localhost:3080/api/"
-    : process.env.NEXT_PUBLIC_API_BASE_URL;
+  const BASE_API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
   const url = BASE_API_URL + direction;
 
   const fullConfig = {

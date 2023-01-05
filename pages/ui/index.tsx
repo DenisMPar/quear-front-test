@@ -1,11 +1,9 @@
 import styled from "@emotion/styled";
 import { NextPage } from "next";
 import Image from "next/image";
-import { CardComponent } from "../../components/card";
+import { AddLabelComponent } from "../../components/add-label";
 import { HeaderDestkop } from "../../components/header/header-desktop";
 import { HeaderMobile } from "../../components/header/headerMobile";
-import { AutocompleteComponent } from "../../components/autocomplete-select";
-import { AutocompleteGroupedComponent } from "../../components/autocomplete-select/grouped";
 import {
   ButtonBig,
   ButtonOutlined,
@@ -183,10 +181,7 @@ const Ui: NextPage = () => {
             gap: "10px",
             padding: "16px",
           }}
-        >
-          <CardComponent></CardComponent>
-          <CardComponent active></CardComponent>
-        </div>
+        ></div>
         <h2>Textbox</h2>
         <div
           style={{
@@ -265,9 +260,13 @@ const Ui: NextPage = () => {
         }}
       >
         <AddLabel type="big">Agregar foto</AddLabel>
-        <AddLabel label="parte trasera" type="small">
+        <AddLabelComponent
+          onLoad={(parmas) => console.log(parmas)}
+          label="parte trasera"
+          type="small"
+        >
           Agregar foto
-        </AddLabel>
+        </AddLabelComponent>
         <PictureLabel
           onClose={() => console.log("close")}
           label="Parte trasera"
@@ -275,6 +274,7 @@ const Ui: NextPage = () => {
           <Image alt="car-image" width={131} height={193} src="/img-car.png" />
         </PictureLabel>
       </div>
+
       <div style={{ height: "400px" }}></div>
     </>
   );

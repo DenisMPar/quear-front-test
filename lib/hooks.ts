@@ -158,9 +158,9 @@ export function useGetProvincies(): {
     return { provincesNames: [], provincesWithId: [] };
   }
 }
-export function useGetDepartments(provinceId: string): {
-  departmentNames: string[];
-  departmentWithId: Array<{ name: string; id: string }>;
+export function useGetLocations(provinceId: string): {
+  locationNames: string[];
+  locationWithId: Array<{ name: string; id: string; zipCode: string }>;
 } {
   const { data, error, isLoading } = useSWR(
     "location/provinces/" + provinceId,
@@ -174,19 +174,19 @@ export function useGetDepartments(provinceId: string): {
   );
 
   if (data && data.success.result.province.locations) {
-    const departmentNames = data.success.result.province.locations.map(
+    const locationNames = data.success.result.province.locations.map(
       (item: any) => {
         return item.nombre;
       }
     );
-    const departmentWithId = data.success.result.province.locations.map(
+    const locationWithId = data.success.result.province.locations.map(
       (item: any) => {
-        return { name: item.nombre, id: item.id };
+        return { name: item.nombre, id: item.id, zipCode: item.codigo_postal };
       }
     );
-    return { departmentNames, departmentWithId };
+    return { locationNames, locationWithId };
   } else {
-    return { departmentNames: [], departmentWithId: [] };
+    return { locationNames: [], locationWithId: [] };
   }
 }
 export function useGetCities(departmentId: string): {

@@ -6,7 +6,7 @@ import { ButtonPrimary } from "../../../../../ui/buttons/styled";
 import { DropDownGroupedComponent } from "../../../../dropdown/grouped";
 import { StepCheckDataRoot, StepCheckDataTitle } from "./styled";
 
-export function CheckDataStepComponent({ handleSelect }: any) {
+export function CheckDataStepComponent({ handleNext }: any) {
   const [checkedTerms, setCheckedTerms] = useState(false);
   const [hireData, setHireData] = useRecoilState(userHireData);
 
@@ -22,39 +22,39 @@ export function CheckDataStepComponent({ handleSelect }: any) {
   const formattedCarInfo = [
     {
       title: "Número de chasis",
-      value: hireData.carInfo["Número de chasis"].toString(),
+      value: hireData.carInfo.chasisNumber.toString(),
     },
     {
       title: "Número de motor",
-      value: hireData.carInfo["Número de motor"].toString(),
+      value: hireData.carInfo.engineNumber.toString(),
     },
     {
       title: "Patente en trámite",
-      value: hireData.carInfo["Patente en trámite"],
+      value: hireData.carInfo.patentPending ? "Si" : "No",
     },
   ];
   const formattedUserInfo = [
     {
       title: "Nombre y apellido",
-      value: hireData.userData["Nombre y apellido"],
+      value: hireData.userData.userFullName,
     },
-    { title: "Dni", value: hireData.userData.Dni },
-    { title: "Dirección", value: hireData.userData.Dirección },
+    { title: "Dni", value: hireData.userData.dni.toString() },
+    { title: "Dirección", value: hireData.userData.address },
     {
       title: "Código postal",
-      value: hireData.userData["Código postal"],
+      value: hireData.userData.zipCode.toString(),
     },
     {
       title: "Email",
-      value: hireData.userData.Email,
+      value: hireData.userData.email,
     },
     {
       title: "Teléfono",
-      value: hireData.userData.Teléfono,
+      value: hireData.userData.phone.toString(),
     },
     {
       title: "Situación ante IVA",
-      value: hireData.userData["Situación ante IVA"],
+      value: hireData.userData.iva,
     },
   ];
   function toggleTerms() {
@@ -81,7 +81,7 @@ export function CheckDataStepComponent({ handleSelect }: any) {
         content={formattedUserInfo}
       />
       <div style={{ margin: "6px 0" }}>
-        <ButtonPrimary onClick={handleSelect} variant="dark">
+        <ButtonPrimary onClick={handleNext} variant="dark">
           Ir a pagar
         </ButtonPrimary>
       </div>

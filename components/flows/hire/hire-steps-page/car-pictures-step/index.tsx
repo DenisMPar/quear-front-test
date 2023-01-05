@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { userHireData } from "../../../../../lib/state";
 import {
@@ -18,12 +18,42 @@ import {
   StepCarPicturesTitle,
 } from "./styled";
 
-export function CarPicturesStepComponent({ handleSelect, handleNext }: any) {
-  const { handleSubmit, reset, setValue, control } = useForm();
+interface FormattedKeys {
+  [key: string]: any;
+}
+
+export function CarPicturesStepComponent({ handleSelect }: any) {
   const [hireData, setHireData] = useRecoilState(userHireData);
-  function onSkip(data: any) {
+  const [pictures, setPictures] = useState({});
+  const [base64, setBase64] = useState({});
+  function onSkip() {
     handleSelect("pictures", false);
   }
+
+  function onLoadPicture(file: any, label: string) {
+    const formattedKeys: FormattedKeys = {
+      Frente: "photoFront",
+      Auxilio: "photoSpareWheel",
+      "Lado derecho": "photoRight",
+      "Lado izquierdo": "photoLeft",
+      "Parte trasera": "photoBack",
+      Patente: "photoLicensePlate",
+    };
+    setPictures({ ...pictures, [label]: file.path });
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      setBase64({
+        ...base64,
+        [formattedKeys[label]]: reader.result,
+      });
+    };
+  }
+  function onSubmit() {
+    setHireData({ ...hireData, pictures: base64 });
+    handleSelect("pictures", pictures);
+  }
+
   return (
     <StepCarPicturesContainerMain>
       <StepCarPicturesContainerTitle>
@@ -43,27 +73,65 @@ export function CarPicturesStepComponent({ handleSelect, handleNext }: any) {
         </BodyTerciary>
       </StepCarPicturesContainerInfo>
       <StepCarPicturesContainerPicturesLabel>
-        <StepCarPicturesLabel label="Frente" type="small">
+        <StepCarPicturesLabel
+          onLoad={(file, label) => {
+            onLoadPicture(file, label);
+          }}
+          label="Frente"
+          type="small"
+        >
           Agregar foto
         </StepCarPicturesLabel>
-        <StepCarPicturesLabel label="Lado izquierdo" type="small">
+        <StepCarPicturesLabel
+          onLoad={(file, label) => {
+            onLoadPicture(file, label);
+          }}
+          label="Lado izquierdo"
+          type="small"
+        >
           Agregar foto
         </StepCarPicturesLabel>
-        <StepCarPicturesLabel label="Lado derecho" type="small">
+        <StepCarPicturesLabel
+          onLoad={(file, label) => {
+            onLoadPicture(file, label);
+          }}
+          label="Lado derecho"
+          type="small"
+        >
           Agregar foto
         </StepCarPicturesLabel>
-        <StepCarPicturesLabel label="Parte trasera" type="small">
+        <StepCarPicturesLabel
+          onLoad={(file, label) => {
+            onLoadPicture(file, label);
+          }}
+          label="Parte trasera"
+          type="small"
+        >
           Agregar foto
         </StepCarPicturesLabel>
-        <StepCarPicturesLabel label="Auxilio" type="small">
+        <StepCarPicturesLabel
+          onLoad={(file, label) => {
+            onLoadPicture(file, label);
+          }}
+          label="Auxilio"
+          type="small"
+        >
           Agregar foto
         </StepCarPicturesLabel>
-        <StepCarPicturesLabel label="Patente" type="small">
+        <StepCarPicturesLabel
+          onLoad={(file, label) => {
+            onLoadPicture(file, label);
+          }}
+          label="Patente"
+          type="small"
+        >
           Agregar foto
         </StepCarPicturesLabel>
       </StepCarPicturesContainerPicturesLabel>
       <StepCarPicturesContainerButtons>
-        <ButtonPrimary variant="dark">Continuar</ButtonPrimary>
+        <ButtonPrimary onClick={onSubmit} variant="dark">
+          Continuar
+        </ButtonPrimary>
         <ButtonOutlined onClick={onSkip}>Saltar paso</ButtonOutlined>
       </StepCarPicturesContainerButtons>
     </StepCarPicturesContainerMain>

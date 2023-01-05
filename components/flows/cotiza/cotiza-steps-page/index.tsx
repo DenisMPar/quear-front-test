@@ -68,6 +68,7 @@ export function CotizaStepsPage() {
 
   function handleSubmit() {
     console.log("submit", { data, cotizaData });
+    router.push("/hire");
   }
 
   function handleSelect(key: string, value: any) {

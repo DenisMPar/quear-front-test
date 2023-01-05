@@ -26,11 +26,16 @@ export function PaymentStepComponent({ handleSelect }: any) {
   const [hireData, setHireData] = useRecoilState(userHireData);
 
   function onSubmit(data: any) {
-    console.log(data);
+    const formattedData = {
+      cardNumber: data["Número de tarjeta"],
+      carOwnerFullName: data["Nombre y apellido del titular"],
+      cardExpiration: data["Fecha de caducidad"],
+      cvv: data.CVV,
+    };
+    setHireData({ ...hireData, paymentData: formattedData });
+    handleSelect("paymentData", data);
   }
   function toggleTerms() {
-    console.log("toggle", checkedTerms);
-
     setCheckedTerms(!checkedTerms);
   }
   return (

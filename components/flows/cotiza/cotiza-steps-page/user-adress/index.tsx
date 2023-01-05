@@ -1,14 +1,9 @@
 import { useEffect, useState } from "react";
-import { Controller, set, useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
-import {
-  useGetCities,
-  useGetDepartments,
-  useGetProvincies,
-} from "../../../../../lib/hooks";
+import { useGetLocations, useGetProvincies } from "../../../../../lib/hooks";
 import { userCotizaData } from "../../../../../lib/state";
 import { ButtonPrimary } from "../../../../../ui/buttons/styled";
-import { InputShadowed } from "../../../../../ui/input/styled";
 import { SubtitlePrimary } from "../../../../../ui/text";
 import { AutocompleteComponent } from "../../../../autocomplete-select";
 import {
@@ -21,13 +16,14 @@ import {
 
 export function AddressStepComponent({ handleSelect }: any) {
   const [provinceId, setProvinceId] = useState("");
-  const [departmentId, setDepartmentId] = useState("");
+  const [locationId, setLocationId] = useState("");
   const [cotizaData, setCotizaData] = useRecoilState(userCotizaData);
   const { handleSubmit, watch, reset, setValue, control, register, formState } =
     useForm();
   const { provincesNames, provincesWithId } = useGetProvincies();
-  const { departmentNames, departmentWithId } = useGetDepartments(provinceId);
+  const { locationNames, locationWithId } = useGetLocations(provinceId);
   const watchProvince = watch("province");
+  const watchLocation = watch("location");
 
   useEffect(() => {
     if (watchProvince) {
@@ -39,18 +35,34 @@ export function AddressStepComponent({ handleSelect }: any) {
       }
     }
   }, [watchProvince, provincesWithId]);
+  useEffect(() => {
+    if (watchLocation) {
+      const el = locationWithId.find((el) => {
+        return el.name == watchLocation;
+      });
+      if (el) {
+        setLocationId(el.id);
+      }
+    }
+  }, [watchLocation, locationWithId]);
 
   function onSubmit(submit: any) {
+    const location = locationWithId.find((el) => {
+      return locationId == el.id;
+    });
+    const submitWithZip = {
+      location: locationId,
+      province: provinceId,
+      zipCode: location?.zipCode,
+    };
     const orderedSubmit = {
       Provincia: submit.province,
       Localidad: submit.location,
     };
-    setCotizaData({ ...cotizaData, userAddress: submit });
+    setCotizaData({ ...cotizaData, userAddress: submitWithZip });
     handleSelect("direccion", orderedSubmit);
   }
-  // useEffect(() => {
-  //   console.log(formState);
-  // }, [formState]);
+
   return (
     <StepAddressRoot>
       <SubtitlePrimary>¿Donde vivis?</SubtitlePrimary>
@@ -86,7 +98,7 @@ export function AddressStepComponent({ handleSelect }: any) {
                   {...field}
                   selectKey="localidad"
                   ref={null}
-                  values={departmentNames}
+                  values={locationNames}
                   placeHolder={"Localidad"}
                 />
               )}
