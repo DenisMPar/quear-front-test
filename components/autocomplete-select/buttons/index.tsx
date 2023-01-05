@@ -6,6 +6,7 @@ type Values = {
   icon?: ReactNode;
   value: string | boolean;
   text: string;
+  active?: boolean;
 };
 
 interface Props {
@@ -14,6 +15,7 @@ interface Props {
   onChange?: (pros: any) => any;
   selectKey: string;
   horizontal?: boolean;
+  type: "button" | "submit";
 }
 export function SelectButtonsComponent(props: Props) {
   function handleClick(key: any, value: any, index: number) {
@@ -29,6 +31,8 @@ export function SelectButtonsComponent(props: Props) {
       {props.values.map((values, index) => {
         return (
           <ButtonBig
+            type={props.type}
+            active={values.active}
             onClick={() => handleClick(props.selectKey, values.value, index)}
             key={index}
           >

@@ -18,6 +18,7 @@ const Form: NextPage = () => {
       <FormComponent />
       <GroupedFormComponent />
       <SelectButtonsComponent
+        type="submit"
         selectKey="peurtas"
         handleSelect={onSubmit}
         values={[

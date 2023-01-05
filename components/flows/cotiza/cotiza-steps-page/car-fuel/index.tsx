@@ -24,6 +24,7 @@ export function FuelStepComponent({ handleSelect }: any) {
         <Controller
           render={({ field }: any) => (
             <SelectButtonsComponent
+              type="submit"
               {...field}
               handleSelect={onSelect}
               selectKey="gnc"

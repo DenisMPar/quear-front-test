@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import { StyledEyeUnColored, StyledPasswordHide } from "../icons";
 import {
   InputPasswordContainerIcon,
@@ -18,12 +18,14 @@ export const InputWithIcon = (props: Props) => {
     <InputWithIconRoot>
       <Icon />
       <InputWithIconStyled
+        onChange={props.onChange}
         placeholder={props.placeholder}
         name={props.name}
       ></InputWithIconStyled>
     </InputWithIconRoot>
   );
 };
+
 export const InputPassword = (props: Props) => {
   const [showPassword, setShowPassword] = useState(false);
   function togglePassword() {

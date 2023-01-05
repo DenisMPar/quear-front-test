@@ -13,7 +13,7 @@ import {
 } from "./styled";
 interface Props {
   title: string;
-  content: Array<{ title: string; value: string | boolean }>;
+  content: Array<{ title: string; value: string }>;
   buttonValue: string;
 }
 export function DropDownGroupedComponent(props: Props) {

@@ -1,35 +1,34 @@
 import { Controller, useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
-import { useGetCarBrand } from "../../../../../lib/hooks";
-import { userCotizaData } from "../../../../../lib/state";
+import { userHireData } from "../../../../../lib/state";
+import { ButtonPrimary } from "../../../../../ui/buttons/styled";
 import { StyledInfo } from "../../../../../ui/icons";
 import { InputShadowed } from "../../../../../ui/input/styled";
+import { ModalComponent } from "../../../../../ui/modal";
 import { SubtitlePrimary } from "../../../../../ui/text";
 import { SelectButtonsComponent } from "../../../../autocomplete-select/buttons";
-import { ModalComponent } from "../../../../../ui/modal";
 import {
   StepCarForm,
   StepCarInfoContainerForm,
   StepCarInfoContainerInfo,
   StepCarInfoContainerInputs,
   StepCarInfoContainerTitle,
+  StepCarInfoError,
+  StepCarInfoInputWrapper,
   StepCarInfoRoot,
   StepCarInfoText,
   StepCarSubtitle,
 } from "./styled";
 
 export function CarInfoStepComponent({ handleSelect }: any) {
-  const { handleSubmit, reset, setValue, control } = useForm();
-  const { brandNames, brandWithId } = useGetCarBrand();
-  const [cotizaData, setCotizaData] = useRecoilState(userCotizaData);
-  function onSelect(key: string, value: any) {
-    const element = brandWithId.find((el) => {
-      return el.nombre == value;
-    });
+  const { handleSubmit, reset, setValue, control, register, watch, formState } =
+    useForm();
 
-    element &&
-      setCotizaData({ ...cotizaData, carBrandId: parseInt(element.id) });
-    handleSelect(key, value);
+  const [hireData, setHireData] = useRecoilState(userHireData);
+  const patente = watch("patente");
+
+  function onSubmit(data: any) {
+    handleSelect("carInfo", data);
   }
   return (
     <StepCarInfoRoot>
@@ -41,13 +40,13 @@ export function CarInfoStepComponent({ handleSelect }: any) {
       </StepCarInfoContainerTitle>
       <StepCarInfoContainerForm>
         <SubtitlePrimary>¿Tu patente está en trámite?</SubtitlePrimary>
-        <StepCarForm action="">
+        <StepCarForm action="" onSubmit={handleSubmit(onSubmit)}>
           <Controller
             render={({ field }: any) => (
               <SelectButtonsComponent
+                type="button"
                 {...field}
                 horizontal
-                handleSelect={onSelect}
                 selectKey="marca"
                 ref={null}
                 placeHolder="Elegir marca"
@@ -55,21 +54,40 @@ export function CarInfoStepComponent({ handleSelect }: any) {
                   {
                     value: "Si",
                     text: "Si",
+                    active: patente == "Si" ? true : false,
                   },
                   {
                     value: "No",
                     text: "No",
+                    active: patente == "No" ? true : false,
                   },
                 ]}
               />
             )}
-            name="TextField"
+            name="Patente en trámite"
             control={control}
           />
           <StepCarInfoContainerInputs>
-            <InputShadowed placeholder="Numero de chasis" />
-            <InputShadowed placeholder="Numero de motor" />
+            <StepCarInfoInputWrapper>
+              <InputShadowed
+                {...register("Número de chasis", { required: true })}
+                placeholder="Número de chasis"
+              />
+              {formState.errors.chasis && (
+                <StepCarInfoError>*Completa este campo</StepCarInfoError>
+              )}
+            </StepCarInfoInputWrapper>
+            <StepCarInfoInputWrapper>
+              <InputShadowed
+                {...register("Número de motor", { required: true })}
+                placeholder="Número de motor"
+              />{" "}
+              {formState.errors.motor && (
+                <StepCarInfoError>*Completa este campo</StepCarInfoError>
+              )}
+            </StepCarInfoInputWrapper>
           </StepCarInfoContainerInputs>
+          <ButtonPrimary variant="dark">Continuar</ButtonPrimary>
         </StepCarForm>
       </StepCarInfoContainerForm>
       <StepCarInfoContainerInfo>

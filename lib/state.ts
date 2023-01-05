@@ -15,3 +15,30 @@ export const userCotizaData = atom({
     userAge: {},
   },
 });
+export const userHireData = atom({
+  key: "userHireData",
+  default: {
+    policy: {
+      company: "",
+      fee: 0,
+      total: 0,
+      type: "",
+    },
+    carInfo: {
+      "Número de chasis": 0,
+      "Número de motor": 0,
+      "Patente en trámite": "",
+    },
+    userData: {
+      "Confirmar email": "",
+      "Código postal": "",
+      Dirección: "",
+      Dni: "",
+      Email: "",
+      "Nombre y apellido": "",
+      "Situación ante IVA": "",
+      Teléfono: "",
+    },
+    pictures: {},
+  },
+});

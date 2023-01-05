@@ -54,3 +54,12 @@ export const StepCarInfoText = styled(BodyPrimary)`
     text-decoration: underline;
   }
 `;
+export const StepCarInfoInputWrapper = styled.div`
+  text-align: left;
+`;
+export const StepCarInfoError = styled.span`
+  font-size: 12px;
+  margin-top: 5px;
+  margin-left: 5px;
+  color: red;
+`;

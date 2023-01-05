@@ -1,4 +1,8 @@
+import { useRouter } from "next/router";
+import { useRecoilState } from "recoil";
+import { formatMoney } from "../../lib/functions";
 import { DatoPoliza, DatosSeguro } from "../../lib/mock-values";
+import { userHireData } from "../../lib/state";
 import { ButtonOutlined, ButtonPrimary } from "../../ui/buttons/styled";
 import { BodyPrimary, SubtitleTerciary } from "../../ui/text";
 import {
@@ -23,6 +27,8 @@ interface Props {
 }
 
 export function CardComponent(props: Props) {
+  const router = useRouter();
+  const [hireData, setHireData] = useRecoilState(userHireData);
   const colors = {
     "Contra todo riesgo": "var(--primary-dark)",
     Totales: "var(--primary-ligth)",
@@ -30,12 +36,11 @@ export function CardComponent(props: Props) {
     "Terceros completo": "var(--primary)",
   };
   const key = Object.keys(colors).find((el) => el == props.data.type);
-  const formatter = new Intl.NumberFormat("es-AR", {
-    style: "currency",
-    currency: "ARS",
-    maximumFractionDigits: 0,
-  });
 
+  function handleHire() {
+    setHireData({ ...hireData, policy: props.data });
+    router.push("/hire/steps");
+  }
   return (
     <CardRoot>
       <CardContainer active={props.active}>
@@ -55,17 +60,19 @@ export function CardComponent(props: Props) {
             <CardContainerTitle>
               <SubtitleTerciary as={"p"}>Pagas por mes:</SubtitleTerciary>
               <h2 style={{ margin: 0, fontSize: "40px", fontWeight: "700" }}>
-                {formatter.format(props.data.fee)}
+                {formatMoney(props.data.fee)}
               </h2>
             </CardContainerTitle>
             <CardContainerSubtitle>
               <BodyPrimary>
-                Te lo aseguramos a <b>{formatter.format(props.data.total)}</b>
+                Te lo aseguramos a <b>{formatMoney(props.data.total)}</b>
               </BodyPrimary>
             </CardContainerSubtitle>
           </CardContainerMain>
           <CardContainerButtons>
-            <ButtonPrimary variant="dark">Contratar Online</ButtonPrimary>
+            <ButtonPrimary onClick={handleHire} variant="dark">
+              Contratar Online
+            </ButtonPrimary>
             <ButtonOutlined onClick={() => props.onDetail(props.index)}>
               Ver detalle
             </ButtonOutlined>

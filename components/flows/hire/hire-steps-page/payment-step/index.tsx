@@ -1,18 +1,11 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
-import { useGetCarBrand } from "../../../../../lib/hooks";
-import { userCotizaData } from "../../../../../lib/state";
+import { formatMoney } from "../../../../../lib/functions";
+import { userHireData } from "../../../../../lib/state";
 import { ButtonPrimary } from "../../../../../ui/buttons/styled";
-import {
-  StyledCalendar,
-  StyledCheckedBox,
-  StyledCreditCard,
-  StyledLock,
-  StyledUser,
-} from "../../../../../ui/icons";
+import { StyledCheckedBox, StyledCreditCard } from "../../../../../ui/icons";
 import { InputWithIcon } from "../../../../../ui/input";
-import { InputShadowed } from "../../../../../ui/input/styled";
 import { BodyPrimary } from "../../../../../ui/text";
 import { SelectComponent } from "../../../../select";
 import {
@@ -28,19 +21,16 @@ import {
 
 export function PaymentStepComponent({ handleSelect }: any) {
   const [checkedTerms, setCheckedTerms] = useState(false);
-  const { handleSubmit, reset, setValue, control } = useForm();
-  const { brandNames, brandWithId } = useGetCarBrand();
-  const [cotizaData, setCotizaData] = useRecoilState(userCotizaData);
-  function onSelect(key: string, value: any) {
-    const element = brandWithId.find((el) => {
-      return el.nombre == value;
-    });
+  const { handleSubmit, reset, setValue, control, register } = useForm();
 
-    element &&
-      setCotizaData({ ...cotizaData, carBrandId: parseInt(element.id) });
-    handleSelect(key, value);
+  const [hireData, setHireData] = useRecoilState(userHireData);
+
+  function onSubmit(data: any) {
+    console.log(data);
   }
   function toggleTerms() {
+    console.log("toggle", checkedTerms);
+
     setCheckedTerms(!checkedTerms);
   }
   return (
@@ -57,23 +47,60 @@ export function PaymentStepComponent({ handleSelect }: any) {
         placeHolder="Elegir modo de pago"
         onChange={() => console.log("change")}
       />
-      <StepPaymentForm action="">
-        <InputWithIcon
-          Icon={StyledCreditCard}
-          placeholder="Número de tarjeta"
-          name="credit car"
+      <StepPaymentForm onSubmit={handleSubmit(onSubmit)} action="">
+        <Controller
+          render={({ field }: any) => (
+            <InputWithIcon
+              {...field}
+              Icon={StyledCreditCard}
+              placeholder="Número de tarjeta"
+              ref={null}
+            />
+          )}
+          name="Número de tarjeta"
+          control={control}
+          rules={{ required: true }}
         />
-        <InputWithIcon
-          Icon={StyledUser}
-          placeholder="Nombre y Apellido del titular"
-          name="name"
+        <Controller
+          render={({ field }: any) => (
+            <InputWithIcon
+              {...field}
+              Icon={StyledCreditCard}
+              placeholder="Nombre y apellido del titular"
+              ref={null}
+            />
+          )}
+          name="Nombre y apellido del titular"
+          control={control}
+          rules={{ required: true }}
         />
-        <InputWithIcon
-          Icon={StyledCalendar}
-          placeholder="Fecha de caducidad"
-          name="venc"
+        <Controller
+          render={({ field }: any) => (
+            <InputWithIcon
+              {...field}
+              Icon={StyledCreditCard}
+              placeholder="Fecha de caducidad"
+              ref={null}
+            />
+          )}
+          name="Fecha de caducidad"
+          control={control}
+          rules={{ required: true }}
         />
-        <InputWithIcon Icon={StyledLock} placeholder="CVV" name="ccv" />
+        <Controller
+          render={({ field }: any) => (
+            <InputWithIcon
+              {...field}
+              Icon={StyledCreditCard}
+              placeholder="CVV"
+              ref={null}
+            />
+          )}
+          name="CVV"
+          control={control}
+          rules={{ required: true }}
+        />
+
         <ContainerTerms>
           <ContainerChecked onClick={toggleTerms}>
             {checkedTerms && <StyledCheckedBox />}
@@ -87,9 +114,11 @@ export function PaymentStepComponent({ handleSelect }: any) {
         </ContainerTerms>
         <StepPaymentPrice>
           <b>Total a pagar: </b>
-          $8.898 por mes
+          {formatMoney(hireData.policy.fee)} por mes
         </StepPaymentPrice>
-        <ButtonPrimary variant="dark">Pagar</ButtonPrimary>
+        <ButtonPrimary disabled={!checkedTerms} type="submit" variant="dark">
+          Pagar
+        </ButtonPrimary>
       </StepPaymentForm>
     </StepPaymentRoot>
   );

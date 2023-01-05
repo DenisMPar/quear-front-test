@@ -5,3 +5,11 @@ export function getPath() {
     return path;
   }
 }
+export function formatMoney(value: number | bigint) {
+  const formatter = new Intl.NumberFormat("es-AR", {
+    style: "currency",
+    currency: "ARS",
+    maximumFractionDigits: 0,
+  });
+  return formatter.format(value);
+}

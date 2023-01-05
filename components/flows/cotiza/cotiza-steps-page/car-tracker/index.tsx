@@ -23,6 +23,7 @@ export function TrackerStepComponent({ handleSelect }: any) {
         <Controller
           render={({ field }: any) => (
             <SelectButtonsComponent
+              type="submit"
               {...field}
               handleSelect={onSelect}
               selectKey="tracker"

@@ -114,6 +114,7 @@ export function AgeStepComponent({ handleSelect }: any) {
               <Controller
                 render={({ field }: any) => (
                   <SelectButtonsComponent
+                    type="submit"
                     horizontal
                     {...field}
                     selectKey="mayor"

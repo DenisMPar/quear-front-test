@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { userCotizaData } from "../../../../lib/state";
-import { StyledArrow, StyledQuearBigLogoBlue } from "../../../../ui/icons";
+import { userHireData } from "../../../../lib/state";
+import { StyledArrow } from "../../../../ui/icons";
 import StepperComponent from "../../../stepper";
 import { StepsDrawer } from "../../../steps-drawer";
 import {
@@ -15,9 +15,6 @@ import {
   StepperDesktopBoxTitle,
   StepperDesktopContainer,
   StepperDesktopTitle,
-  StepsContainerLogo,
-  StepsContainerSubmit,
-  StepsSubmitButton,
 } from "../../styled";
 import { CarInfoStepComponent } from "./car-info-step";
 import { CarPicturesStepComponent } from "./car-pictures-step";
@@ -27,44 +24,51 @@ import { UserDataStepComponent } from "./user-data-step";
 
 export function HireStepsPage() {
   const [data, setData] = useState<any>({});
-  const [cotizaData, setCotizaData] = useRecoilState(userCotizaData);
+  const [hireData, setHireData] = useRecoilState(userHireData);
   const [activeStep, setActiveStep] = useState(0);
   const router = useRouter();
   const steps = ["Auto", "Fotos", "Datos personales", "Checkear", "Pagar"];
   const [completed, setCompleted] = useState<{
     [key: number]: boolean;
   }>({});
-  const stepToShow = [<CheckDataStepComponent key={"1"} />];
+  const stepToShow = [
+    <CarInfoStepComponent key="1" handleSelect={handleSelect} />,
+    <CarPicturesStepComponent
+      key="2"
+      handleNext={setNextAndCompleted}
+      handleSelect={handleSelect}
+    />,
+    <UserDataStepComponent key="3" handleSelect={handleSelect} />,
+    <CheckDataStepComponent key="4" handleSelect={handleSelect} />,
+    <PaymentStepComponent key="5" handleSelect={handleSelect} />,
+  ];
 
   function handleSubmit() {
-    console.log("submit", { data, cotizaData });
+    console.log("submit", { data, hireData });
   }
 
   function handleSelect(key: string, value: any) {
     const newData = { ...data, [key]: value };
     setData(newData);
+    setHireData({ ...hireData, ...newData });
     setStepCompleted();
     !isLastStep() && handleNext();
   }
-  const handleNext = () => {
-    // if brand or model changes you need to modified next steps
-    if (activeStep > 0 && activeStep < 3) {
-      //added time out so the user can see de value before change to next step
-      setTimeout(() => {
-        setActiveStep(activeStep + 1);
-      }, 600);
-    } else {
-      //all other steps can jump to next step incompleted
-      const newActiveStep = !allStepsCompleted()
-        ? steps.findIndex((step, i) => !(i in completed))
-        : steps.length;
-      setTimeout(() => {
-        setActiveStep(
-          newActiveStep > steps.length - 1 ? steps.length - 1 : newActiveStep
-        );
-      }, 600);
-    }
-  };
+
+  function setNextAndCompleted() {
+    setStepCompleted();
+    handleNext();
+  }
+  function handleNext() {
+    const newActiveStep = !allStepsCompleted()
+      ? steps.findIndex((step, i) => !(i in completed))
+      : steps.length;
+    setTimeout(() => {
+      setActiveStep(
+        newActiveStep > steps.length - 1 ? steps.length - 1 : newActiveStep
+      );
+    }, 600);
+  }
   function setStepCompleted() {
     const newCompleted = completed;
     newCompleted[activeStep] = true;
@@ -109,23 +113,7 @@ export function HireStepsPage() {
         </StepBackArrowContainer>
         <StepBackText>Volver al paso anterior</StepBackText>
       </StepBackRoot>
-      <StepContainer>
-        {stepToShow[activeStep]}
-        {isLastStep() && (
-          <StepsContainerSubmit>
-            <StepsSubmitButton
-              disabled={!allStepsCompleted()}
-              onClick={handleSubmit}
-              variant="dark"
-            >
-              Ver planes disponibles
-            </StepsSubmitButton>
-            <StepsContainerLogo>
-              <StyledQuearBigLogoBlue />
-            </StepsContainerLogo>
-          </StepsContainerSubmit>
-        )}
-      </StepContainer>
+      <StepContainer>{stepToShow[activeStep]}</StepContainer>
       <StepsDrawer
         title="Contratá online"
         steps={steps}

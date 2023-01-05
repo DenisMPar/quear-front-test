@@ -1,13 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
-import { useGetCarBrand } from "../../../../../lib/hooks";
-import { userCotizaData } from "../../../../../lib/state";
+import { userHireData } from "../../../../../lib/state";
 import {
   ButtonOutlined,
   ButtonPrimary,
 } from "../../../../../ui/buttons/styled";
 import { StyledInfo } from "../../../../../ui/icons";
-import { AddLabel } from "../../../../../ui/label/add-label";
 import { BodyTerciary } from "../../../../../ui/text";
 import {
   StepCarPicturesContainerButtons,
@@ -20,18 +18,11 @@ import {
   StepCarPicturesTitle,
 } from "./styled";
 
-export function CarPicturesStepComponent({ handleSelect }: any) {
+export function CarPicturesStepComponent({ handleSelect, handleNext }: any) {
   const { handleSubmit, reset, setValue, control } = useForm();
-  const { brandNames, brandWithId } = useGetCarBrand();
-  const [cotizaData, setCotizaData] = useRecoilState(userCotizaData);
-  function onSelect(key: string, value: any) {
-    const element = brandWithId.find((el) => {
-      return el.nombre == value;
-    });
-
-    element &&
-      setCotizaData({ ...cotizaData, carBrandId: parseInt(element.id) });
-    handleSelect(key, value);
+  const [hireData, setHireData] = useRecoilState(userHireData);
+  function onSkip(data: any) {
+    handleSelect("pictures", false);
   }
   return (
     <StepCarPicturesContainerMain>
@@ -73,7 +64,7 @@ export function CarPicturesStepComponent({ handleSelect }: any) {
       </StepCarPicturesContainerPicturesLabel>
       <StepCarPicturesContainerButtons>
         <ButtonPrimary variant="dark">Continuar</ButtonPrimary>
-        <ButtonOutlined>Saltar paso</ButtonOutlined>
+        <ButtonOutlined onClick={onSkip}>Saltar paso</ButtonOutlined>
       </StepCarPicturesContainerButtons>
     </StepCarPicturesContainerMain>
   );

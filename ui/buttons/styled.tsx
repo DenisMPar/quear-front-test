@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { ReactHTMLElement } from "react";
 interface Props extends React.HTMLAttributes<HTMLButtonElement> {
   variant: "light" | "dark";
 }
@@ -27,6 +28,9 @@ export const ButtonPrimary = styled(BaseButton)<Props>`
     background-color: ${(props) =>
       props.variant == "dark" ? `var(--primary-hover)` : `var(--secondary)`};
   }
+  &:disabled {
+    background-color: var(--primary-disabled);
+  }
 `;
 export const ButtonPrimaryBig = styled(ButtonPrimary)`
   height: 48px;
@@ -45,7 +49,11 @@ export const ButtonOutlined = styled(BaseButton)`
 export const ButtonOutlinedBig = styled(ButtonOutlined)`
   height: 48px;
 `;
-export const ButtonBig = styled(BaseButton)`
+
+interface ButtonProps extends React.HTMLAttributes<HTMLDivElement> {
+  active?: boolean;
+}
+export const ButtonBig = styled(BaseButton)<ButtonProps>`
   height: 100%;
   max-height: 96px;
   flex-direction: column;
@@ -54,7 +62,8 @@ export const ButtonBig = styled(BaseButton)`
   color: var(--primary);
   font-size: 18px;
   font-weight: 600;
-  background-color: var(--bg-secondary);
+  background-color: ${(props) =>
+    props.active ? "var(--secondary)" : "var(--bg-secondary)"};
   box-shadow: 2px 4px 4px var(--shadow);
   border-radius: 12px;
   @media screen and (min-width: 1024px) {
