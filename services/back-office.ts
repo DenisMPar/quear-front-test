@@ -22,3 +22,17 @@ export const fetchDashboadLogin = async (data: LoginData) => {
 
   return res;
 };
+
+export const fetchDashboadNewUser = async (data: LoginData) => {
+  let call = await fetch(urlBase + "auth", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ ...data }),
+  });
+
+  let res = await call.json();
+
+  return res;
+};

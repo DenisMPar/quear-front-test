@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fetchApi, getUserBO, saveUserBO } from "./api";
+import { fetchApi, getTokenUserBO } from "./api";
 import useSWR from "swr";
 export function useGetYears() {
   const yearsArray: string[] = [];
@@ -217,21 +217,25 @@ export function useGetCities(departmentId: string): {
   }
 }
 
-type PolicyCar = {
-  id: string;
-  policyNumber: string;
-  trackingPolicyNumber: string;
-  date: string;
-  status: string;
-  name: string;
-  email: string;
-  trackingCode: string;
-  seen: string;
-  type: string;
-  createdAt: string;
-  updatedAt: string;
-  userCarId: string;
-};
+export function useGetUserBO() {
+  const token = getTokenUserBO();
+
+  const { data, error, isLoading } = useSWR("back-office/user", (url) =>
+    fetchApi(url, {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token ? `Bearer ${token} ` : ``,
+      },
+    })
+  );
+
+  if (data) {
+    return data.success.result;
+  } else {
+    return {};
+  }
+}
 
 export function usePaginationPolicies() {
   const [q, setQ] = useState("");
@@ -239,9 +243,7 @@ export function usePaginationPolicies() {
   const [status, setStatus] = useState("");
   const [date, setDate] = useState("");
 
-  // const token = getUserBO().token;
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMyIsImVtYWlsIjoibWF0aWFzLnRvbGVkb0BnbWFpbC5jb20iLCJwYXNzd29yZCI6ImE2NjVhNDU5MjA0MjJmOWQ0MTdlNDg2N2VmZGM0ZmI4YTA0YTFmM2ZmZjFmYTA3ZTk5OGU4NmY3ZjdhMjdhZTMiLCJjcmVhdGVkQXQiOiIyMDIyLTEyLTMwVDE1OjAyOjE1LjgxNVoiLCJ1cGRhdGVkQXQiOiIyMDIyLTEyLTMwVDE1OjAyOjE1LjgxNVoifSwiaWF0IjoxNjcyNjk0NDE2fQ.he8HCIEaRdIxsnT2Mhr4YXA6gjY9U34ta9wPi8DB2Lc";
+  const token = getTokenUserBO();
 
   const { data, error, isLoading } = useSWR(
     `policyCar?page=${page}&status=${status}&date=${date}&q=${q}`,
@@ -276,25 +278,36 @@ export function usePaginationPolicies() {
     },
   };
 }
+export function usePaginationUserBo() {
+  const [q, setQ] = useState("");
+  const [page, setPage] = useState("");
 
-export function useGetPolicyCars(): any {
-  // const token = getUserBO().token;
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMyIsImVtYWlsIjoibWF0aWFzLnRvbGVkb0BnbWFpbC5jb20iLCJwYXNzd29yZCI6ImE2NjVhNDU5MjA0MjJmOWQ0MTdlNDg2N2VmZGM0ZmI4YTA0YTFmM2ZmZjFmYTA3ZTk5OGU4NmY3ZjdhMjdhZTMiLCJjcmVhdGVkQXQiOiIyMDIyLTEyLTMwVDE1OjAyOjE1LjgxNVoiLCJ1cGRhdGVkQXQiOiIyMDIyLTEyLTMwVDE1OjAyOjE1LjgxNVoifSwiaWF0IjoxNjcyNjk0NDE2fQ.he8HCIEaRdIxsnT2Mhr4YXA6gjY9U34ta9wPi8DB2Lc";
+  const token = getTokenUserBO();
 
-  const { data, error, isLoading } = useSWR("policyCar", (url) =>
-    fetchApi(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token ? `Bearer ${token} ` : ``,
-      },
-    })
+  const { data, error, isLoading } = useSWR(
+    `back-office/user/all?page=${page}&q=${q}`,
+    (url) =>
+      fetchApi(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token ? `Bearer ${token} ` : ``,
+        },
+      })
   );
 
   if (data) {
-    return data;
-  } else {
-    return false;
+    let totalRows: number = data.success.result.count;
+    data.success.result.totalRows = totalRows;
   }
+
+  return {
+    data: data ? data.success.result : [],
+    isLoading,
+    setQuery: {
+      setQ,
+      setPage,
+    },
+    q,
+  };
 }

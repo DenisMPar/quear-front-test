@@ -17,14 +17,14 @@ import {
 } from "./styled";
 import DataTable from "react-data-table-component";
 import { useRouter } from "next/router";
-import { getUserBO } from "../../lib/api";
-import { useGetPolicyCars, usePaginationPolicies } from "../../lib/hooks";
-import { useEffect } from "react";
+import { useGetUserBO, usePaginationPolicies } from "../../lib/hooks";
 import { SelectComponent } from "../select";
+import { useEffect, useState } from "react";
 
 export function DashboardPolicies() {
   const router = useRouter();
-  const userBO = getUserBO();
+  const userBO = useGetUserBO();
+
   const { data, error, isLoading, setQuery, Querys }: any =
     usePaginationPolicies();
 
@@ -54,17 +54,15 @@ export function DashboardPolicies() {
   };
 
   const handleOnChangeDate = (e: any) => {
-    // console.log(Querys.date);
-    // console.log(e);
-    console.log(e);
-
     setQuery.setDate(e.target.value);
   };
 
   return (
     <DashboardPolizasRoot>
       <DashboardPolizasHeaderContainer>
-        <SubtitleDashboardPrimary>Hola!</SubtitleDashboardPrimary>
+        <SubtitleDashboardPrimary>
+          {userBO ? `Hola ${userBO.name}!` : `Hola !`}
+        </SubtitleDashboardPrimary>
         <Link href="/dashboard/polizas">
           <SubtitleDashboardTerciary active={true}>
             Pólizas
@@ -86,6 +84,7 @@ export function DashboardPolicies() {
               onKeyDown={handleOnChangeQuery}
             ></DashboardInputOutlined>
             <SelectComponent
+              width="190px"
               placeHolder="Estado de poliza"
               variant="dashboard"
               values={[
@@ -110,11 +109,15 @@ export function DashboardPolicies() {
         {data && (
           <DataTableContainer>
             <DataTable
-              sortServer
-              paginationServer
-              pagination
-              striped
               data={data.rows}
+              onRowClicked={handleOnRowClicked}
+              onChangePage={handleOnChangePage}
+              striped
+              sortServer
+              pagination
+              paginationServer
+              paginationRowsPerPageOptions={[10]}
+              paginationTotalRows={data.totalRows}
               paginationComponentOptions={{
                 rowsPerPageText: "Polizas por pagina",
                 rangeSeparatorText: "De",
@@ -144,10 +147,6 @@ export function DashboardPolicies() {
                   },
                 },
               }}
-              onRowClicked={handleOnRowClicked}
-              onChangePage={handleOnChangePage}
-              paginationRowsPerPageOptions={[10]}
-              paginationTotalRows={data.totalRows}
               columns={[
                 {
                   name: "Nombre",

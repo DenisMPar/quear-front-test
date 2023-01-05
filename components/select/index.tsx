@@ -6,7 +6,6 @@ interface Props {
   variant: "dashboard" | "app";
   values: string[];
   placeHolder: string;
-  width?: number;
   onChange: (prp?: any) => any;
   width?: string;
 }
