@@ -25,11 +25,14 @@ interface Props {
   active?: boolean;
   onDetail: (props?: any) => void;
 }
+interface Colors {
+  [key: string]: any;
+}
 
 export function CardComponent(props: Props) {
   const router = useRouter();
   const [hireData, setHireData] = useRecoilState(userHireData);
-  const colors = {
+  const colors: Colors = {
     "Contra todo riesgo": "var(--primary-dark)",
     Totales: "var(--primary-ligth)",
     "Responsabilidad civil": "var(--terciary-dark)",
