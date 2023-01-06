@@ -1,5 +1,10 @@
-import { DashboardHome } from "../../components/dashboard-home";
+import { DashboardLayout } from "../../components/dashboard-layout";
+import { DashboardMessages } from "../../components/dashboard-messages";
 
-export default function Dashboard() {
-  return <DashboardHome></DashboardHome>;
+export default function DashboardMessagesPage() {
+  return (
+    <DashboardLayout>
+      <DashboardMessages></DashboardMessages>
+    </DashboardLayout>
+  );
 }

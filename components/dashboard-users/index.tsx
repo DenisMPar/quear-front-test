@@ -1,5 +1,5 @@
-import { StyledSearchBig } from "../../../ui/icons";
-import { InputWithIcon } from "../../../ui/input";
+import { StyledSearchBig } from "../../ui/icons";
+import { InputWithIcon } from "../../ui/input";
 import {
   DashboardMainContainer,
   DashboardMainFiltersContainer,
@@ -10,7 +10,7 @@ import {
   SubtitleDashboardSecondary,
 } from "./styled";
 import DataTable from "react-data-table-component";
-import { ButtonOutlined, ButtonPrimary } from "../../../ui/buttons/styled";
+import { ButtonOutlined, ButtonPrimary } from "../../ui/buttons/styled";
 import { useState } from "react";
 import { PopUpNewUser } from "./new-user";
 
@@ -65,7 +65,7 @@ const data = [
   },
 ];
 
-export function DashboardUsuarios() {
+export function DashboardUsers() {
   const [newUser, setNewUser] = useState(false);
 
   function toggleNewUser() {

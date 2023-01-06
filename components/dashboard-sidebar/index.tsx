@@ -2,8 +2,10 @@ import {
   DropContainer,
   DropLinkText,
   SideBarBottomContainer,
+  SideBarDropContainer,
   SideBarLinkContainer,
   SideBarLinkText,
+  SideBarMenuContainer,
   SidebarRoot,
   SideBarTopContainer,
 } from "./styled";
@@ -12,6 +14,7 @@ import { ReactNode } from "react";
 import { StyledHomeColored, StyledUser } from "../../ui/icons";
 import { getPath } from "../../lib/functions";
 import { SubtitleSecondary, SubtitleTerciary } from "../../ui/text";
+import { getUserBO } from "../../lib/api";
 
 type MenuLink = {
   href: string;
@@ -44,46 +47,40 @@ const sideBarMenuLinksWithIcon: Array<LinkwithIcon> = [
 
 export function DashboardSidebar() {
   const path = getPath();
+  const userBO = getUserBO();
 
   return (
     <SidebarRoot>
       <SideBarTopContainer>
         {sideBarMenuLinksWithIcon.map((link) => {
           return (
-            <>
+            <SideBarMenuContainer key={link.text}>
               <SideBarLinkContainer>
                 {link.icon}
-                <Link key={link.text} href={link.href}>
+                <Link href={link.href}>
                   <SideBarLinkText as={"p"}>{link.text}</SideBarLinkText>
                 </Link>
               </SideBarLinkContainer>
               <DropContainer>
                 {link.items?.map((item) => {
                   return (
-                    <>
-                      <Link key={link.text} href={item.href}>
-                        <DropLinkText
-                          active={path?.slice(0, 19) == item.href}
-                          key={item.text}
-                        >
-                          {item.text}
-                        </DropLinkText>
+                    <SideBarDropContainer key={item.text}>
+                      <Link href={item.href}>
+                        <DropLinkText>{item.text}</DropLinkText>
                       </Link>
-                    </>
+                    </SideBarDropContainer>
                   );
                 })}
               </DropContainer>
-            </>
+            </SideBarMenuContainer>
           );
         })}
       </SideBarTopContainer>
       <SideBarBottomContainer>
         <SubtitleSecondary color="bg-secondary">
-          Federico Gomez
+          {/* {userBO.name} {userBO.lastName} */}
         </SubtitleSecondary>
-        <SubtitleTerciary color="bg-secondary">
-          fgomez@quear.com.ar
-        </SubtitleTerciary>
+        <SubtitleTerciary color="bg-secondary"></SubtitleTerciary>
       </SideBarBottomContainer>
     </SidebarRoot>
   );

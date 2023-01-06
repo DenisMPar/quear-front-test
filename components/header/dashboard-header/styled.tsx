@@ -13,4 +13,5 @@ export const DashboardHeaderRoot = styled.div`
 export const DashboardHeaderRight = styled.div`
   display: flex;
   flex-direction: row;
+  gap: 15px;
 `;

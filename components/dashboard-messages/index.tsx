@@ -6,7 +6,7 @@ import {
   SubtitleDashboardSecondary,
 } from "./styled";
 
-export function DashboardMensajes() {
+export function DashboardMessages() {
   return (
     <DashboardPolizasRoot>
       <DashboardPolizasHeaderContainer>

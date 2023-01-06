@@ -3,8 +3,8 @@ import {
   ButtonBig,
   ButtonOutlined,
   ButtonPrimary,
-} from "../../../../ui/buttons/styled";
-import { TitlePrimary } from "../../../../ui/text";
+} from "../../../ui/buttons/styled";
+import { TitlePrimary } from "../../../ui/text";
 
 export const PopUpNewUserBack = styled.div`
   width: 100vw;

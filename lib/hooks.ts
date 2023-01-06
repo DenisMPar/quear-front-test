@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fetchApi } from "./api";
+import { fetchApi, getUserBO, saveUserBO } from "./api";
 import useSWR from "swr";
 export function useGetYears() {
   const yearsArray: string[] = [];
@@ -189,6 +189,7 @@ export function useGetLocations(provinceId: string): {
     return { locationNames: [], locationWithId: [] };
   }
 }
+
 export function useGetCities(departmentId: string): {
   citiesNames: string[];
   citiesWithId: Array<{ name: string; id: string }>;
@@ -213,5 +214,82 @@ export function useGetCities(departmentId: string): {
     return { citiesNames: [], citiesWithId: [] };
   } else {
     return { citiesNames: [], citiesWithId: [] };
+  }
+}
+
+type PolicyCar = {
+  id: string;
+  policyNumber: string;
+  trackingPolicyNumber: string;
+  date: string;
+  status: string;
+  name: string;
+  email: string;
+  trackingCode: string;
+  seen: string;
+  type: string;
+  createdAt: string;
+  updatedAt: string;
+  userCarId: string;
+};
+
+export function usePaginationPolicies() {
+  const [q, setQ] = useState("");
+  const [page, setPage] = useState(1);
+  const [status, setStatus] = useState("");
+  const [date, setDate] = useState("");
+  console.log(page);
+
+  // const token = getUserBO().token;
+  const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMyIsImVtYWlsIjoibWF0aWFzLnRvbGVkb0BnbWFpbC5jb20iLCJwYXNzd29yZCI6ImE2NjVhNDU5MjA0MjJmOWQ0MTdlNDg2N2VmZGM0ZmI4YTA0YTFmM2ZmZjFmYTA3ZTk5OGU4NmY3ZjdhMjdhZTMiLCJjcmVhdGVkQXQiOiIyMDIyLTEyLTMwVDE1OjAyOjE1LjgxNVoiLCJ1cGRhdGVkQXQiOiIyMDIyLTEyLTMwVDE1OjAyOjE1LjgxNVoifSwiaWF0IjoxNjcyNjk0NDE2fQ.he8HCIEaRdIxsnT2Mhr4YXA6gjY9U34ta9wPi8DB2Lc";
+
+  const { data, error, isLoading } = useSWR(
+    `policyCar?page=${page}&status=${status}&date=${date}&q=${q}`,
+    (url) =>
+      fetchApi(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token ? `Bearer ${token} ` : ``,
+        },
+      })
+  );
+  if (data) {
+    let totalRows: number = data.success.result.count;
+    data.success.result.totalRows = totalRows;
+  }
+
+  return {
+    data: data ? data.success.result : [],
+    isLoading,
+    setQuery: {
+      setQ,
+      setPage,
+      setStatus,
+      setDate,
+    },
+  };
+}
+
+export function useGetPolicyCars(): any {
+  // const token = getUserBO().token;
+  const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMyIsImVtYWlsIjoibWF0aWFzLnRvbGVkb0BnbWFpbC5jb20iLCJwYXNzd29yZCI6ImE2NjVhNDU5MjA0MjJmOWQ0MTdlNDg2N2VmZGM0ZmI4YTA0YTFmM2ZmZjFmYTA3ZTk5OGU4NmY3ZjdhMjdhZTMiLCJjcmVhdGVkQXQiOiIyMDIyLTEyLTMwVDE1OjAyOjE1LjgxNVoiLCJ1cGRhdGVkQXQiOiIyMDIyLTEyLTMwVDE1OjAyOjE1LjgxNVoifSwiaWF0IjoxNjcyNjk0NDE2fQ.he8HCIEaRdIxsnT2Mhr4YXA6gjY9U34ta9wPi8DB2Lc";
+
+  const { data, error, isLoading } = useSWR("policyCar", (url) =>
+    fetchApi(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token ? `Bearer ${token} ` : ``,
+      },
+    })
+  );
+
+  if (data) {
+    return data;
+  } else {
+    return false;
   }
 }
