@@ -1,5 +1,9 @@
+import { useState } from "react";
+import DataTable from "react-data-table-component";
+import { ButtonPrimary } from "../../ui/buttons/styled";
 import { StyledSearchBig } from "../../ui/icons";
 import { InputWithIcon } from "../../ui/input";
+import { PopUpNewUser } from "./new-user";
 import {
   DashboardMainContainer,
   DashboardMainFiltersContainer,
@@ -9,10 +13,6 @@ import {
   SubtitleDashboardPrimary,
   SubtitleDashboardSecondary,
 } from "./styled";
-import DataTable from "react-data-table-component";
-import { ButtonOutlined, ButtonPrimary } from "../../ui/buttons/styled";
-import { useState } from "react";
-import { PopUpNewUser } from "./new-user";
 
 const data = [
   {
@@ -78,7 +78,6 @@ export function DashboardUsers() {
       <DashboardPolizasHeaderContainer>
         <SubtitleDashboardPrimary>Usuarios</SubtitleDashboardPrimary>
       </DashboardPolizasHeaderContainer>
-
       <DashboardMainContainer>
         <SubtitleDashboardSecondary color="primary">
           Listado de Usuarios
