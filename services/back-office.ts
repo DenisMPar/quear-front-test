@@ -24,7 +24,9 @@ export const fetchDashboadLogin = async (data: LoginData) => {
 };
 
 export const fetchDashboadNewUser = async (data: LoginData) => {
-  let call = await fetch(urlBase + "auth", {
+  console.log(urlBase);
+
+  let call = await fetch(urlBase + "back-office/auth", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
