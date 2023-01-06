@@ -54,10 +54,7 @@ export function DashboardLogin() {
               render={({ field }: any) => (
                 <DashboardLabelContainer {...field}>
                   <DashboardSubtitles>Email</DashboardSubtitles>
-                  <InputOutlinedBig
-                    ref={null}
-                    placeholder="fgomez@quear.com.ar"
-                  />
+                  <InputOutlinedBig ref={null} placeholder="Ingrese su email" />
                 </DashboardLabelContainer>
               )}
             ></Controller>
@@ -70,7 +67,7 @@ export function DashboardLogin() {
                   <InputPassword
                     ref={null}
                     name="password"
-                    placeholder="*****"
+                    placeholder="*********"
                   />
                 </DashboardLabelContainer>
               )}

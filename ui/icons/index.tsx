@@ -41,8 +41,8 @@ import { PlusSVGIcon } from "./svg/plus-icon";
 import { PasswordHideSVGIcon } from "./svg/password-hide-icon";
 import { BulletSVGIcon } from "./svg/bullet-icon";
 import { MailSVGIcon } from "./svg/mail-icon";
-import { CheckedSVGIcon } from "./svg/checked-icon";
 import { BellSVGIcon } from "./svg/bell-icon";
+import { CheckedSVGIcon } from "./svg/checked-icon";
 
 export interface IconsProps {
   color?:
