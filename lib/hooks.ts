@@ -311,3 +311,36 @@ export function usePaginationUserBo() {
     q,
   };
 }
+export function usePaginationMessages() {
+  const [q, setQ] = useState("");
+  const [page, setPage] = useState("");
+
+  const token = getTokenUserBO();
+
+  const { data, error, isLoading } = useSWR(
+    `back-office/message/all?page=${page}&q=${q}`,
+    (url) =>
+      fetchApi(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token ? `Bearer ${token} ` : ``,
+        },
+      })
+  );
+
+  if (data) {
+    let totalRows: number = data.success.result.count;
+    data.success.result.totalRows = totalRows;
+  }
+
+  return {
+    data: data ? data.success.result : [],
+    isLoading,
+    setQuery: {
+      setQ,
+      setPage,
+    },
+    q,
+  };
+}

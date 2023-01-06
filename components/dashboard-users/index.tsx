@@ -75,7 +75,7 @@ export function DashboardUsers() {
           striped
           noDataComponent={
             <div className="p-3">
-              <b>No se encontraron polizas</b>
+              <b>No se encontraron usuarios</b>
             </div>
           }
           customStyles={{
