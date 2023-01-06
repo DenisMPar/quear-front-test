@@ -1,8 +1,9 @@
 import { useState } from "react";
 import DataTable from "react-data-table-component";
+import { usePaginationUserBo } from "../../lib/hooks";
 import { ButtonPrimary } from "../../ui/buttons/styled";
-import { StyledSearchBig } from "../../ui/icons";
-import { InputWithIcon } from "../../ui/input";
+import { DashboardInputOutlined } from "../dashboard-policies/styled";
+import { PopUpEditUser } from "./edit-user";
 import { PopUpNewUser } from "./new-user";
 import {
   DashboardMainContainer,
@@ -13,13 +14,6 @@ import {
   SubtitleDashboardPrimary,
   SubtitleDashboardSecondary,
 } from "./styled";
-import DataTable from "react-data-table-component";
-import { ButtonOutlined, ButtonPrimary } from "../../ui/buttons/styled";
-import { useState } from "react";
-import { PopUpNewUser } from "./new-user";
-import { usePaginationUserBo } from "../../lib/hooks";
-import { DashboardInputOutlined } from "../dashboard-policies/styled";
-import { PopUpEditUser } from "./edit-user";
 
 export function DashboardUsers() {
   const [newUser, setNewUser] = useState(false);
