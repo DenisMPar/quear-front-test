@@ -49,6 +49,7 @@ export function HireStepsPage() {
 
   function handleSubmit() {
     console.log("submit", { data, hireData });
+    router.push("/hire/success");
   }
 
   function handleSelect(key: string, value: any) {
