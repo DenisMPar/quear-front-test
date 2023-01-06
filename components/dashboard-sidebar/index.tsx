@@ -1,17 +1,23 @@
 import {
+  ArrowContainer,
   DropContainer,
   DropLinkText,
   SideBarBottomContainer,
+  SideBarDropContainer,
+  SideBarLeft,
   SideBarLinkContainer,
   SideBarLinkText,
+  SideBarMenuContainer,
   SidebarRoot,
   SideBarTopContainer,
 } from "./styled";
 import Link from "next/link";
-import { ReactNode } from "react";
-import { StyledHomeColored, StyledUser } from "../../ui/icons";
+import { ReactNode, useEffect, useState } from "react";
+import { StyledArrow, StyledHomeColored, StyledUser } from "../../ui/icons";
 import { getPath } from "../../lib/functions";
 import { SubtitleSecondary, SubtitleTerciary } from "../../ui/text";
+import { useGetUserBO } from "../../lib/hooks";
+import { ArrowSVGIcon } from "../../ui/icons/svg/arrow-icon";
 
 type MenuLink = {
   href: string;
@@ -37,52 +43,70 @@ const sideBarMenuLinksWithIcon: Array<LinkwithIcon> = [
   },
   {
     href: "/dashboard/usuarios",
-    icon: <StyledUser />,
+    icon: <StyledUser color="secondary" />,
     text: "USUARIOS",
   },
 ];
 
 export function DashboardSidebar() {
   const path = getPath();
+  const userBO = useGetUserBO();
+  const polizasPath = path?.slice(11, 18) === "polizas";
+  const mensajesPath = path?.slice(11, 19) === "mensajes";
+  const [showItems, setShowItems] = useState(true);
+
+  function handleShowItems() {
+    setShowItems(!showItems);
+  }
 
   return (
     <SidebarRoot>
       <SideBarTopContainer>
         {sideBarMenuLinksWithIcon.map((link) => {
           return (
-            <>
+            <SideBarMenuContainer key={link.text}>
               <SideBarLinkContainer>
-                {link.icon}
-                <Link key={link.text} href={link.href}>
-                  <SideBarLinkText as={"p"}>{link.text}</SideBarLinkText>
-                </Link>
+                <SideBarLeft>
+                  {link.icon}
+                  <Link href={link.href}>
+                    <SideBarLinkText as={"p"}>{link.text}</SideBarLinkText>
+                  </Link>
+                </SideBarLeft>
+                {link.items ? (
+                  <ArrowContainer up={showItems} onClick={handleShowItems}>
+                    <StyledArrow color="secondary"></StyledArrow>
+                  </ArrowContainer>
+                ) : null}
               </SideBarLinkContainer>
               <DropContainer>
-                {link.items?.map((item) => {
-                  return (
-                    <>
-                      <Link key={link.text} href={item.href}>
-                        <DropLinkText
-                          active={path?.slice(0, 19) == item.href}
-                          key={item.text}
-                        >
-                          {item.text}
-                        </DropLinkText>
-                      </Link>
-                    </>
-                  );
-                })}
+                {showItems &&
+                  link.items?.map((item) => {
+                    return (
+                      <SideBarDropContainer key={item.text}>
+                        <Link href={item.href}>
+                          <DropLinkText
+                            active={
+                              (item.text == "Pólizas" && polizasPath) ||
+                              (item.text == "Mensajes" && mensajesPath)
+                            }
+                          >
+                            {item.text}
+                          </DropLinkText>
+                        </Link>
+                      </SideBarDropContainer>
+                    );
+                  })}
               </DropContainer>
-            </>
+            </SideBarMenuContainer>
           );
         })}
       </SideBarTopContainer>
       <SideBarBottomContainer>
         <SubtitleSecondary color="bg-secondary">
-          Federico Gomez
+          {userBO ? `${userBO.name} ${userBO.lastName}` : ""}
         </SubtitleSecondary>
         <SubtitleTerciary color="bg-secondary">
-          fgomez@quear.com.ar
+          {userBO ? `${userBO.email}` : ""}
         </SubtitleTerciary>
       </SideBarBottomContainer>
     </SidebarRoot>

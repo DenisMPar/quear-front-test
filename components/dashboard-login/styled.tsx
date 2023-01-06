@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { SubtitleSecondary } from "../../ui/text";
+import { SubtitleSecondary, SubtitleTerciary } from "../../ui/text";
 
 export const DashboardRoot = styled.div`
   min-height: 100vh;
@@ -24,7 +24,7 @@ export const DashboardContentContainer = styled.div`
   flex-direction: column;
   gap: 24px;
 `;
-export const DashboardLoginContainer = styled.div`
+export const DashboardLoginContainer = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -68,4 +68,10 @@ export const DashboardButtonContainer = styled.div`
 `;
 export const DashboardLinkColored = styled(DashboardLink)`
   color: var(--primary);
+`;
+
+export const DashboardError = styled(SubtitleTerciary)`
+  color: red;
+  text-align: center;
+  text-decoration: underline;
 `;

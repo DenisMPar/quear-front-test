@@ -18,3 +18,14 @@ export async function fetchApi(direction: string, config: RequestOptions) {
   if (status >= 200 && status < 300) return await res.json();
   if (status >= 400) throw { error: res.status };
 }
+
+export function saveTokenUserBO(token: string) {
+  localStorage.setItem("tokenUserBO", JSON.stringify(token));
+}
+
+export function getTokenUserBO() {
+  if (typeof window !== "undefined") {
+    let storage = localStorage.getItem("tokenUserBO") as string;
+    return JSON.parse(storage);
+  }
+}

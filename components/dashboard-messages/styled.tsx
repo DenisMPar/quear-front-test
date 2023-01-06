@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
-import { SubtitlePrimary } from "../../../ui/text";
+import { InputOutlined } from "../../ui/input/styled";
+import { SubtitlePrimary } from "../../ui/text";
 
 export const DashboardPolizasRoot = styled.div`
   width: 100%;
@@ -43,12 +44,13 @@ interface LinkProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const SubtitleDashboardTerciary = styled(SubtitlePrimary)<LinkProps>`
   font-size: 16px;
-  color: ${(props) => (props.active ? "var(--primary-hover)" : "#71717a")};
+  color: ${(props) => (props.color ? `var(--${props.color})` : "#71717a")};
   text-decoration: ${(props) =>
     props.active
       ? "underline var(--primary-hover)"
       : "none"}; /* Subrayado rojo */
   text-underline-offset: 0.5em;
+  cursor: pointer;
 
   @media screen and (min-width: 1024px) {
     font-size: 16px;
@@ -73,8 +75,11 @@ export const DashboardMainFiltersContainer = styled.div`
   align-items: flex-end;
 `;
 
-export const DashboardMainFiltersLeft = styled.div`
-  display: grid;
-  grid-template-columns: 400px 190px 170px;
-  grid-gap: 10px;
+export const DataTableContainer = styled.div`
+  z-index: 0;
+`;
+
+export const DashboardInputOutlined = styled(InputOutlined)`
+  border-color: var(--shadow);
+  height: 47px;
 `;

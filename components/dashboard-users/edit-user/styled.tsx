@@ -3,8 +3,8 @@ import {
   ButtonBig,
   ButtonOutlined,
   ButtonPrimary,
-} from "../../../../ui/buttons/styled";
-import { TitlePrimary } from "../../../../ui/text";
+} from "../../../ui/buttons/styled";
+import { TitlePrimary } from "../../../ui/text";
 
 export const PopUpNewUserBack = styled.div`
   width: 100vw;
@@ -40,7 +40,7 @@ export const PopUpTitle = styled(TitlePrimary)`
   font-weight: 700;
 `;
 
-export const PopUpOptionsCointainer = styled.div`
+export const PopUpOptionsCointainer = styled.form`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: max-content;
@@ -61,19 +61,23 @@ export const PopUpTypeContainer = styled.div`
   padding-right: 10px;
 `;
 
-export const ButtonType = styled(ButtonBig)`
+interface ButtonProps {
+  clicked?: boolean;
+}
+
+export const ButtonType = styled(ButtonBig)<ButtonProps>`
   font-weight: 600;
   font-size: 18px;
   color: rgba(65, 69, 251, 1);
+  background-color: ${(props) =>
+    props.clicked ? "var(--secondary)" : "trasnparent"};
 `;
 
 export const PopUpButtonsContainer = styled.div`
-  margin-top: 67px;
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
   gap: 20px;
-  width: 50%;
-  padding-right: 10px;
 `;
 
 export const PopUpButtonPrimary = styled(ButtonPrimary)`

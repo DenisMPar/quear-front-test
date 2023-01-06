@@ -10,6 +10,7 @@ import {
 interface Props extends React.HTMLAttributes<HTMLInputElement> {
   name: string;
   Icon?: any;
+  ref?: any;
 }
 
 export const InputWithIcon = (props: Props) => {

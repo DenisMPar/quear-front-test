@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fetchApi } from "./api";
+import { fetchApi, getTokenUserBO } from "./api";
 import useSWR from "swr";
 export function useGetYears() {
   const yearsArray: string[] = [];
@@ -189,6 +189,7 @@ export function useGetLocations(provinceId: string): {
     return { locationNames: [], locationWithId: [] };
   }
 }
+
 export function useGetCities(departmentId: string): {
   citiesNames: string[];
   citiesWithId: Array<{ name: string; id: string }>;
@@ -214,4 +215,132 @@ export function useGetCities(departmentId: string): {
   } else {
     return { citiesNames: [], citiesWithId: [] };
   }
+}
+
+export function useGetUserBO() {
+  const token = getTokenUserBO();
+
+  const { data, error, isLoading } = useSWR("back-office/user", (url) =>
+    fetchApi(url, {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token ? `Bearer ${token} ` : ``,
+      },
+    })
+  );
+
+  if (data) {
+    return data.success.result;
+  } else {
+    return {};
+  }
+}
+
+export function usePaginationPolicies() {
+  const [q, setQ] = useState("");
+  const [page, setPage] = useState(1);
+  const [status, setStatus] = useState("");
+  const [date, setDate] = useState("");
+
+  const token = getTokenUserBO();
+
+  const { data, error, isLoading } = useSWR(
+    `policyCar?page=${page}&status=${status}&date=${date}&q=${q}`,
+    (url) =>
+      fetchApi(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token ? `Bearer ${token} ` : ``,
+        },
+      })
+  );
+  if (data) {
+    let totalRows: number = data.success.result.count;
+    data.success.result.totalRows = totalRows;
+  }
+
+  return {
+    data: data ? data.success.result : [],
+    isLoading,
+    setQuery: {
+      setQ,
+      setPage,
+      setStatus,
+      setDate,
+    },
+    Querys: {
+      q,
+      page,
+      status,
+      date,
+    },
+  };
+}
+export function usePaginationUserBo() {
+  const [q, setQ] = useState("");
+  const [page, setPage] = useState("");
+
+  const token = getTokenUserBO();
+
+  const { data, error, isLoading } = useSWR(
+    `back-office/user/all?page=${page}&q=${q}`,
+    (url) =>
+      fetchApi(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token ? `Bearer ${token} ` : ``,
+        },
+      })
+  );
+
+  if (data) {
+    let totalRows: number = data.success.result.count;
+    data.success.result.totalRows = totalRows;
+  }
+
+  return {
+    data: data ? data.success.result : [],
+    isLoading,
+    setQuery: {
+      setQ,
+      setPage,
+    },
+    q,
+  };
+}
+export function usePaginationMessages() {
+  const [q, setQ] = useState("");
+  const [page, setPage] = useState("");
+
+  const token = getTokenUserBO();
+
+  const { data, error, isLoading } = useSWR(
+    `back-office/message/all?page=${page}&q=${q}`,
+    (url) =>
+      fetchApi(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token ? `Bearer ${token} ` : ``,
+        },
+      })
+  );
+
+  if (data) {
+    let totalRows: number = data.success.result.count;
+    data.success.result.totalRows = totalRows;
+  }
+
+  return {
+    data: data ? data.success.result : [],
+    isLoading,
+    setQuery: {
+      setQ,
+      setPage,
+    },
+    q,
+  };
 }

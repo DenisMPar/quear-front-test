@@ -1,4 +1,4 @@
-import { StyledQuearBigLogoBlue } from "../../../ui/icons";
+import { StyledBell, StyledQuearBigLogoBlue } from "../../../ui/icons";
 import { DashboardLinkColored } from "../../dashboard-login/styled";
 import { DashboardHeaderRight, DashboardHeaderRoot } from "./styled";
 
@@ -7,6 +7,7 @@ export function DashboardHeader() {
     <DashboardHeaderRoot>
       <StyledQuearBigLogoBlue />
       <DashboardHeaderRight>
+        <StyledBell />
         <DashboardLinkColored>Cerrar sesion</DashboardLinkColored>
       </DashboardHeaderRight>
     </DashboardHeaderRoot>
