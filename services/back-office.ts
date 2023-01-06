@@ -1,7 +1,7 @@
 const DEVELOPMENT = process.env.NODE_ENV == "development";
 
 const urlBase = DEVELOPMENT
-  ? "http://localhost:3080/api/back-office/"
+  ? "http://localhost:3080/api/"
   : process.env.NEXT_PUBLIC_API_BASE_URL;
 
 interface LoginData {
@@ -10,7 +10,7 @@ interface LoginData {
 }
 
 export const fetchDashboadLogin = async (data: LoginData) => {
-  let call = await fetch(urlBase + "auth/token", {
+  let call = await fetch(urlBase + "back-office/auth/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
