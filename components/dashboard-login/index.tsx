@@ -20,8 +20,7 @@ import {
 } from "./styled";
 import { fetchDashboadLogin } from "../../services/back-office";
 import { useState } from "react";
-import { BodyPrimary, SubtitlePrimary, SubtitleTerciary } from "../../ui/text";
-import { saveUserBO } from "../../lib/api";
+import { saveTokenUserBO } from "../../lib/api";
 
 export function DashboardLogin() {
   const router = useRouter();
@@ -33,7 +32,7 @@ export function DashboardLogin() {
 
     if (auth.success) {
       setError(false);
-      saveUserBO(auth.success.result);
+      saveTokenUserBO(auth.success.result.token);
       router.push("/dashboard/polizas");
     } else {
       setError(auth.message);

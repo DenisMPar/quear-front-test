@@ -7,7 +7,8 @@ export const DashboardHeaderRoot = styled.div`
   /* align-items: center; */
   flex-direction: row;
   background-color: white;
-  padding: 52px 81px 26px 72px;
+  padding: 52px 81px 52px 72px;
+  align-items: center;
 `;
 
 export const DashboardHeaderRight = styled.div`

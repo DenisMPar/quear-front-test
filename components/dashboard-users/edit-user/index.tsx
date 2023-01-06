@@ -19,10 +19,11 @@ import {
 import SweetAlert from "sweetalert2";
 
 interface props {
-  toggle: () => any;
+  toggle: (e?: any) => any;
+  user: any;
 }
 
-export function PopUpNewUser({ toggle }: props) {
+export function PopUpEditUser({ toggle, user }: props) {
   const [errorMessage, setErrorMessage] = useState("");
   const [clickedGestor, setClickedGestor] = useState(false);
   const [clickedAdmin, setClickedAdmin] = useState(false);
@@ -39,36 +40,44 @@ export function PopUpNewUser({ toggle }: props) {
   }
 
   async function handleForm(data: any) {
-    clickedGestor ? (data.type = "Gestor") : (data.type = "Administrador");
-    data.dni = parseInt(data.dni);
-    const auth = await fetchDashboadNewUser(data);
-    console.log(auth);
-    if (auth.success) {
-      toggle();
-    } else {
-      SweetAlert.fire({
-        title: `Error al crear el usuario`,
-        text: `${auth.message}`,
-        icon: "warning",
-        confirmButtonColor: "#bf0d3e",
-        showConfirmButton: true,
-      });
-    }
+    // clickedGestor ? (data.type = "Gestor") : (data.type = "Administrador");
+    // data.dni = parseInt(data.dni);
+    // const auth = await fetchDashboadNewUser(data);
+    // console.log(auth);
+    // if (auth.success) {
+    //   toggle();
+    // } else {
+    //   SweetAlert.fire({
+    //     title: `Error al crear el usuario`,
+    //     text: `${auth.message}`,
+    //     icon: "warning",
+    //     confirmButtonColor: "#bf0d3e",
+    //     showConfirmButton: true,
+    //   });
+    // }
   }
 
   return (
     <PopUpNewUserBack>
       <PopUpNewUserRoot>
         <PopUpHeader>
-          <PopUpTitle color="primary">NUEVO USUARIO</PopUpTitle>
+          <PopUpTitle color="primary">EDITAR USUARIO</PopUpTitle>
         </PopUpHeader>
         <PopUpOptionCointainer>
           <SubtitleSecondary>Tipo de usuario</SubtitleSecondary>
           <PopUpTypeContainer>
-            <ButtonType clicked={clickedGestor} onClick={handleOnClickType}>
+            <ButtonType
+              clicked={!clickedAdmin ? user.type === "gestor" : clickedGestor}
+              onClick={handleOnClickType}
+            >
               Gestor
             </ButtonType>
-            <ButtonType clicked={clickedAdmin} onClick={handleOnClickType}>
+            <ButtonType
+              clicked={
+                !clickedGestor ? user.type === "Administrador" : clickedAdmin
+              }
+              onClick={handleOnClickType}
+            >
               Administrador
             </ButtonType>
           </PopUpTypeContainer>
@@ -80,7 +89,7 @@ export function PopUpNewUser({ toggle }: props) {
             render={({ field }: any) => (
               <PopUpOptionCointainer {...field}>
                 <SubtitleSecondary>Nombre</SubtitleSecondary>
-                <InputOutlined></InputOutlined>
+                <InputOutlined defaultValue={user.name}></InputOutlined>
               </PopUpOptionCointainer>
             )}
           ></Controller>
@@ -90,7 +99,7 @@ export function PopUpNewUser({ toggle }: props) {
             render={({ field }: any) => (
               <PopUpOptionCointainer {...field}>
                 <SubtitleSecondary>Apellido</SubtitleSecondary>
-                <InputOutlined></InputOutlined>
+                <InputOutlined defaultValue={user.lastName}></InputOutlined>
               </PopUpOptionCointainer>
             )}
           ></Controller>
@@ -100,7 +109,7 @@ export function PopUpNewUser({ toggle }: props) {
             render={({ field }: any) => (
               <PopUpOptionCointainer {...field}>
                 <SubtitleSecondary>DNI</SubtitleSecondary>
-                <InputOutlined></InputOutlined>
+                <InputOutlined defaultValue={user.dni}></InputOutlined>
               </PopUpOptionCointainer>
             )}
           ></Controller>
@@ -110,7 +119,7 @@ export function PopUpNewUser({ toggle }: props) {
             render={({ field }: any) => (
               <PopUpOptionCointainer {...field}>
                 <SubtitleSecondary>Mail</SubtitleSecondary>
-                <InputOutlined></InputOutlined>
+                <InputOutlined defaultValue={user.email}></InputOutlined>
               </PopUpOptionCointainer>
             )}
           ></Controller>
@@ -120,7 +129,10 @@ export function PopUpNewUser({ toggle }: props) {
             render={({ field }: any) => (
               <PopUpOptionCointainer {...field}>
                 <SubtitleSecondary>Fecha de nacimiento</SubtitleSecondary>
-                <InputOutlined type={"date"}></InputOutlined>
+                <InputOutlined
+                  type={"date"}
+                  defaultValue={user.birthday}
+                ></InputOutlined>
               </PopUpOptionCointainer>
             )}
           ></Controller>

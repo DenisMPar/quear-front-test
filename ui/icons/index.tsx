@@ -364,9 +364,11 @@ export const StyledEyeUnColored = ({ color, width, height }: IconsProps) => {
 const User = styled(UserSVGIcon)`
   width: ${(props) => (props.width ? props.width : "24px")};
   height: ${(props) => (props.height ? props.height : "24px")};
+  fill: ${(props) =>
+    props.color ? `var(--${props.color})` : `var(--primary)`};
 `;
-export const StyledUser = ({ width, height }: IconsProps) => {
-  return <User width={width} height={height}></User>;
+export const StyledUser = ({ width, height, color }: IconsProps) => {
+  return <User width={width} height={height} color={color}></User>;
 };
 
 const Bell = styled(BellSVGIcon)`

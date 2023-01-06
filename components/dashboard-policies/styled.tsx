@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { InputOutlined } from "../../ui/input/styled";
 import { SubtitlePrimary } from "../../ui/text";
 
 export const DashboardPolizasRoot = styled.div`
@@ -77,4 +78,14 @@ export const DashboardMainFiltersLeft = styled.div`
   display: grid;
   grid-template-columns: 400px 190px 170px;
   grid-gap: 10px;
+  z-index: 10;
+`;
+
+export const DataTableContainer = styled.div`
+  z-index: 0;
+`;
+
+export const DashboardInputOutlined = styled(InputOutlined)`
+  border-color: var(--shadow);
+  height: 47px;
 `;

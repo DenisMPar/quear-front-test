@@ -14,6 +14,7 @@ export const StyledButtonWitIcon = styled("button")`
   font-weight: 700;
   box-sizing: border-box;
   min-height: calc(1.5em + 22px);
+  /* min-width: 320px; */
   padding: 12px;
   border-radius: 12px;
   text-align: left;

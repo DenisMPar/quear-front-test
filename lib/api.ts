@@ -19,28 +19,13 @@ export async function fetchApi(direction: string, config: RequestOptions) {
   if (status >= 400) throw { error: res.status };
 }
 
-interface userBo {
-  id: string;
-  email: string;
-  name: string;
-  lastName: string;
-  dni: string;
-  birthday: string;
-  type: string;
-  token: string;
-  createdAt?: string;
-  updatedAt?: string;
+export function saveTokenUserBO(token: string) {
+  localStorage.setItem("tokenUserBO", JSON.stringify(token));
 }
 
-export function saveUserBO(data: userBo) {
-  delete data.createdAt;
-  delete data.updatedAt;
-  localStorage.setItem("userBO", JSON.stringify(data));
-}
-
-export function getUserBO() {
+export function getTokenUserBO() {
   if (typeof window !== "undefined") {
-    let user = JSON.parse(localStorage.getItem("userBO") || "");
-    return user;
+    let storage = localStorage.getItem("tokenUserBO") as string;
+    return JSON.parse(storage);
   }
 }
